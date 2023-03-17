@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8B7029C4BD910028C76C /* SkiingApp.swift */; };
+		554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8B7229C4BD910028C76C /* SkiingView.swift */; };
+		554C8B7529C4BD920028C76C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554C8B7429C4BD920028C76C /* Assets.xcassets */; };
+		554C8B7829C4BD920028C76C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554C8B7729C4BD920028C76C /* Preview Assets.xcassets */; };
+		554C8C0729C4BF310028C76C /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0629C4BF310028C76C /* ViewFactory.swift */; };
+		554C8C0929C4BFB50028C76C /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0829C4BFB50028C76C /* DI.swift */; };
+		554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */; };
+		55D6B65729C4C68800174065 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; };
+		55D6B65829C4C68800174065 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55D6B65A29C4C68A00174065 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64B29C4C67C00174065 /* Core.framework */; };
+		55D6B65B29C4C68A00174065 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64B29C4C67C00174065 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55D6B65C29C4C68B00174065 /* Integration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64C29C4C67C00174065 /* Integration.framework */; };
+		55D6B65D29C4C68B00174065 /* Integration.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64C29C4C67C00174065 /* Integration.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55D6B65E29C4C68C00174065 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64D29C4C67C00174065 /* UI.framework */; };
+		55D6B65F29C4C68C00174065 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64D29C4C67C00174065 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BB0F8DFCA61C82BA50386CB /* Pods_Skiing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE946C6D5FD24F39B3BE1D5 /* Pods_Skiing.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		55D6B65929C4C68800174065 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				55D6B65829C4C68800174065 /* Common.framework in Embed Frameworks */,
+				55D6B65B29C4C68A00174065 /* Core.framework in Embed Frameworks */,
+				55D6B65F29C4C68C00174065 /* UI.framework in Embed Frameworks */,
+				55D6B65D29C4C68B00174065 /* Integration.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		412CB0DE1A3BBCD00DC24F46 /* Pods-Skiing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skiing.release.xcconfig"; path = "Target Support Files/Pods-Skiing/Pods-Skiing.release.xcconfig"; sourceTree = "<group>"; };
+		554C8B6D29C4BD910028C76C /* Skiing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skiing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		554C8B7029C4BD910028C76C /* SkiingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingApp.swift; sourceTree = "<group>"; };
+		554C8B7229C4BD910028C76C /* SkiingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingView.swift; sourceTree = "<group>"; };
+		554C8B7429C4BD920028C76C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		554C8B7729C4BD920028C76C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		554C8C0629C4BF310028C76C /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		554C8C0829C4BFB50028C76C /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
+		554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SkiingView+ViewModel.swift"; sourceTree = "<group>"; };
+		55D6B64A29C4C67C00174065 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55D6B64B29C4C67C00174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55D6B64C29C4C67C00174065 /* Integration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Integration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55D6B64D29C4C67C00174065 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6665DFE258627D8879560D5 /* Pods-Skiing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skiing.debug.xcconfig"; path = "Target Support Files/Pods-Skiing/Pods-Skiing.debug.xcconfig"; sourceTree = "<group>"; };
+		CAE946C6D5FD24F39B3BE1D5 /* Pods_Skiing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skiing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		554C8B6A29C4BD910028C76C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BB0F8DFCA61C82BA50386CB /* Pods_Skiing.framework in Frameworks */,
+				55D6B65E29C4C68C00174065 /* UI.framework in Frameworks */,
+				55D6B65C29C4C68B00174065 /* Integration.framework in Frameworks */,
+				55D6B65729C4C68800174065 /* Common.framework in Frameworks */,
+				55D6B65A29C4C68A00174065 /* Core.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		554C8B6429C4BD910028C76C = {
+			isa = PBXGroup;
+			children = (
+				554C8B6F29C4BD910028C76C /* Skiing */,
+				554C8B6E29C4BD910028C76C /* Products */,
+				65025F07CB616A2DA6F3711B /* Pods */,
+				77CB210A354ED7234C1DEF3A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		554C8B6E29C4BD910028C76C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				554C8B6D29C4BD910028C76C /* Skiing.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		554C8B6F29C4BD910028C76C /* Skiing */ = {
+			isa = PBXGroup;
+			children = (
+				554C8B7029C4BD910028C76C /* SkiingApp.swift */,
+				554C8B7229C4BD910028C76C /* SkiingView.swift */,
+				554C8B7429C4BD920028C76C /* Assets.xcassets */,
+				554C8B7629C4BD920028C76C /* Preview Content */,
+				554C8C0629C4BF310028C76C /* ViewFactory.swift */,
+				554C8C0829C4BFB50028C76C /* DI.swift */,
+				554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */,
+			);
+			path = Skiing;
+			sourceTree = "<group>";
+		};
+		554C8B7629C4BD920028C76C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				554C8B7729C4BD920028C76C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		65025F07CB616A2DA6F3711B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A6665DFE258627D8879560D5 /* Pods-Skiing.debug.xcconfig */,
+				412CB0DE1A3BBCD00DC24F46 /* Pods-Skiing.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		77CB210A354ED7234C1DEF3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55D6B64A29C4C67C00174065 /* Common.framework */,
+				55D6B64B29C4C67C00174065 /* Core.framework */,
+				55D6B64C29C4C67C00174065 /* Integration.framework */,
+				55D6B64D29C4C67C00174065 /* UI.framework */,
+				CAE946C6D5FD24F39B3BE1D5 /* Pods_Skiing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		554C8B6C29C4BD910028C76C /* Skiing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 554C8B7B29C4BD920028C76C /* Build configuration list for PBXNativeTarget "Skiing" */;
+			buildPhases = (
+				1C2299D54E7A867EA779145B /* [CP] Check Pods Manifest.lock */,
+				554C8B6929C4BD910028C76C /* Sources */,
+				554C8B6A29C4BD910028C76C /* Frameworks */,
+				554C8B6B29C4BD910028C76C /* Resources */,
+				38C49AAD276EB0BA8BBC35BB /* [CP] Embed Pods Frameworks */,
+				55D6B65929C4C68800174065 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Skiing;
+			productName = Skiing;
+			productReference = 554C8B6D29C4BD910028C76C /* Skiing.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		554C8B6529C4BD910028C76C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					554C8B6C29C4BD910028C76C = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 554C8B6829C4BD910028C76C /* Build configuration list for PBXProject "Skiing" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 554C8B6429C4BD910028C76C;
+			productRefGroup = 554C8B6E29C4BD910028C76C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				554C8B6C29C4BD910028C76C /* Skiing */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		554C8B6B29C4BD910028C76C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554C8B7829C4BD920028C76C /* Preview Assets.xcassets in Resources */,
+				554C8B7529C4BD920028C76C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C2299D54E7A867EA779145B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Skiing-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		38C49AAD276EB0BA8BBC35BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skiing/Pods-Skiing-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skiing/Pods-Skiing-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skiing/Pods-Skiing-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		554C8B6929C4BD910028C76C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554C8C0929C4BFB50028C76C /* DI.swift in Sources */,
+				554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */,
+				554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */,
+				554C8C0729C4BF310028C76C /* ViewFactory.swift in Sources */,
+				554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		554C8B7929C4BD920028C76C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		554C8B7A29C4BD920028C76C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		554C8B7C29C4BD920028C76C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6665DFE258627D8879560D5 /* Pods-Skiing.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Skiing/Preview Content\"";
+				DEVELOPMENT_TEAM = VJLFSCCR2C;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = koszti.Skiing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		554C8B7D29C4BD920028C76C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 412CB0DE1A3BBCD00DC24F46 /* Pods-Skiing.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Skiing/Preview Content\"";
+				DEVELOPMENT_TEAM = VJLFSCCR2C;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = koszti.Skiing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		554C8B6829C4BD910028C76C /* Build configuration list for PBXProject "Skiing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554C8B7929C4BD920028C76C /* Debug */,
+				554C8B7A29C4BD920028C76C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		554C8B7B29C4BD920028C76C /* Build configuration list for PBXNativeTarget "Skiing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554C8B7C29C4BD920028C76C /* Debug */,
+				554C8B7D29C4BD920028C76C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 554C8B6529C4BD910028C76C /* Project object */;
+}
