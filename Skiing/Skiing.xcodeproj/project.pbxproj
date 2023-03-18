@@ -14,6 +14,8 @@
 		554C8C0729C4BF310028C76C /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0629C4BF310028C76C /* ViewFactory.swift */; };
 		554C8C0929C4BFB50028C76C /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0829C4BFB50028C76C /* DI.swift */; };
 		554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */; };
+		555D8B3929C64FDE000B65AD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3729C64FDD000B65AD /* awsconfiguration.json */; };
+		555D8B3A29C64FDE000B65AD /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3829C64FDE000B65AD /* amplifyconfiguration.json */; };
 		55D6B65729C4C68800174065 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; };
 		55D6B65829C4C68800174065 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55D6B65A29C4C68A00174065 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64B29C4C67C00174065 /* Core.framework */; };
@@ -43,7 +45,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		412CB0DE1A3BBCD00DC24F46 /* Pods-Skiing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skiing.release.xcconfig"; path = "Target Support Files/Pods-Skiing/Pods-Skiing.release.xcconfig"; sourceTree = "<group>"; };
 		554C8B6D29C4BD910028C76C /* Skiing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skiing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554C8B7029C4BD910028C76C /* SkiingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingApp.swift; sourceTree = "<group>"; };
 		554C8B7229C4BD910028C76C /* SkiingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingView.swift; sourceTree = "<group>"; };
@@ -52,12 +53,16 @@
 		554C8C0629C4BF310028C76C /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		554C8C0829C4BFB50028C76C /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SkiingView+ViewModel.swift"; sourceTree = "<group>"; };
+		555D8B3229C644AC000B65AD /* Skiing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skiing.entitlements; sourceTree = "<group>"; };
+		555D8B3729C64FDD000B65AD /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		555D8B3829C64FDE000B65AD /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		55D6B64A29C4C67C00174065 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64B29C4C67C00174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64C29C4C67C00174065 /* Integration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Integration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64D29C4C67C00174065 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6665DFE258627D8879560D5 /* Pods-Skiing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skiing.debug.xcconfig"; path = "Target Support Files/Pods-Skiing/Pods-Skiing.debug.xcconfig"; sourceTree = "<group>"; };
+		B560C24391A6E462BEA278B8 /* Pods-Skiing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skiing.release.xcconfig"; path = "Target Support Files/Pods-Skiing/Pods-Skiing.release.xcconfig"; sourceTree = "<group>"; };
 		CAE946C6D5FD24F39B3BE1D5 /* Pods_Skiing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skiing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6D60A120788427A0EDC7A83 /* Pods-Skiing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skiing.debug.xcconfig"; path = "Target Support Files/Pods-Skiing/Pods-Skiing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +84,12 @@
 		554C8B6429C4BD910028C76C = {
 			isa = PBXGroup;
 			children = (
+				555D8B3829C64FDE000B65AD /* amplifyconfiguration.json */,
+				555D8B3729C64FDD000B65AD /* awsconfiguration.json */,
 				554C8B6F29C4BD910028C76C /* Skiing */,
 				554C8B6E29C4BD910028C76C /* Products */,
-				65025F07CB616A2DA6F3711B /* Pods */,
 				77CB210A354ED7234C1DEF3A /* Frameworks */,
+				8B2E0B69ABFDACD38E3B436C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +104,7 @@
 		554C8B6F29C4BD910028C76C /* Skiing */ = {
 			isa = PBXGroup;
 			children = (
+				555D8B3229C644AC000B65AD /* Skiing.entitlements */,
 				554C8B7029C4BD910028C76C /* SkiingApp.swift */,
 				554C8B7229C4BD910028C76C /* SkiingView.swift */,
 				554C8B7429C4BD920028C76C /* Assets.xcassets */,
@@ -116,16 +124,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		65025F07CB616A2DA6F3711B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A6665DFE258627D8879560D5 /* Pods-Skiing.debug.xcconfig */,
-				412CB0DE1A3BBCD00DC24F46 /* Pods-Skiing.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
-			sourceTree = "<group>";
-		};
 		77CB210A354ED7234C1DEF3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +134,16 @@
 				CAE946C6D5FD24F39B3BE1D5 /* Pods_Skiing.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B2E0B69ABFDACD38E3B436C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6D60A120788427A0EDC7A83 /* Pods-Skiing.debug.xcconfig */,
+				B560C24391A6E462BEA278B8 /* Pods-Skiing.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +209,8 @@
 			files = (
 				554C8B7829C4BD920028C76C /* Preview Assets.xcassets in Resources */,
 				554C8B7529C4BD920028C76C /* Assets.xcassets in Resources */,
+				555D8B3929C64FDE000B65AD /* awsconfiguration.json in Resources */,
+				555D8B3A29C64FDE000B65AD /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,10 +390,11 @@
 		};
 		554C8B7C29C4BD920028C76C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6665DFE258627D8879560D5 /* Pods-Skiing.debug.xcconfig */;
+			baseConfigurationReference = F6D60A120788427A0EDC7A83 /* Pods-Skiing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Skiing/Skiing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Skiing/Preview Content\"";
@@ -411,10 +422,11 @@
 		};
 		554C8B7D29C4BD920028C76C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 412CB0DE1A3BBCD00DC24F46 /* Pods-Skiing.release.xcconfig */;
+			baseConfigurationReference = B560C24391A6E462BEA278B8 /* Pods-Skiing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Skiing/Skiing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Skiing/Preview Content\"";

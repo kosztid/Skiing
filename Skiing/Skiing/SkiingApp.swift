@@ -1,4 +1,5 @@
 import SwiftUI
+import Integration
 
 @main
 struct SkiingApp: App {
@@ -6,5 +7,9 @@ struct SkiingApp: App {
         WindowGroup {
             ViewFactory.skiingView()
         }
+    }
+
+    init() {
+        AmplifyService.initialize()
     }
 }

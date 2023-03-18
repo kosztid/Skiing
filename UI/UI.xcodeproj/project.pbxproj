@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		55D6B61129C4C60900174065 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B61029C4C60900174065 /* UITests.swift */; };
 		55D6B64229C4C65000174065 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64129C4C65000174065 /* Core.framework */; };
-		55D6B66429C4C73E00174065 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B66329C4C73E00174065 /* TestView.swift */; };
+		55D6B69929C4D13D00174065 /* SkiingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B69829C4D13D00174065 /* SkiingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,11 +23,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		55D6B60229C4C60900174065 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UI.framework; path = "/Users/kosztolanczi.dominik/Documents/Develop/Skiing/UI/build/Debug-iphoneos/UI.framework"; sourceTree = "<absolute>"; };
-		55D6B60B29C4C60900174065 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = UITests.xctest; path = "/Users/kosztolanczi.dominik/Documents/Develop/Skiing/UI/build/Debug-iphoneos/UITests.xctest"; sourceTree = "<absolute>"; };
 		55D6B61029C4C60900174065 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		55D6B64129C4C65000174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		55D6B66329C4C73E00174065 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		55D6B69629C4D10600174065 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		55D6B69729C4D13D00174065 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55D6B69829C4D13D00174065 /* SkiingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +55,8 @@
 				554C8BA929C4BE5E0028C76C /* UI */,
 				55D6B60F29C4C60900174065 /* UITests */,
 				55D6B64029C4C65000174065 /* Frameworks */,
+				55D6B69629C4D10600174065 /* UITests.xctest */,
+				55D6B69729C4D13D00174065 /* UI.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,7 +87,7 @@
 		55D6B66029C4C6B300174065 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				55D6B66329C4C73E00174065 /* TestView.swift */,
+				55D6B69829C4D13D00174065 /* SkiingButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -118,7 +120,7 @@
 			);
 			name = UI;
 			productName = UI;
-			productReference = 55D6B60229C4C60900174065 /* UI.framework */;
+			productReference = 55D6B69729C4D13D00174065 /* UI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		55D6B60A29C4C60900174065 /* UITests */ = {
@@ -136,7 +138,7 @@
 			);
 			name = UITests;
 			productName = UITests;
-			productReference = 55D6B60B29C4C60900174065 /* UITests.xctest */;
+			productReference = 55D6B69629C4D10600174065 /* UITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -151,6 +153,7 @@
 				TargetAttributes = {
 					55D6B60129C4C60900174065 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 					};
 					55D6B60A29C4C60900174065 = {
 						CreatedOnToolsVersion = 14.2;
@@ -198,7 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55D6B66429C4C73E00174065 /* TestView.swift in Sources */,
+				55D6B69929C4D13D00174065 /* SkiingButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +341,7 @@
 		55D6B61429C4C60900174065 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -359,6 +363,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -369,6 +374,7 @@
 		55D6B61529C4C60900174065 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
