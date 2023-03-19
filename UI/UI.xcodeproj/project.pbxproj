@@ -13,6 +13,14 @@
 		55D6B61129C4C60900174065 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B61029C4C60900174065 /* UITests.swift */; };
 		55D6B64229C4C65000174065 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64129C4C65000174065 /* Core.framework */; };
 		55D6B69929C4D13D00174065 /* SkiingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B69829C4D13D00174065 /* SkiingButton.swift */; };
+		55F36D4629C791C600B9B93E /* SkiingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D4529C791C600B9B93E /* SkiingButtonStyle.swift */; };
+		55F36D4E29C7970700B9B93E /* RegularTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D4D29C7970700B9B93E /* RegularTextFieldStyle.swift */; };
+		55F36D5529C7981500B9B93E /* BaseTextFieldStyleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D4F29C7981500B9B93E /* BaseTextFieldStyleViewModifier.swift */; };
+		55F36D5629C7981500B9B93E /* LabelViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D5029C7981500B9B93E /* LabelViewModifier.swift */; };
+		55F36D5729C7981500B9B93E /* TextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D5129C7981500B9B93E /* TextField+Extensions.swift */; };
+		55F36D5829C7981500B9B93E /* SecureTextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D5229C7981500B9B93E /* SecureTextField+Extensions.swift */; };
+		55F36D5929C7981500B9B93E /* TextFieldBorderViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D5329C7981500B9B93E /* TextFieldBorderViewModifier.swift */; };
+		55F36D5A29C7981500B9B93E /* ToggleableSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D5429C7981500B9B93E /* ToggleableSecureField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +43,14 @@
 		55D6B69629C4D10600174065 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B69729C4D13D00174065 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B69829C4D13D00174065 /* SkiingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingButton.swift; sourceTree = "<group>"; };
+		55F36D4529C791C600B9B93E /* SkiingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingButtonStyle.swift; sourceTree = "<group>"; };
+		55F36D4D29C7970700B9B93E /* RegularTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularTextFieldStyle.swift; sourceTree = "<group>"; };
+		55F36D4F29C7981500B9B93E /* BaseTextFieldStyleViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextFieldStyleViewModifier.swift; sourceTree = "<group>"; };
+		55F36D5029C7981500B9B93E /* LabelViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewModifier.swift; sourceTree = "<group>"; };
+		55F36D5129C7981500B9B93E /* TextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+Extensions.swift"; sourceTree = "<group>"; };
+		55F36D5229C7981500B9B93E /* SecureTextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SecureTextField+Extensions.swift"; sourceTree = "<group>"; };
+		55F36D5329C7981500B9B93E /* TextFieldBorderViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldBorderViewModifier.swift; sourceTree = "<group>"; };
+		55F36D5429C7981500B9B93E /* ToggleableSecureField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleableSecureField.swift; sourceTree = "<group>"; };
 		5777A345276E2C1F4594599B /* Pods_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D52C47C353BD0BACD5CE813C /* Pods-UI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UI.debug.xcconfig"; path = "Target Support Files/Pods-UI/Pods-UI.debug.xcconfig"; sourceTree = "<group>"; };
 		E3DACE736D7BBD7A29CF7D60 /* Pods-UI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UI.release.xcconfig"; path = "Target Support Files/Pods-UI/Pods-UI.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +91,7 @@
 		554C8BA929C4BE5E0028C76C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				55F36D4429C791B600B9B93E /* ButtonStyles */,
 				55D6B66029C4C6B300174065 /* Components */,
 			);
 			path = UI;
@@ -111,10 +128,33 @@
 		55D6B66029C4C6B300174065 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				55F36D4C29C796F300B9B93E /* TextField */,
 				555D8B3D29C71F72000B65AD /* Navigation */,
 				55D6B69829C4D13D00174065 /* SkiingButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		55F36D4429C791B600B9B93E /* ButtonStyles */ = {
+			isa = PBXGroup;
+			children = (
+				55F36D4529C791C600B9B93E /* SkiingButtonStyle.swift */,
+			);
+			path = ButtonStyles;
+			sourceTree = "<group>";
+		};
+		55F36D4C29C796F300B9B93E /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				55F36D4F29C7981500B9B93E /* BaseTextFieldStyleViewModifier.swift */,
+				55F36D5029C7981500B9B93E /* LabelViewModifier.swift */,
+				55F36D5229C7981500B9B93E /* SecureTextField+Extensions.swift */,
+				55F36D5129C7981500B9B93E /* TextField+Extensions.swift */,
+				55F36D5329C7981500B9B93E /* TextFieldBorderViewModifier.swift */,
+				55F36D5429C7981500B9B93E /* ToggleableSecureField.swift */,
+				55F36D4D29C7970700B9B93E /* RegularTextFieldStyle.swift */,
+			);
+			path = TextField;
 			sourceTree = "<group>";
 		};
 		87257CEFCE12FD49A2F27694 /* Pods */ = {
@@ -262,9 +302,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F36D4629C791C600B9B93E /* SkiingButtonStyle.swift in Sources */,
+				55F36D5929C7981500B9B93E /* TextFieldBorderViewModifier.swift in Sources */,
+				55F36D5729C7981500B9B93E /* TextField+Extensions.swift in Sources */,
+				55F36D5629C7981500B9B93E /* LabelViewModifier.swift in Sources */,
 				555D8B3F29C71F82000B65AD /* NavigationViewModel.swift in Sources */,
+				55F36D5A29C7981500B9B93E /* ToggleableSecureField.swift in Sources */,
+				55F36D5529C7981500B9B93E /* BaseTextFieldStyleViewModifier.swift in Sources */,
+				55F36D5829C7981500B9B93E /* SecureTextField+Extensions.swift in Sources */,
 				555D8B5229C72948000B65AD /* NavigationRoute.swift in Sources */,
 				55D6B69929C4D13D00174065 /* SkiingButton.swift in Sources */,
+				55F36D4E29C7970700B9B93E /* RegularTextFieldStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
