@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		215E0A784BE71FEB10FB610E /* Pods_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5777A345276E2C1F4594599B /* Pods_UI.framework */; };
+		555D8B3F29C71F82000B65AD /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B3E29C71F82000B65AD /* NavigationViewModel.swift */; };
+		555D8B5229C72948000B65AD /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5129C72948000B65AD /* NavigationRoute.swift */; };
 		55D6B61129C4C60900174065 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B61029C4C60900174065 /* UITests.swift */; };
 		55D6B64229C4C65000174065 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64129C4C65000174065 /* Core.framework */; };
 		55D6B69929C4D13D00174065 /* SkiingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B69829C4D13D00174065 /* SkiingButton.swift */; };
@@ -23,11 +26,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		555D8B3E29C71F82000B65AD /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
+		555D8B4029C71F9D000B65AD /* FlowStacks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlowStacks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		555D8B4229C71FC9000B65AD /* Pods_Skiing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Skiing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		555D8B5129C72948000B65AD /* NavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
 		55D6B61029C4C60900174065 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		55D6B64129C4C65000174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B69629C4D10600174065 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B69729C4D13D00174065 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B69829C4D13D00174065 /* SkiingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingButton.swift; sourceTree = "<group>"; };
+		5777A345276E2C1F4594599B /* Pods_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D52C47C353BD0BACD5CE813C /* Pods-UI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UI.debug.xcconfig"; path = "Target Support Files/Pods-UI/Pods-UI.debug.xcconfig"; sourceTree = "<group>"; };
+		E3DACE736D7BBD7A29CF7D60 /* Pods-UI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UI.release.xcconfig"; path = "Target Support Files/Pods-UI/Pods-UI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55D6B64229C4C65000174065 /* Core.framework in Frameworks */,
+				215E0A784BE71FEB10FB610E /* Pods_UI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +68,7 @@
 				55D6B64029C4C65000174065 /* Frameworks */,
 				55D6B69629C4D10600174065 /* UITests.xctest */,
 				55D6B69729C4D13D00174065 /* UI.framework */,
+				87257CEFCE12FD49A2F27694 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +78,15 @@
 				55D6B66029C4C6B300174065 /* Components */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		555D8B3D29C71F72000B65AD /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				555D8B3E29C71F82000B65AD /* NavigationViewModel.swift */,
+				555D8B5129C72948000B65AD /* NavigationRoute.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		55D6B60F29C4C60900174065 /* UITests */ = {
@@ -79,7 +100,10 @@
 		55D6B64029C4C65000174065 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				555D8B4229C71FC9000B65AD /* Pods_Skiing.framework */,
+				555D8B4029C71F9D000B65AD /* FlowStacks.framework */,
 				55D6B64129C4C65000174065 /* Core.framework */,
+				5777A345276E2C1F4594599B /* Pods_UI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -87,9 +111,20 @@
 		55D6B66029C4C6B300174065 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				555D8B3D29C71F72000B65AD /* Navigation */,
 				55D6B69829C4D13D00174065 /* SkiingButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		87257CEFCE12FD49A2F27694 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D52C47C353BD0BACD5CE813C /* Pods-UI.debug.xcconfig */,
+				E3DACE736D7BBD7A29CF7D60 /* Pods-UI.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +144,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55D6B61329C4C60900174065 /* Build configuration list for PBXNativeTarget "UI" */;
 			buildPhases = (
+				E22FEEDDAC33E3BE54D23281 /* [CP] Check Pods Manifest.lock */,
 				55D6B5FD29C4C60900174065 /* Headers */,
 				55D6B5FE29C4C60900174065 /* Sources */,
 				55D6B5FF29C4C60900174065 /* Frameworks */,
@@ -196,11 +232,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E22FEEDDAC33E3BE54D23281 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		55D6B5FE29C4C60900174065 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555D8B3F29C71F82000B65AD /* NavigationViewModel.swift in Sources */,
+				555D8B5229C72948000B65AD /* NavigationRoute.swift in Sources */,
 				55D6B69929C4D13D00174065 /* SkiingButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +403,7 @@
 		};
 		55D6B61429C4C60900174065 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D52C47C353BD0BACD5CE813C /* Pods-UI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -373,6 +437,7 @@
 		};
 		55D6B61529C4C60900174065 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3DACE736D7BBD7A29CF7D60 /* Pods-UI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

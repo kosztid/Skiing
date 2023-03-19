@@ -24,3 +24,17 @@ target 'Skiing' do
   developmentPods
   
 end
+
+target 'Integration' do
+  project 'Integration/Integration.xcodeproj'
+
+  basePods
+  target 'IntegrationTests' do
+  end
+end
+
+target 'UI' do
+  project 'UI/UI'
+
+  basePods
+end

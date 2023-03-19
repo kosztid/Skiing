@@ -12,4 +12,10 @@ extension Container {
             )
         }
     }
+
+    enum TabBar  {
+        static let view = Factory {
+            TabBarNavigator()
+        }
+    }
 }

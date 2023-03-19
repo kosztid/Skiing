@@ -58,9 +58,9 @@ public class AmplifyService {
         }
     }
 
-    public func signIn() async {
+    public func signIn(_ username: String, _ password: String) async {
         do {
-            let signInResult = try await Amplify.Auth.signInWithWebUI(presentationAnchor: UIApplication.shared.windows.first!)
+            let signInResult = try await Amplify.Auth.signIn(username: username, password: password)
             if signInResult.isSignedIn {
                 print("Sign in succeeded")
             }

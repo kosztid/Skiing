@@ -16,6 +16,8 @@
 		554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */; };
 		555D8B3929C64FDE000B65AD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3729C64FDD000B65AD /* awsconfiguration.json */; };
 		555D8B3A29C64FDE000B65AD /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3829C64FDE000B65AD /* amplifyconfiguration.json */; };
+		555D8B4A29C71FFB000B65AD /* Pods_Skiing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555D8B4929C71FFB000B65AD /* Pods_Skiing.framework */; };
+		555D8B5029C7273C000B65AD /* TabBarNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B4F29C7273C000B65AD /* TabBarNavigator.swift */; };
 		55D6B65729C4C68800174065 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; };
 		55D6B65829C4C68800174065 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55D6B65A29C4C68A00174065 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64B29C4C67C00174065 /* Core.framework */; };
@@ -24,7 +26,6 @@
 		55D6B65D29C4C68B00174065 /* Integration.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64C29C4C67C00174065 /* Integration.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55D6B65E29C4C68C00174065 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64D29C4C67C00174065 /* UI.framework */; };
 		55D6B65F29C4C68C00174065 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64D29C4C67C00174065 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9BB0F8DFCA61C82BA50386CB /* Pods_Skiing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE946C6D5FD24F39B3BE1D5 /* Pods_Skiing.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +57,8 @@
 		555D8B3229C644AC000B65AD /* Skiing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skiing.entitlements; sourceTree = "<group>"; };
 		555D8B3729C64FDD000B65AD /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		555D8B3829C64FDE000B65AD /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		555D8B4929C71FFB000B65AD /* Pods_Skiing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Skiing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		555D8B4F29C7273C000B65AD /* TabBarNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarNavigator.swift; sourceTree = "<group>"; };
 		55D6B64A29C4C67C00174065 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64B29C4C67C00174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64C29C4C67C00174065 /* Integration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Integration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BB0F8DFCA61C82BA50386CB /* Pods_Skiing.framework in Frameworks */,
+				555D8B4A29C71FFB000B65AD /* Pods_Skiing.framework in Frameworks */,
 				55D6B65E29C4C68C00174065 /* UI.framework in Frameworks */,
 				55D6B65C29C4C68B00174065 /* Integration.framework in Frameworks */,
 				55D6B65729C4C68800174065 /* Common.framework in Frameworks */,
@@ -104,14 +107,13 @@
 		554C8B6F29C4BD910028C76C /* Skiing */ = {
 			isa = PBXGroup;
 			children = (
+				555D8B4D29C7271D000B65AD /* Scenes */,
+				555D8B3C29C71ECA000B65AD /* App */,
 				555D8B3229C644AC000B65AD /* Skiing.entitlements */,
-				554C8B7029C4BD910028C76C /* SkiingApp.swift */,
-				554C8B7229C4BD910028C76C /* SkiingView.swift */,
 				554C8B7429C4BD920028C76C /* Assets.xcassets */,
 				554C8B7629C4BD920028C76C /* Preview Content */,
 				554C8C0629C4BF310028C76C /* ViewFactory.swift */,
 				554C8C0829C4BFB50028C76C /* DI.swift */,
-				554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */,
 			);
 			path = Skiing;
 			sourceTree = "<group>";
@@ -124,9 +126,36 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		555D8B3C29C71ECA000B65AD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				554C8B7029C4BD910028C76C /* SkiingApp.swift */,
+				554C8B7229C4BD910028C76C /* SkiingView.swift */,
+				554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		555D8B4D29C7271D000B65AD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				555D8B4E29C7272A000B65AD /* TabBar */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		555D8B4E29C7272A000B65AD /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				555D8B4F29C7273C000B65AD /* TabBarNavigator.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		77CB210A354ED7234C1DEF3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				555D8B4929C71FFB000B65AD /* Pods_Skiing.framework */,
 				55D6B64A29C4C67C00174065 /* Common.framework */,
 				55D6B64B29C4C67C00174065 /* Core.framework */,
 				55D6B64C29C4C67C00174065 /* Integration.framework */,
@@ -268,6 +297,7 @@
 				554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */,
 				554C8C0729C4BF310028C76C /* ViewFactory.swift in Sources */,
 				554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */,
+				555D8B5029C7273C000B65AD /* TabBarNavigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

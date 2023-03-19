@@ -22,6 +22,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		555D8B4529C71FE2000B65AD /* Pods_Skiing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Skiing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B5CA29C4C5E000174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B5D329C4C5E000174065 /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B5D829C4C5E000174065 /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 				554C8BF729C4BF0E0028C76C /* Core */,
 				55D6B5D729C4C5E000174065 /* CoreTests */,
 				554C8BF629C4BF0E0028C76C /* Products */,
+				555D8B4429C71FE2000B65AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +72,14 @@
 				55D6B69529C4CACB00174065 /* Models */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		555D8B4429C71FE2000B65AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				555D8B4529C71FE2000B65AD /* Pods_Skiing.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		55D6B5D729C4C5E000174065 /* CoreTests */ = {
