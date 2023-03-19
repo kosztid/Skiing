@@ -1,6 +1,8 @@
 import SwiftUI
 import Integration
 
+typealias Navigator = View
+
 @main
 struct SkiingApp: App {
     var body: some Scene {

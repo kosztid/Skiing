@@ -18,4 +18,36 @@ extension Container {
             TabBarNavigator()
         }
     }
+
+    enum Login {
+        static let view = ParameterFactory { navigator in
+            LoginView(
+            viewModel: viewModel(navigator)
+            )
+        }
+
+        static let viewModel = ParameterFactory { navigator in
+            LoginView.ViewModel(
+                navigator: navigator
+            )
+        }
+    }
+
+    enum Profile {
+        static let view = ParameterFactory { navigator in
+            ProfileView(
+                viewModel: viewModel(navigator)
+            )
+        }
+
+        static let viewModel = ParameterFactory { navigator in
+            ProfileView.ViewModel(
+                navigator: navigator
+            )
+        }
+        
+        static let navigator = Factory {
+            ProfileNavigator()
+        }
+    }
 }
