@@ -1,12 +1,18 @@
+import Combine
 import UIKit
 import Amplify
 import AWSCognitoAuthPlugin
 
-public class AmplifyService {
-    static public let shared = AmplifyService()
-    public static func initialize() -> AmplifyService {
-        return .shared
-    }
+
+public protocol AmplifyServiceProtocol: AnyObject {
+    var isSignedInPublisher: AnyPublisher<Bool, Never> { get }
+    func signIn(_ username: String, _ password: String) async
+    func signOut() async
+}
+class AmplifyService {
+    private let isSignedIn: CurrentValueSubject<Bool, Never> = .init(false)
+    private var cancellables: Set<AnyCancellable> = []
+
     private init() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
@@ -58,6 +64,20 @@ public class AmplifyService {
         }
     }
 
+    @MainActor
+    func updateUserData(withSignInStatus status : Bool) async {
+        let userData : UserData = .shared
+        userData.isSignedIn = status
+    }
+}
+
+extension AmplifyService: AmplifyServiceProtocol {
+    var isSignedInPublisher: AnyPublisher<Bool, Never> {
+        isSignedIn
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     public func signIn(_ username: String, _ password: String) async {
         do {
             let signInResult = try await Amplify.Auth.signIn(username: username, password: password)
@@ -100,12 +120,6 @@ public class AmplifyService {
         case .failed(let error):
             print("SignOut failed with \(error)")
         }
-    }
-
-    @MainActor
-    func updateUserData(withSignInStatus status : Bool) async {
-        let userData : UserData = .shared
-        userData.isSignedIn = status
     }
 }
 

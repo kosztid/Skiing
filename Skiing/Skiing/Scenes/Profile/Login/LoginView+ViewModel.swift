@@ -14,7 +14,7 @@ extension LoginView {
 
         func login() {
             Task {
-                await AmplifyService.shared.signIn(userName, password)
+//                await AmplifyService.shared.signIn(userName, password)
             }
             navigator.loggedIn()
         }

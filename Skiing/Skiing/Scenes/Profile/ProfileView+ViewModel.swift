@@ -10,7 +10,7 @@ extension ProfileView {
 
         func logout() {
             Task {
-                await AmplifyService.shared.signOut()
+//                await AmplifyService.shared.signOut()
             }
         }
 

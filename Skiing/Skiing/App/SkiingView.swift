@@ -38,7 +38,7 @@ struct SignOutButton : View {
     var body: some View {
         Button(
             action: {
-                Task { await AmplifyService.shared.signOut() }
+//                Task { await AmplifyService.shared.signOut() }
             },
             label: { Text("Sign Out") }
         )

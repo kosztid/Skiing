@@ -31,6 +31,8 @@
 		55D6B65D29C4C68B00174065 /* Integration.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64C29C4C67C00174065 /* Integration.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55D6B65E29C4C68C00174065 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64D29C4C67C00174065 /* UI.framework */; };
 		55D6B65F29C4C68C00174065 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64D29C4C67C00174065 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55F36D4929C7934D00B9B93E /* RegisterView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D4829C7934D00B9B93E /* RegisterView+ViewModel.swift */; };
+		55F36D4B29C7935500B9B93E /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D4A29C7935500B9B93E /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +75,8 @@
 		55D6B64B29C4C67C00174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64C29C4C67C00174065 /* Integration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Integration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64D29C4C67C00174065 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55F36D4829C7934D00B9B93E /* RegisterView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterView+ViewModel.swift"; sourceTree = "<group>"; };
+		55F36D4A29C7935500B9B93E /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		B560C24391A6E462BEA278B8 /* Pods-Skiing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skiing.release.xcconfig"; path = "Target Support Files/Pods-Skiing/Pods-Skiing.release.xcconfig"; sourceTree = "<group>"; };
 		CAE946C6D5FD24F39B3BE1D5 /* Pods_Skiing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skiing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D60A120788427A0EDC7A83 /* Pods-Skiing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skiing.debug.xcconfig"; path = "Target Support Files/Pods-Skiing/Pods-Skiing.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 		555D8B5329C73920000B65AD /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				55F36D4729C7934000B9B93E /* Register */,
 				555D8B5429C73963000B65AD /* Login */,
 				555D8B5929C73BFD000B65AD /* ProfileView.swift */,
 				555D8B5B29C73C07000B65AD /* ProfileView+ViewModel.swift */,
@@ -181,6 +186,15 @@
 				555D8B5729C73977000B65AD /* LoginView+ViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		55F36D4729C7934000B9B93E /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				55F36D4829C7934D00B9B93E /* RegisterView+ViewModel.swift */,
+				55F36D4A29C7935500B9B93E /* RegisterView.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		77CB210A354ED7234C1DEF3A /* Frameworks */ = {
@@ -325,10 +339,12 @@
 			files = (
 				554C8C0929C4BFB50028C76C /* DI.swift in Sources */,
 				555D8B5A29C73BFD000B65AD /* ProfileView.swift in Sources */,
+				55F36D4B29C7935500B9B93E /* RegisterView.swift in Sources */,
 				555D8B5629C73970000B65AD /* LoginView.swift in Sources */,
 				554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */,
 				554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */,
 				554C8C0729C4BF310028C76C /* ViewFactory.swift in Sources */,
+				55F36D4929C7934D00B9B93E /* RegisterView+ViewModel.swift in Sources */,
 				554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */,
 				555D8B5C29C73C07000B65AD /* ProfileView+ViewModel.swift in Sources */,
 				555D8B5029C7273C000B65AD /* TabBarNavigator.swift in Sources */,

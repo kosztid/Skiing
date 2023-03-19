@@ -1,12 +1,11 @@
-import UI
 import SwiftUI
+import UI
 
-struct LoginView: View {
+struct RegisterView: View {
     @StateObject var viewModel: ViewModel
-    
     var body: some View {
         VStack {
-            Text("Login")
+            Text("Registration")
                 .font(.largeTitle)
                 .padding(.bottom, 24)
             VStack {
@@ -14,22 +13,12 @@ struct LoginView: View {
                     .regularTextFieldStyle(label: "UserName")
                 TextField(text: $viewModel.password)
                     .regularTextFieldStyle(label: "Password")
-                HStack {
-                    Button {
-
-                    } label: {
-                        Text("Forgotten Password")
-                            .font(.caption)
-                    }
-                    .padding(.leading, 12)
-                    Spacer()
-                }
                 Button(
                     action: {
-                        viewModel.login()
+                        viewModel.register()
                     },
                     label: {
-                        Text("Login")
+                        Text("Register")
                             .font(.title)
                     }
                 )
@@ -37,5 +26,11 @@ struct LoginView: View {
             }
             .padding(.horizontal, 32)
         }
+    }
+}
+
+struct RegisterView_Previews: PreviewProvider {
+    static var previews: some View {
+        RegisterView(viewModel: .init())
     }
 }
