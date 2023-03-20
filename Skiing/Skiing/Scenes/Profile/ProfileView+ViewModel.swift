@@ -14,7 +14,7 @@ extension ProfileView {
 
         func logout() {
             Task {
-                await amplifyService.signOut()
+                await accountService.signOut()
             }
         }
 
@@ -23,7 +23,7 @@ extension ProfileView {
         }
 
         func bindPublishers() {
-            amplifyService.isSignedInPublisher
+            accountService.isSignedInPublisher
                 .sink { _ in
                 } receiveValue: { [weak self] isSignedIn in
                     self?.isSignedIn = isSignedIn

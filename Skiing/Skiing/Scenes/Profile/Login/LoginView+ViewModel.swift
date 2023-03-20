@@ -16,13 +16,13 @@ extension LoginView {
 
         func login() {
             Task {
-                await amplifyService.signIn(userName, password)
+                await accountService.signIn(userName, password)
             }
             navigator.loggedIn()
         }
 
         func bindPublishers() {
-            amplifyService.isSignedInPublisher
+            accountService.isSignedInPublisher
                 .sink { _ in
                 } receiveValue: { [weak self] isSignedIn in
                     self?.isSignedIn = isSignedIn

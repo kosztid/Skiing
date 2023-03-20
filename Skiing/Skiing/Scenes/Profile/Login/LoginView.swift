@@ -37,5 +37,6 @@ struct LoginView: View {
             }
             .padding(.horizontal, 32)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
