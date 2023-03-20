@@ -6,11 +6,11 @@ import UI
 extension ProfileView {
     final class ViewModel: ObservableObject, NavigationViewModel {
         @Published var path: NavigationRoute = .init()
-        @Published var userData: UserData = .shared
         @Published var isSignedIn = false
+
         private var cancellables: Set<AnyCancellable> = []
         private let navigator: ProfileViewNavigatorProtocol
-        private let amplifyService: AmplifyServiceProtocol
+        private let accountService: AccountServiceProtocol
 
         func logout() {
             Task {
@@ -33,10 +33,10 @@ extension ProfileView {
 
         init(
             navigator: ProfileViewNavigatorProtocol,
-            service: AmplifyServiceProtocol
+            accountService: AccountServiceProtocol
         ) {
             self.navigator = navigator
-            self.amplifyService = service
+            self.accountService = accountService
             bindPublishers()
         }
     }

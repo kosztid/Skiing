@@ -6,17 +6,17 @@ import UI
 extension LoginView {
     final class ViewModel: ObservableObject, NavigationViewModel {
         @Published var path: NavigationRoute = .init()
-        private var cancellables: Set<AnyCancellable> = []
-        @Published var userData: UserData = .shared
-        private let navigator: LoginViewNavigatorProtocol
-        private let amplifyService: AmplifyServiceProtocol
         @Published var isSignedIn = false
         @Published var userName: String = ""
         @Published var password: String = ""
 
+        private var cancellables: Set<AnyCancellable> = []
+        private let navigator: LoginViewNavigatorProtocol
+        private let accountService: AccountServiceProtocol
+
         func login() {
             Task {
-                await amplifyService.signIn("", "")
+                await amplifyService.signIn(userName, password)
             }
             navigator.loggedIn()
         }
@@ -32,10 +32,10 @@ extension LoginView {
 
         init(
             navigator: LoginViewNavigatorProtocol,
-            service: AmplifyServiceProtocol
+            accountService: AccountServiceProtocol
         ) {
             self.navigator = navigator
-            self.amplifyService = service
+            self.accountService = accountService
             bindPublishers()
         }
     }

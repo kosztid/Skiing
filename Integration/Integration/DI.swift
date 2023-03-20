@@ -1,7 +1,7 @@
 import Factory
 
 public extension Container {
-    static let amplifyService = Factory<AmplifyServiceProtocol>(scope: .shared) {
-        AmplifyService()
+    static let amplifyService = Factory<AccountServiceProtocol>(scope: .shared) {
+        AccountService()
     }
 }
