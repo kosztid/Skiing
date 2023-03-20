@@ -28,7 +28,8 @@ extension Container {
 
         static let viewModel = ParameterFactory { navigator in
             LoginView.ViewModel(
-                navigator: navigator
+                navigator: navigator,
+                service: amplifyService()
             )
         }
     }
@@ -42,7 +43,8 @@ extension Container {
 
         static let viewModel = ParameterFactory { navigator in
             ProfileView.ViewModel(
-                navigator: navigator
+                navigator: navigator,
+                service: amplifyService()
             )
         }
         

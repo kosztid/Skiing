@@ -6,7 +6,7 @@ struct ProfileView: View {
 
     var body: some View {
         ZStack {
-            if viewModel.userData.isSignedIn {
+            if viewModel.isSignedIn {
                 Button {
                     viewModel.logout()
                 } label: {
@@ -22,9 +22,6 @@ struct ProfileView: View {
                     }
                 }
             }
-        }
-        .onChange(of: viewModel.userData.isSignedIn) { new in
-            print(new)
         }
     }
 }

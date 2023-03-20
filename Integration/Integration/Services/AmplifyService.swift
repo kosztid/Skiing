@@ -9,11 +9,12 @@ public protocol AmplifyServiceProtocol: AnyObject {
     func signIn(_ username: String, _ password: String) async
     func signOut() async
 }
-class AmplifyService {
+
+final class AmplifyService {
     private let isSignedIn: CurrentValueSubject<Bool, Never> = .init(false)
     private var cancellables: Set<AnyCancellable> = []
 
-    private init() {
+    init() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.configure()
@@ -72,18 +73,20 @@ class AmplifyService {
 }
 
 extension AmplifyService: AmplifyServiceProtocol {
+
     var isSignedInPublisher: AnyPublisher<Bool, Never> {
         isSignedIn
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
-    
+
     public func signIn(_ username: String, _ password: String) async {
         do {
-            let signInResult = try await Amplify.Auth.signIn(username: username, password: password)
-            if signInResult.isSignedIn {
-                print("Sign in succeeded")
-            }
+//            let signInResult = try await Amplify.Auth.signIn(username: username, password: password)
+//            if signInResult.isSignedIn {
+//                print("Sign in succeeded")
+//            }
+            isSignedIn.send(true)
         } catch let error as AuthError {
             print("Sign in failed \(error)")
         } catch {
@@ -93,33 +96,34 @@ extension AmplifyService: AmplifyServiceProtocol {
 
     // signout
     public func signOut() async {
-        let result = await Amplify.Auth.signOut()
-        guard let signOutResult = result as? AWSCognitoSignOutResult
-        else {
-            print("Signout failed")
-            return
-        }
-
-        switch signOutResult {
-        case .complete:
-            print("Successfully signed out")
-
-        case let .partial(revokeTokenError, globalSignOutError, hostedUIError):
-            if let hostedUIError = hostedUIError {
-                print("HostedUI error  \(String(describing: hostedUIError))")
-            }
-
-            if let globalSignOutError = globalSignOutError {
-                print("GlobalSignOut error  \(String(describing: globalSignOutError))")
-            }
-
-            if let revokeTokenError = revokeTokenError {
-                print("Revoke token error  \(String(describing: revokeTokenError))")
-            }
-
-        case .failed(let error):
-            print("SignOut failed with \(error)")
-        }
+        isSignedIn.send(false)
+//        let result = await Amplify.Auth.signOut()
+//        guard let signOutResult = result as? AWSCognitoSignOutResult
+//        else {
+//            print("Signout failed")
+//            return
+//        }
+//
+//        switch signOutResult {
+//        case .complete:
+//            print("Successfully signed out")
+//
+//        case let .partial(revokeTokenError, globalSignOutError, hostedUIError):
+//            if let hostedUIError = hostedUIError {
+//                print("HostedUI error  \(String(describing: hostedUIError))")
+//            }
+//
+//            if let globalSignOutError = globalSignOutError {
+//                print("GlobalSignOut error  \(String(describing: globalSignOutError))")
+//            }
+//
+//            if let revokeTokenError = revokeTokenError {
+//                print("Revoke token error  \(String(describing: revokeTokenError))")
+//            }
+//
+//        case .failed(let error):
+//            print("SignOut failed with \(error)")
+//        }
     }
 }
 
