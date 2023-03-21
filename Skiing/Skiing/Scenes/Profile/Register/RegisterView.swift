@@ -3,6 +3,7 @@ import UI
 
 struct RegisterView: View {
     @StateObject var viewModel: ViewModel
+
     var body: some View {
         VStack {
             Text("Registration")
@@ -10,7 +11,9 @@ struct RegisterView: View {
                 .padding(.bottom, 24)
             VStack {
                 TextField(text: $viewModel.userName)
-                    .regularTextFieldStyle(label: "UserName")
+                    .regularTextFieldStyle(label: "Username")
+                TextField(text: $viewModel.email)
+                    .regularTextFieldStyle(label: "Email")
                 ToggleableSecureField(text: $viewModel.password)
                     .regularTextFieldStyle(label: "Password")
                 Button(
@@ -26,11 +29,6 @@ struct RegisterView: View {
             }
             .padding(.horizontal, 32)
         }
-    }
-}
-
-struct RegisterView_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisterView(viewModel: .init())
+        .navigationBarBackButtonHidden(true)
     }
 }

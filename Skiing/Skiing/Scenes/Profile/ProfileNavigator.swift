@@ -11,6 +11,15 @@ public enum ProfileScreen {
 
 protocol ProfileViewNavigatorProtocol {
     func login()
+    func register()
+}
+
+protocol RegisterViewNavigatorProtocol {
+    func registered()
+}
+
+protocol RegisterVerificationViewNavigatorProtocol {
+    func verified()
 }
 
 protocol LoginViewNavigatorProtocol {
@@ -28,9 +37,9 @@ public struct ProfileNavigator: Navigator {
             case .login:
                 ViewFactory.loginView(navigator: self)
             case .register:
-                Text("register")
+                ViewFactory.registerView(navigator: self)
             case .verify:
-                Text("Verify")
+                ViewFactory.registerVerificationView(navigator: self)
             }
         }
     }
@@ -45,10 +54,26 @@ extension ProfileNavigator: ProfileViewNavigatorProtocol {
     func login() {
         routes.push(.login)
     }
+
+    func register() {
+        routes.push(.register)
+    }
 }
 
 extension ProfileNavigator: LoginViewNavigatorProtocol {
     func loggedIn() {
+        routes.popToRoot()
+    }
+}
+
+extension ProfileNavigator: RegisterViewNavigatorProtocol {
+    func registered() {
+        routes.push(.verify)
+    }
+}
+
+extension ProfileNavigator: RegisterVerificationViewNavigatorProtocol {
+    func verified() {
         routes.popToRoot()
     }
 }

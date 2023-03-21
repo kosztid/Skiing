@@ -6,13 +6,17 @@ import AWSCognitoAuthPlugin
 
 public protocol AccountServiceProtocol: AnyObject {
     var isSignedInPublisher: AnyPublisher<Bool, Never> { get }
-    func signIn(_ username: String, _ password: String) async
+    func login() async
+    func signUp(_ username: String,_ email: String,_ password: String) async
+    func signIn(_ username: String,_ password: String) async
+    func confirmSignUp(with confirmationCode: String) async
     func signOut() async
 }
 
 final class AccountService {
     private let isSignedIn: CurrentValueSubject<Bool, Never> = .init(false)
     private var cancellables: Set<AnyCancellable> = []
+    private var username: String = ""
 
     init() {
         do {
@@ -42,6 +46,19 @@ extension AccountService: AccountServiceProtocol {
             .eraseToAnyPublisher()
     }
 
+    public func login() async {
+        do {
+            let signInResult = try await Amplify.Auth.signInWithWebUI(presentationAnchor: UIApplication.shared.windows.first!)
+            if signInResult.isSignedIn {
+                print("Sign in succeeded")
+            }
+        } catch let error as AuthError {
+            print("Sign in failed \(error)")
+        } catch {
+            print("Unexpected error: \(error)")
+        }
+    }
+
     public func signIn(_ username: String, _ password: String) async {
         do {
             let signInResult = try await Amplify.Auth.signIn(username: username, password: password)
@@ -51,6 +68,44 @@ extension AccountService: AccountServiceProtocol {
             }
         } catch let error as AuthError {
             print("Sign in failed \(error)")
+        } catch {
+            print("Unexpected error: \(error)")
+        }
+    }
+
+    func signUp(_ username: String,_ email: String,_ password: String) async {
+        let userAttributes = [AuthUserAttribute(.email, value: email)]
+        let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
+        do {
+            let signUpResult = try await Amplify.Auth.signUp(
+                username: username,
+                password: password,
+                options: options
+            )
+
+            self.username = username
+
+            if case let .confirmUser(deliveryDetails, _, userId) = signUpResult.nextStep {
+                print("Delivery details \(String(describing: deliveryDetails)) for userId: \(String(describing: userId)))")
+            } else {
+                print("Signup Complete")
+            }
+        } catch let error as AuthError {
+            print("An error occurred while registering a user \(error)")
+        } catch {
+            print("Unexpected error: \(error)")
+        }
+    }
+
+    func confirmSignUp(with confirmationCode: String) async {
+        do {
+            let confirmSignUpResult = try await Amplify.Auth.confirmSignUp(
+                for: self.username,
+                confirmationCode: confirmationCode
+            )
+            print("Confirm sign up result completed: \(confirmSignUpResult.isSignUpComplete)")
+        } catch let error as AuthError {
+            print("An error occurred while confirming sign up \(error)")
         } catch {
             print("Unexpected error: \(error)")
         }
@@ -87,12 +142,4 @@ extension AccountService: AccountServiceProtocol {
             print("SignOut failed with \(error)")
         }
     }
-}
-
-public class UserData: ObservableObject {
-    public init() {}
-
-    static public let shared = UserData()
-
-    @Published public var isSignedIn: Bool = false
 }

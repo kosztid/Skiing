@@ -12,6 +12,5 @@ struct SkiingApp: App {
     }
 
     init() {
-//        AmplifyService.initialize()
     }
 }

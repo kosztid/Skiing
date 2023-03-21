@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5528A8F629CA599F0099703C /* VerifyView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528A8F529CA599F0099703C /* VerifyView+ViewModel.swift */; };
+		5528A8F829CA59A80099703C /* VerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528A8F729CA59A80099703C /* VerifyView.swift */; };
 		554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8B7029C4BD910028C76C /* SkiingApp.swift */; };
 		554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8B7229C4BD910028C76C /* SkiingView.swift */; };
 		554C8B7529C4BD920028C76C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554C8B7429C4BD920028C76C /* Assets.xcassets */; };
@@ -53,6 +55,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5528A8F529CA599F0099703C /* VerifyView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyView+ViewModel.swift"; sourceTree = "<group>"; };
+		5528A8F729CA59A80099703C /* VerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyView.swift; sourceTree = "<group>"; };
 		554C8B6D29C4BD910028C76C /* Skiing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skiing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554C8B7029C4BD910028C76C /* SkiingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingApp.swift; sourceTree = "<group>"; };
 		554C8B7229C4BD910028C76C /* SkiingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingView.swift; sourceTree = "<group>"; };
@@ -98,6 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5528A8F429CA59890099703C /* Verify */ = {
+			isa = PBXGroup;
+			children = (
+				5528A8F529CA599F0099703C /* VerifyView+ViewModel.swift */,
+				5528A8F729CA59A80099703C /* VerifyView.swift */,
+			);
+			path = Verify;
+			sourceTree = "<group>";
+		};
 		554C8B6429C4BD910028C76C = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +204,7 @@
 		55F36D4729C7934000B9B93E /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				5528A8F429CA59890099703C /* Verify */,
 				55F36D4829C7934D00B9B93E /* RegisterView+ViewModel.swift */,
 				55F36D4A29C7935500B9B93E /* RegisterView.swift */,
 			);
@@ -343,10 +357,12 @@
 				555D8B5629C73970000B65AD /* LoginView.swift in Sources */,
 				554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */,
 				554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */,
+				5528A8F829CA59A80099703C /* VerifyView.swift in Sources */,
 				554C8C0729C4BF310028C76C /* ViewFactory.swift in Sources */,
 				55F36D4929C7934D00B9B93E /* RegisterView+ViewModel.swift in Sources */,
 				554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */,
 				555D8B5C29C73C07000B65AD /* ProfileView+ViewModel.swift in Sources */,
+				5528A8F629CA599F0099703C /* VerifyView+ViewModel.swift in Sources */,
 				555D8B5029C7273C000B65AD /* TabBarNavigator.swift in Sources */,
 				555D8B5829C73977000B65AD /* LoginView+ViewModel.swift in Sources */,
 				555D8B5E29C73E4F000B65AD /* ProfileNavigator.swift in Sources */,

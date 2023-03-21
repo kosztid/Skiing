@@ -22,6 +22,10 @@ extension ProfileView {
             navigator.login()
         }
 
+        func register() {
+            navigator.register()
+        }
+
         func bindPublishers() {
             accountService.isSignedInPublisher
                 .sink { _ in

@@ -9,6 +9,14 @@ enum ViewFactory {
         Container.Login.view(navigator)
     }
 
+    static func registerView(navigator: RegisterViewNavigatorProtocol) -> RegisterView {
+        Container.Register.view(navigator)
+    }
+
+    static func registerVerificationView(navigator: RegisterVerificationViewNavigatorProtocol) -> VerifyView {
+        Container.RegisterVerify.view(navigator)
+    }
+
     static func profileView(navigator: ProfileViewNavigatorProtocol) -> ProfileView {
         Container.Profile.view(navigator)
     }

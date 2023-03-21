@@ -34,6 +34,36 @@ extension Container {
         }
     }
 
+    enum Register {
+        static let view = ParameterFactory { navigator in
+            RegisterView(
+            viewModel: viewModel(navigator)
+            )
+        }
+
+        static let viewModel = ParameterFactory { navigator in
+            RegisterView.ViewModel(
+                navigator: navigator,
+                accountService: accountService()
+            )
+        }
+    }
+
+    enum RegisterVerify {
+        static let view = ParameterFactory { navigator in
+            VerifyView(
+            viewModel: viewModel(navigator)
+            )
+        }
+
+        static let viewModel = ParameterFactory { navigator in
+            VerifyView.ViewModel(
+                navigator: navigator,
+                accountService: accountService()
+            )
+        }
+    }
+
     enum Profile {
         static let view = ParameterFactory { navigator in
             ProfileView(

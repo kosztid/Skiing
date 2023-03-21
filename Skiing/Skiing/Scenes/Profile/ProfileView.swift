@@ -1,5 +1,5 @@
 import SwiftUI
-import Factory
+import UI
 
 struct ProfileView: View {
     @StateObject var viewModel: ViewModel
@@ -20,6 +20,13 @@ struct ProfileView: View {
                     } label: {
                         Text("Login")
                     }
+                    .buttonStyle(SkiingButtonStyle())
+                    Button {
+                        viewModel.register()
+                    } label: {
+                        Text("Register")
+                    }
+                    .buttonStyle(SkiingButtonStyle())
                 }
             }
         }

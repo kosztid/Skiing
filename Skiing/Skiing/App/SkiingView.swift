@@ -5,7 +5,6 @@ import UI
 
 struct SkiingView: View {
     @StateObject var viewModel: ViewModel
-    @ObservedObject private var userData: UserData = .shared
     @State var username: String = ""
     @State var password: String = ""
     var body: some View {
