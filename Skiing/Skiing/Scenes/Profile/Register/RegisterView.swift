@@ -11,7 +11,7 @@ struct RegisterView: View {
             VStack {
                 TextField(text: $viewModel.userName)
                     .regularTextFieldStyle(label: "UserName")
-                TextField(text: $viewModel.password)
+                ToggleableSecureField(text: $viewModel.password)
                     .regularTextFieldStyle(label: "Password")
                 Button(
                     action: {
