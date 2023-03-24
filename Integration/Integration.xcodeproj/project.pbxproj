@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1F8C508B653D654B06071CE3 /* Pods_Integration_IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B50249AEE10C5C0973C5B8 /* Pods_Integration_IntegrationTests.framework */; };
+		55048D7129CDBC0600254ADC /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D6E29CDBC0500254ADC /* AmplifyModels.swift */; };
+		55048D7229CDBC0600254ADC /* CurrentPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D6F29CDBC0600254ADC /* CurrentPosition.swift */; };
+		55048D7329CDBC0600254ADC /* CurrentPosition+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D7029CDBC0600254ADC /* CurrentPosition+Schema.swift */; };
+		55048D7529CDBC2A00254ADC /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 55048D7429CDBC2A00254ADC /* AWSAPIPlugin */; };
+		55048D7729CDBC4000254ADC /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D7629CDBC4000254ADC /* LocationService.swift */; };
+		55048D7929CDC2B600254ADC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D7829CDC2B600254ADC /* Location.swift */; };
 		555D8B3529C64CFF000B65AD /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3329C64CFF000B65AD /* amplifyconfiguration.json */; };
 		555D8B3629C64CFF000B65AD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3429C64CFF000B65AD /* awsconfiguration.json */; };
 		5572DCAB29C8DB4E00F73BC1 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572DCAA29C8DB4E00F73BC1 /* DI.swift */; };
@@ -32,6 +38,11 @@
 /* Begin PBXFileReference section */
 		248CA2C6A855030519288784 /* Pods-Integration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Integration.debug.xcconfig"; path = "Target Support Files/Pods-Integration/Pods-Integration.debug.xcconfig"; sourceTree = "<group>"; };
 		263F2215984D0B332E495CFF /* Pods-Integration-IntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Integration-IntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-Integration-IntegrationTests/Pods-Integration-IntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
+		55048D6E29CDBC0500254ADC /* AmplifyModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = SOURCE_ROOT; };
+		55048D6F29CDBC0600254ADC /* CurrentPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentPosition.swift; path = amplify/generated/models/CurrentPosition.swift; sourceTree = SOURCE_ROOT; };
+		55048D7029CDBC0600254ADC /* CurrentPosition+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CurrentPosition+Schema.swift"; path = "amplify/generated/models/CurrentPosition+Schema.swift"; sourceTree = SOURCE_ROOT; };
+		55048D7629CDBC4000254ADC /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		55048D7829CDC2B600254ADC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		555D8B3329C64CFF000B65AD /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		555D8B3429C64CFF000B65AD /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		5572DCAA29C8DB4E00F73BC1 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
@@ -54,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55048D7529CDBC2A00254ADC /* AWSAPIPlugin in Frameworks */,
 				55D6B6A929C5B3B000174065 /* Amplify in Frameworks */,
 				55D6B64729C4C66100174065 /* Core.framework in Frameworks */,
 				55D6B6AB29C5B59700174065 /* AWSCognitoAuthPlugin in Frameworks */,
@@ -72,6 +84,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55048D6C29CDBBEF00254ADC /* LocationService */ = {
+			isa = PBXGroup;
+			children = (
+				55048D6D29CDBBF800254ADC /* Models */,
+				55048D7629CDBC4000254ADC /* LocationService.swift */,
+				55048D7829CDC2B600254ADC /* Location.swift */,
+			);
+			path = LocationService;
+			sourceTree = "<group>";
+		};
+		55048D6D29CDBBF800254ADC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				55048D6E29CDBC0500254ADC /* AmplifyModels.swift */,
+				55048D6F29CDBC0600254ADC /* CurrentPosition.swift */,
+				55048D7029CDBC0600254ADC /* CurrentPosition+Schema.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		554C8BB829C4BE6F0028C76C = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +151,7 @@
 		55D6B69429C4CA8700174065 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				55048D6C29CDBBEF00254ADC /* LocationService */,
 				55D6B69D29C4FC1A00174065 /* AccountService.swift */,
 			);
 			path = Services;
@@ -167,6 +200,7 @@
 			packageProductDependencies = (
 				55D6B6A829C5B3B000174065 /* Amplify */,
 				55D6B6AA29C5B59700174065 /* AWSCognitoAuthPlugin */,
+				55048D7429CDBC2A00254ADC /* AWSAPIPlugin */,
 			);
 			productName = Integration;
 			productReference = 55D6B69A29C4E11000174065 /* Integration.framework */;
@@ -321,8 +355,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55048D7329CDBC0600254ADC /* CurrentPosition+Schema.swift in Sources */,
+				55048D7229CDBC0600254ADC /* CurrentPosition.swift in Sources */,
 				5572DCAB29C8DB4E00F73BC1 /* DI.swift in Sources */,
+				55048D7129CDBC0600254ADC /* AmplifyModels.swift in Sources */,
+				55048D7729CDBC4000254ADC /* LocationService.swift in Sources */,
 				55D6B69E29C4FC1A00174065 /* AccountService.swift in Sources */,
+				55048D7929CDC2B600254ADC /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +649,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		55048D7429CDBC2A00254ADC /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55D6B6A729C5B3B000174065 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSAPIPlugin;
+		};
 		55D6B6A829C5B3B000174065 /* Amplify */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 55D6B6A729C5B3B000174065 /* XCRemoteSwiftPackageReference "amplify-swift" */;

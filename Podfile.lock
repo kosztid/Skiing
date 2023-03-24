@@ -1,12 +1,18 @@
 PODS:
   - Factory (1.2.9)
   - FlowStacks (0.2.5)
+  - GoogleMaps (7.4.0):
+    - GoogleMaps/Maps (= 7.4.0)
+  - GoogleMaps/Base (7.4.0)
+  - GoogleMaps/Maps (7.4.0):
+    - GoogleMaps/Base
   - SwiftGen (6.6.2)
   - SwiftLint (0.50.3)
 
 DEPENDENCIES:
   - Factory (~> 1.2.0)
   - FlowStacks
+  - GoogleMaps (= 7.4.0)
   - SwiftGen
   - SwiftLint
 
@@ -14,15 +20,17 @@ SPEC REPOS:
   trunk:
     - Factory
     - FlowStacks
+    - GoogleMaps
     - SwiftGen
     - SwiftLint
 
 SPEC CHECKSUMS:
   Factory: 883df5a392a7f4110597c42652b8db9c07618a09
   FlowStacks: a8f2c03581f41c4206c8444843a659c8a1897604
+  GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
   SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
 
-PODFILE CHECKSUM: cdd8e026c6a5a07d6d02c9df767c94b7c11be1c0
+PODFILE CHECKSUM: a555527dc9a8df8a63ec8932edea56270a8fb876
 
 COCOAPODS: 1.12.0

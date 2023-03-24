@@ -1,4 +1,5 @@
 source 'https://cdn.cocoapods.org/'
+source 'https://github.com/CocoaPods/Specs.git'
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 platform :ios, '15.0'
@@ -22,6 +23,7 @@ target 'Skiing' do
 
   basePods
   developmentPods
+  pod 'GoogleMaps', '7.4.0'
   
 end
 

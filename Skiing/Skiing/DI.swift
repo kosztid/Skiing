@@ -82,4 +82,23 @@ extension Container {
             ProfileNavigator()
         }
     }
+
+    enum GoogleMap {
+        static let view = ParameterFactory { cameraPos in
+            GoogleMapsView(
+                cameraPos: cameraPos,
+                service: accountService()
+            )
+        }
+    }
+
+    enum Map {
+        static let view = Factory {
+            MapView(viewModel: viewModel())
+        }
+
+        static let viewModel = Factory {
+            MapView.ViewModel(accountService: accountService())
+        }
+    }
 }

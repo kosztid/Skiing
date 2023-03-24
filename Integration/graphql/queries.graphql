@@ -1,0 +1,30 @@
+# this is an auto generated file. This will be overwritten
+query GetCurrentPosition($id: ID!) {
+  getCurrentPosition(id: $id) {
+    id
+    name
+    xCoord
+    yCoord
+    createdAt
+    updatedAt
+    owner
+  }
+}
+query ListCurrentPositions(
+  $filter: ModelCurrentPositionFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCurrentPositions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      xCoord
+      yCoord
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+  }
+}

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55048D6229CDA99700254ADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D6129CDA99700254ADC /* AppDelegate.swift */; };
+		55048D6529CDA9F800254ADC /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D6429CDA9F800254ADC /* GoogleMapsView.swift */; };
+		55048D6929CDABD300254ADC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D6829CDABD300254ADC /* MapView.swift */; };
+		55048D8229CDFF7B00254ADC /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 55048D8029CDFF7A00254ADC /* amplifyconfiguration.json */; };
+		55048D8329CDFF7B00254ADC /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 55048D8129CDFF7B00254ADC /* awsconfiguration.json */; };
+		55048D8529CE038B00254ADC /* MapView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D8429CE038B00254ADC /* MapView+ViewModel.swift */; };
 		5528A8F629CA599F0099703C /* VerifyView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528A8F529CA599F0099703C /* VerifyView+ViewModel.swift */; };
 		5528A8F829CA59A80099703C /* VerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528A8F729CA59A80099703C /* VerifyView.swift */; };
 		554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8B7029C4BD910028C76C /* SkiingApp.swift */; };
@@ -16,8 +22,6 @@
 		554C8C0729C4BF310028C76C /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0629C4BF310028C76C /* ViewFactory.swift */; };
 		554C8C0929C4BFB50028C76C /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0829C4BFB50028C76C /* DI.swift */; };
 		554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */; };
-		555D8B3929C64FDE000B65AD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3729C64FDD000B65AD /* awsconfiguration.json */; };
-		555D8B3A29C64FDE000B65AD /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3829C64FDE000B65AD /* amplifyconfiguration.json */; };
 		555D8B4A29C71FFB000B65AD /* Pods_Skiing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555D8B4929C71FFB000B65AD /* Pods_Skiing.framework */; };
 		555D8B5029C7273C000B65AD /* TabBarNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B4F29C7273C000B65AD /* TabBarNavigator.swift */; };
 		555D8B5629C73970000B65AD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5529C73970000B65AD /* LoginView.swift */; };
@@ -55,6 +59,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		55048D6129CDA99700254ADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		55048D6429CDA9F800254ADC /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
+		55048D6829CDABD300254ADC /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		55048D8029CDFF7A00254ADC /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		55048D8129CDFF7B00254ADC /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		55048D8429CE038B00254ADC /* MapView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+ViewModel.swift"; sourceTree = "<group>"; };
 		5528A8F529CA599F0099703C /* VerifyView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyView+ViewModel.swift"; sourceTree = "<group>"; };
 		5528A8F729CA59A80099703C /* VerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyView.swift; sourceTree = "<group>"; };
 		554C8B6D29C4BD910028C76C /* Skiing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skiing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,8 +76,6 @@
 		554C8C0829C4BFB50028C76C /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SkiingView+ViewModel.swift"; sourceTree = "<group>"; };
 		555D8B3229C644AC000B65AD /* Skiing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skiing.entitlements; sourceTree = "<group>"; };
-		555D8B3729C64FDD000B65AD /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		555D8B3829C64FDE000B65AD /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		555D8B4929C71FFB000B65AD /* Pods_Skiing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Skiing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		555D8B4F29C7273C000B65AD /* TabBarNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarNavigator.swift; sourceTree = "<group>"; };
 		555D8B5529C73970000B65AD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -102,6 +110,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55048D6329CDA9E500254ADC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				55048D6429CDA9F800254ADC /* GoogleMapsView.swift */,
+				55048D6829CDABD300254ADC /* MapView.swift */,
+				55048D8429CE038B00254ADC /* MapView+ViewModel.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		5528A8F429CA59890099703C /* Verify */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,8 +132,8 @@
 		554C8B6429C4BD910028C76C = {
 			isa = PBXGroup;
 			children = (
-				555D8B3829C64FDE000B65AD /* amplifyconfiguration.json */,
-				555D8B3729C64FDD000B65AD /* awsconfiguration.json */,
+				55048D8029CDFF7A00254ADC /* amplifyconfiguration.json */,
+				55048D8129CDFF7B00254ADC /* awsconfiguration.json */,
 				554C8B6F29C4BD910028C76C /* Skiing */,
 				554C8B6E29C4BD910028C76C /* Products */,
 				77CB210A354ED7234C1DEF3A /* Frameworks */,
@@ -159,6 +177,7 @@
 				554C8B7029C4BD910028C76C /* SkiingApp.swift */,
 				554C8B7229C4BD910028C76C /* SkiingView.swift */,
 				554C8C0A29C4C06C0028C76C /* SkiingView+ViewModel.swift */,
+				55048D6129CDA99700254ADC /* AppDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -166,6 +185,7 @@
 		555D8B4D29C7271D000B65AD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				55048D6329CDA9E500254ADC /* Map */,
 				555D8B5329C73920000B65AD /* Profile */,
 				555D8B4E29C7272A000B65AD /* TabBar */,
 			);
@@ -247,6 +267,7 @@
 				554C8B6B29C4BD910028C76C /* Resources */,
 				38C49AAD276EB0BA8BBC35BB /* [CP] Embed Pods Frameworks */,
 				55D6B65929C4C68800174065 /* Embed Frameworks */,
+				A8F66EFADA31E1CA01D489D1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,10 +316,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55048D8329CDFF7B00254ADC /* awsconfiguration.json in Resources */,
 				554C8B7829C4BD920028C76C /* Preview Assets.xcassets in Resources */,
+				55048D8229CDFF7B00254ADC /* amplifyconfiguration.json in Resources */,
 				554C8B7529C4BD920028C76C /* Assets.xcassets in Resources */,
-				555D8B3929C64FDE000B65AD /* awsconfiguration.json in Resources */,
-				555D8B3A29C64FDE000B65AD /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +365,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skiing/Pods-Skiing-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A8F66EFADA31E1CA01D489D1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skiing/Pods-Skiing-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skiing/Pods-Skiing-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skiing/Pods-Skiing-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -358,12 +396,16 @@
 				554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */,
 				554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */,
 				5528A8F829CA59A80099703C /* VerifyView.swift in Sources */,
+				55048D6929CDABD300254ADC /* MapView.swift in Sources */,
 				554C8C0729C4BF310028C76C /* ViewFactory.swift in Sources */,
+				55048D6229CDA99700254ADC /* AppDelegate.swift in Sources */,
 				55F36D4929C7934D00B9B93E /* RegisterView+ViewModel.swift in Sources */,
+				55048D6529CDA9F800254ADC /* GoogleMapsView.swift in Sources */,
 				554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */,
 				555D8B5C29C73C07000B65AD /* ProfileView+ViewModel.swift in Sources */,
 				5528A8F629CA599F0099703C /* VerifyView+ViewModel.swift in Sources */,
 				555D8B5029C7273C000B65AD /* TabBarNavigator.swift in Sources */,
+				55048D8529CE038B00254ADC /* MapView+ViewModel.swift in Sources */,
 				555D8B5829C73977000B65AD /* LoginView+ViewModel.swift in Sources */,
 				555D8B5E29C73E4F000B65AD /* ProfileNavigator.swift in Sources */,
 			);
@@ -499,6 +541,7 @@
 				DEVELOPMENT_TEAM = VJLFSCCR2C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Placeholder;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -531,6 +574,7 @@
 				DEVELOPMENT_TEAM = VJLFSCCR2C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Placeholder;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

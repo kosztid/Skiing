@@ -8,7 +8,7 @@ public struct TabBarNavigator: View {
     public var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedItem) {
-                Text("Map")
+                Container.Map.view()
                     .tabItem { Image(systemName: "map") }
                     .tag(0)
                 Text("Pistes")

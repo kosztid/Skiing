@@ -1,10 +1,13 @@
+import GoogleMaps
 import Factory
+import SwiftUI
 
 enum ViewFactory {
     static func skiingView() -> SkiingView {
         Container.Skiing.view()
     }
 
+    // PROFILE
     static func loginView(navigator: LoginViewNavigatorProtocol) -> LoginView {
         Container.Login.view(navigator)
     }
@@ -23,5 +26,14 @@ enum ViewFactory {
 
     static func profileNavigator() -> ProfileNavigator {
         Container.Profile.navigator()
+    }
+
+    // MAP
+    static func googleMap(cameraPos: Binding<GMSCameraPosition>) -> GoogleMapsView {
+        Container.GoogleMap.view((cameraPos))
+    }
+
+    static func mapView() -> MapView {
+        Container.Map.view()
     }
 }

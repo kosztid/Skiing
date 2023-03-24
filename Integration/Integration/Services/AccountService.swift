@@ -2,6 +2,7 @@ import Combine
 import UIKit
 import Amplify
 import AWSCognitoAuthPlugin
+import AWSAPIPlugin
 
 
 public protocol AccountServiceProtocol: AnyObject {
@@ -10,6 +11,7 @@ public protocol AccountServiceProtocol: AnyObject {
     func signUp(_ username: String,_ email: String,_ password: String) async
     func signIn(_ username: String,_ password: String) async
     func confirmSignUp(with confirmationCode: String) async
+    func createLocation(location: Location) async
     func signOut() async
 }
 
@@ -21,6 +23,7 @@ final class AccountService {
     init() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels()))
             try Amplify.configure()
 
             Task {
@@ -37,6 +40,39 @@ final class AccountService {
             print("Could not initialize Amplify: \(error)")
         }
     }
+
+//    func queryLocation() async -> [Location]{
+//        do {
+//            let queryResult = try await Amplify.API.query(request: .list(CurrentPosition.self))
+//
+//            let result = try queryResult.get().map { cPos in
+//                Location.init(from: cPos)
+//            }
+//
+//            return result
+//        } catch {
+//            print("Can not retrieve Notes : error \(error)")
+//        }
+//
+//        return []
+//    }
+//
+//
+//    func deleteLocation(location: Location) async {
+//
+//        do {
+//            guard let data = location.data else { return }
+//            let result = try await Amplify.API.mutate(request: .delete(data))
+//            switch result {
+//            case .success(let data):
+//                print("Successfully deleted note: \(data)")
+//            case .failure(let error):
+//                print("Got failed result with \(error.errorDescription)")
+//            }
+//        } catch {
+//            print("Got failed result with error \(error)")
+//        }
+//    }
 }
 
 extension AccountService: AccountServiceProtocol {
@@ -44,6 +80,19 @@ extension AccountService: AccountServiceProtocol {
         isSignedIn
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
+    }
+
+    public func createLocation(location: Location) async {
+        do {
+            guard let data = location.data else { return }
+            let result = try await Amplify.API.mutate(request: .create(data))
+            let parsedData = try result.get()
+            print("Successfully create location: \(parsedData)")
+        } catch let error as APIError {
+            print("Failed to create note: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
     }
 
     public func login() async {

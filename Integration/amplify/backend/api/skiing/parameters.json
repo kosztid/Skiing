@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "skiing",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authskiing1c655691",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
