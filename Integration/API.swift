@@ -922,7 +922,7 @@ public struct ModelSubscriptionStringInput: GraphQLMapConvertible {
 
 public final class CreateCurrentPositionMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateCurrentPosition($input: CreateCurrentPositionInput!, $condition: ModelCurrentPositionConditionInput) {\n  createCurrentPosition(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "mutation CreateCurrentPosition($input: CreateCurrentPositionInput!, $condition: ModelCurrentPositionConditionInput) {\n  createCurrentPosition(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: CreateCurrentPositionInput
   public var condition: ModelCurrentPositionConditionInput?
@@ -973,7 +973,6 @@ public final class CreateCurrentPositionMutation: GraphQLMutation {
         GraphQLField("yCoord", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -982,8 +981,8 @@ public final class CreateCurrentPositionMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1048,22 +1047,13 @@ public final class CreateCurrentPositionMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class UpdateCurrentPositionMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateCurrentPosition($input: UpdateCurrentPositionInput!, $condition: ModelCurrentPositionConditionInput) {\n  updateCurrentPosition(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "mutation UpdateCurrentPosition($input: UpdateCurrentPositionInput!, $condition: ModelCurrentPositionConditionInput) {\n  updateCurrentPosition(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: UpdateCurrentPositionInput
   public var condition: ModelCurrentPositionConditionInput?
@@ -1114,7 +1104,6 @@ public final class UpdateCurrentPositionMutation: GraphQLMutation {
         GraphQLField("yCoord", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1123,8 +1112,8 @@ public final class UpdateCurrentPositionMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1189,22 +1178,13 @@ public final class UpdateCurrentPositionMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class DeleteCurrentPositionMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteCurrentPosition($input: DeleteCurrentPositionInput!, $condition: ModelCurrentPositionConditionInput) {\n  deleteCurrentPosition(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "mutation DeleteCurrentPosition($input: DeleteCurrentPositionInput!, $condition: ModelCurrentPositionConditionInput) {\n  deleteCurrentPosition(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: DeleteCurrentPositionInput
   public var condition: ModelCurrentPositionConditionInput?
@@ -1255,7 +1235,6 @@ public final class DeleteCurrentPositionMutation: GraphQLMutation {
         GraphQLField("yCoord", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1264,8 +1243,8 @@ public final class DeleteCurrentPositionMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1330,22 +1309,13 @@ public final class DeleteCurrentPositionMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class GetCurrentPositionQuery: GraphQLQuery {
   public static let operationString =
-    "query GetCurrentPosition($id: ID!) {\n  getCurrentPosition(id: $id) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "query GetCurrentPosition($id: ID!) {\n  getCurrentPosition(id: $id) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -1394,7 +1364,6 @@ public final class GetCurrentPositionQuery: GraphQLQuery {
         GraphQLField("yCoord", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1403,8 +1372,8 @@ public final class GetCurrentPositionQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1469,22 +1438,13 @@ public final class GetCurrentPositionQuery: GraphQLQuery {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class ListCurrentPositionsQuery: GraphQLQuery {
   public static let operationString =
-    "query ListCurrentPositions($filter: ModelCurrentPositionFilterInput, $limit: Int, $nextToken: String) {\n  listCurrentPositions(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      name\n      xCoord\n      yCoord\n      createdAt\n      updatedAt\n      owner\n    }\n    nextToken\n  }\n}"
+    "query ListCurrentPositions($filter: ModelCurrentPositionFilterInput, $limit: Int, $nextToken: String) {\n  listCurrentPositions(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      name\n      xCoord\n      yCoord\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
 
   public var filter: ModelCurrentPositionFilterInput?
   public var limit: Int?
@@ -1583,7 +1543,6 @@ public final class ListCurrentPositionsQuery: GraphQLQuery {
           GraphQLField("yCoord", type: .scalar(String.self)),
           GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
           GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-          GraphQLField("owner", type: .scalar(String.self)),
         ]
 
         public var snapshot: Snapshot
@@ -1592,8 +1551,8 @@ public final class ListCurrentPositionsQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-          self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+        public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String) {
+          self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt])
         }
 
         public var __typename: String {
@@ -1658,15 +1617,6 @@ public final class ListCurrentPositionsQuery: GraphQLQuery {
             snapshot.updateValue(newValue, forKey: "updatedAt")
           }
         }
-
-        public var owner: String? {
-          get {
-            return snapshot["owner"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "owner")
-          }
-        }
       }
     }
   }
@@ -1674,25 +1624,23 @@ public final class ListCurrentPositionsQuery: GraphQLQuery {
 
 public final class OnCreateCurrentPositionSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateCurrentPosition($filter: ModelSubscriptionCurrentPositionFilterInput, $owner: String) {\n  onCreateCurrentPosition(filter: $filter, owner: $owner) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "subscription OnCreateCurrentPosition($filter: ModelSubscriptionCurrentPositionFilterInput) {\n  onCreateCurrentPosition(filter: $filter) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionCurrentPositionFilterInput?
-  public var owner: String?
 
-  public init(filter: ModelSubscriptionCurrentPositionFilterInput? = nil, owner: String? = nil) {
+  public init(filter: ModelSubscriptionCurrentPositionFilterInput? = nil) {
     self.filter = filter
-    self.owner = owner
   }
 
   public var variables: GraphQLMap? {
-    return ["filter": filter, "owner": owner]
+    return ["filter": filter]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Subscription"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("onCreateCurrentPosition", arguments: ["filter": GraphQLVariable("filter"), "owner": GraphQLVariable("owner")], type: .object(OnCreateCurrentPosition.selections)),
+      GraphQLField("onCreateCurrentPosition", arguments: ["filter": GraphQLVariable("filter")], type: .object(OnCreateCurrentPosition.selections)),
     ]
 
     public var snapshot: Snapshot
@@ -1725,7 +1673,6 @@ public final class OnCreateCurrentPositionSubscription: GraphQLSubscription {
         GraphQLField("yCoord", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1734,8 +1681,8 @@ public final class OnCreateCurrentPositionSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1800,40 +1747,29 @@ public final class OnCreateCurrentPositionSubscription: GraphQLSubscription {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class OnUpdateCurrentPositionSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateCurrentPosition($filter: ModelSubscriptionCurrentPositionFilterInput, $owner: String) {\n  onUpdateCurrentPosition(filter: $filter, owner: $owner) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "subscription OnUpdateCurrentPosition($filter: ModelSubscriptionCurrentPositionFilterInput) {\n  onUpdateCurrentPosition(filter: $filter) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionCurrentPositionFilterInput?
-  public var owner: String?
 
-  public init(filter: ModelSubscriptionCurrentPositionFilterInput? = nil, owner: String? = nil) {
+  public init(filter: ModelSubscriptionCurrentPositionFilterInput? = nil) {
     self.filter = filter
-    self.owner = owner
   }
 
   public var variables: GraphQLMap? {
-    return ["filter": filter, "owner": owner]
+    return ["filter": filter]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Subscription"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("onUpdateCurrentPosition", arguments: ["filter": GraphQLVariable("filter"), "owner": GraphQLVariable("owner")], type: .object(OnUpdateCurrentPosition.selections)),
+      GraphQLField("onUpdateCurrentPosition", arguments: ["filter": GraphQLVariable("filter")], type: .object(OnUpdateCurrentPosition.selections)),
     ]
 
     public var snapshot: Snapshot
@@ -1866,7 +1802,6 @@ public final class OnUpdateCurrentPositionSubscription: GraphQLSubscription {
         GraphQLField("yCoord", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1875,8 +1810,8 @@ public final class OnUpdateCurrentPositionSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1941,40 +1876,29 @@ public final class OnUpdateCurrentPositionSubscription: GraphQLSubscription {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class OnDeleteCurrentPositionSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteCurrentPosition($filter: ModelSubscriptionCurrentPositionFilterInput, $owner: String) {\n  onDeleteCurrentPosition(filter: $filter, owner: $owner) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "subscription OnDeleteCurrentPosition($filter: ModelSubscriptionCurrentPositionFilterInput) {\n  onDeleteCurrentPosition(filter: $filter) {\n    __typename\n    id\n    name\n    xCoord\n    yCoord\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionCurrentPositionFilterInput?
-  public var owner: String?
 
-  public init(filter: ModelSubscriptionCurrentPositionFilterInput? = nil, owner: String? = nil) {
+  public init(filter: ModelSubscriptionCurrentPositionFilterInput? = nil) {
     self.filter = filter
-    self.owner = owner
   }
 
   public var variables: GraphQLMap? {
-    return ["filter": filter, "owner": owner]
+    return ["filter": filter]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Subscription"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("onDeleteCurrentPosition", arguments: ["filter": GraphQLVariable("filter"), "owner": GraphQLVariable("owner")], type: .object(OnDeleteCurrentPosition.selections)),
+      GraphQLField("onDeleteCurrentPosition", arguments: ["filter": GraphQLVariable("filter")], type: .object(OnDeleteCurrentPosition.selections)),
     ]
 
     public var snapshot: Snapshot
@@ -2007,7 +1931,6 @@ public final class OnDeleteCurrentPositionSubscription: GraphQLSubscription {
         GraphQLField("yCoord", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -2016,8 +1939,8 @@ public final class OnDeleteCurrentPositionSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, xCoord: String? = nil, yCoord: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "CurrentPosition", "id": id, "name": name, "xCoord": xCoord, "yCoord": yCoord, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -2080,15 +2003,6 @@ public final class OnDeleteCurrentPositionSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "updatedAt")
-        }
-      }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
         }
       }
     }

@@ -7,7 +7,6 @@ query GetCurrentPosition($id: ID!) {
     yCoord
     createdAt
     updatedAt
-    owner
   }
 }
 query ListCurrentPositions(
@@ -23,7 +22,6 @@ query ListCurrentPositions(
       yCoord
       createdAt
       updatedAt
-      owner
     }
     nextToken
   }

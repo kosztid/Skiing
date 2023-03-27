@@ -1,5 +1,5 @@
 import SwiftUI
-// the data class to represents Notes
+
 public class Location : Identifiable, ObservableObject {
     public var id : String
     public var name : String

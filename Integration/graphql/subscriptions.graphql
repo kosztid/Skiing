@@ -1,43 +1,37 @@
 # this is an auto generated file. This will be overwritten
 subscription OnCreateCurrentPosition(
   $filter: ModelSubscriptionCurrentPositionFilterInput
-  $owner: String
 ) {
-  onCreateCurrentPosition(filter: $filter, owner: $owner) {
+  onCreateCurrentPosition(filter: $filter) {
     id
     name
     xCoord
     yCoord
     createdAt
     updatedAt
-    owner
   }
 }
 subscription OnUpdateCurrentPosition(
   $filter: ModelSubscriptionCurrentPositionFilterInput
-  $owner: String
 ) {
-  onUpdateCurrentPosition(filter: $filter, owner: $owner) {
+  onUpdateCurrentPosition(filter: $filter) {
     id
     name
     xCoord
     yCoord
     createdAt
     updatedAt
-    owner
   }
 }
 subscription OnDeleteCurrentPosition(
   $filter: ModelSubscriptionCurrentPositionFilterInput
-  $owner: String
 ) {
-  onDeleteCurrentPosition(filter: $filter, owner: $owner) {
+  onDeleteCurrentPosition(filter: $filter) {
     id
     name
     xCoord
     yCoord
     createdAt
     updatedAt
-    owner
   }
 }

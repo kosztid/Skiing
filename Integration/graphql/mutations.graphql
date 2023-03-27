@@ -10,7 +10,6 @@ mutation CreateCurrentPosition(
     yCoord
     createdAt
     updatedAt
-    owner
   }
 }
 mutation UpdateCurrentPosition(
@@ -24,7 +23,6 @@ mutation UpdateCurrentPosition(
     yCoord
     createdAt
     updatedAt
-    owner
   }
 }
 mutation DeleteCurrentPosition(
@@ -38,6 +36,5 @@ mutation DeleteCurrentPosition(
     yCoord
     createdAt
     updatedAt
-    owner
   }
 }

@@ -4,7 +4,7 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type CurrentPosition
 @model
-@auth (rules: [ { allow: owner } ]) {
+@auth (rules: [ { allow: public } ]) {
     id: ID!
     name: String!
     xCoord: String

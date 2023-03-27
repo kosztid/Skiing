@@ -12,6 +12,8 @@ public protocol AccountServiceProtocol: AnyObject {
     func signIn(_ username: String,_ password: String) async
     func confirmSignUp(with confirmationCode: String) async
     func createLocation(location: Location) async
+    func queryLocation() async
+    func updateLocation(location: Location) async
     func signOut() async
 }
 
@@ -40,22 +42,6 @@ final class AccountService {
             print("Could not initialize Amplify: \(error)")
         }
     }
-
-//    func queryLocation() async -> [Location]{
-//        do {
-//            let queryResult = try await Amplify.API.query(request: .list(CurrentPosition.self))
-//
-//            let result = try queryResult.get().map { cPos in
-//                Location.init(from: cPos)
-//            }
-//
-//            return result
-//        } catch {
-//            print("Can not retrieve Notes : error \(error)")
-//        }
-//
-//        return []
-//    }
 //
 //
 //    func deleteLocation(location: Location) async {
@@ -94,6 +80,33 @@ extension AccountService: AccountServiceProtocol {
             print("Unexpected error while calling create API : \(error)")
         }
     }
+
+    public func updateLocation(location: Location) async {
+        do {
+            guard let data = location.data else { return }
+            let result = try await Amplify.API.mutate(request: .update(data))
+            let parsedData = try result.get()
+            print("Successfully create location: \(parsedData)")
+        } catch let error as APIError {
+            print("Failed to create note: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
+    }
+
+    func queryLocation() async{
+            do {
+                let queryResult = try await Amplify.API.query(request: .list(CurrentPosition.self))
+
+                let result = try queryResult.get().elements.map { cPos in
+                    Location(from: cPos)
+                }
+
+                print(result)
+            } catch {
+                print("Can not retrieve Notes : error \(error)")
+            }
+        }
 
     public func login() async {
         do {

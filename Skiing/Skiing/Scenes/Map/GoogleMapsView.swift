@@ -24,6 +24,7 @@ struct GoogleMapsView: UIViewRepresentable {
     func updateUIView(_ view: GMSMapView, context: Context) {
         view.animate(with: GMSCameraUpdate.setCamera(cameraPos))
         cameraPos = view.camera
+        print(cameraPos)
     }
 
     func makeCoordinator() -> Coordinator {
