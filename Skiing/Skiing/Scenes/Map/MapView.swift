@@ -4,21 +4,16 @@ import UI
 
 struct MapView: View {
     @StateObject var viewModel: ViewModel
-    @State var cameraPos: GMSCameraPosition = .init(
-        latitude: 47.19860,
-        longitude: 16.71276,
-        zoom: 14
-    )
 
     var body: some View {
         ZStack {
             ViewFactory.googleMap(
-                cameraPos: $cameraPos
+                cameraPos: $viewModel.cameraPos
             )
             .ignoresSafeArea()
             VStack {
                 Button {
-                    viewModel.createLocation(cameraPos.target.latitude, cameraPos.target.longitude)
+                    viewModel.createLocation()
                 } label: {
                     Text("ADD LOCATION")
                 }
@@ -30,12 +25,15 @@ struct MapView: View {
                 }
                 .buttonStyle(SkiingButtonStyle())
                 Button {
-                    viewModel.updateLocation(cameraPos.target.latitude, cameraPos.target.longitude)
+                    viewModel.updateLocation()
                 } label: {
                     Text("update LOCATION")
                 }
                 .buttonStyle(SkiingButtonStyle())
             }
+        }
+        .onChange(of: viewModel.cameraPos) { newValue in
+            print(newValue)
         }
     }
 }

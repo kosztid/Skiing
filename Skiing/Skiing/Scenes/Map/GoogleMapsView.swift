@@ -3,7 +3,7 @@ import SwiftUI
 import Integration
 
 struct GoogleMapsView: UIViewRepresentable {
-    class Coordinator: NSObject {
+    class Coordinator: NSObject, GMSMapViewDelegate {
     }
 
     let accountService: AccountServiceProtocol
@@ -17,14 +17,19 @@ struct GoogleMapsView: UIViewRepresentable {
             camera: cameraPos
         )
         view.isMyLocationEnabled = true
+        view.delegate = context.coordinator
 
         return view
     }
 
     func updateUIView(_ view: GMSMapView, context: Context) {
-        view.animate(with: GMSCameraUpdate.setCamera(cameraPos))
-        cameraPos = view.camera
-        print(cameraPos)
+        if cameraPos != view.camera {
+            if context.transaction.animation != nil {
+                view.animate(with: GMSCameraUpdate.setCamera(cameraPos))
+            } else {
+                view.camera = cameraPos
+            }
+        }
     }
 
     func makeCoordinator() -> Coordinator {
