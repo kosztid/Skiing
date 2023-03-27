@@ -26,4 +26,8 @@ public struct TabBarNavigator: View {
             }
         }
     }
+
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.white
+    }
 }

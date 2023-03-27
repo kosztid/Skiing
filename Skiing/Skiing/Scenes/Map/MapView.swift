@@ -13,21 +13,15 @@ struct MapView: View {
             .ignoresSafeArea()
             VStack {
                 Button {
-                    viewModel.createLocation()
+                    viewModel.startTimer()
                 } label: {
-                    Text("ADD LOCATION")
+                    Text("START LOCATION")
                 }
                 .buttonStyle(SkiingButtonStyle())
                 Button {
-                    viewModel.listLocation()
+                    viewModel.stopTimer()
                 } label: {
-                    Text("PRINT LOCATION")
-                }
-                .buttonStyle(SkiingButtonStyle())
-                Button {
-                    viewModel.updateLocation()
-                } label: {
-                    Text("update LOCATION")
+                    Text("STOP LOCATION")
                 }
                 .buttonStyle(SkiingButtonStyle())
             }

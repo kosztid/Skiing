@@ -22,12 +22,12 @@ extension MapView {
                 longitude: self.locationManager.location?.coordinate.longitude ?? 1,
                 zoom: 14
             )
-            Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
+            Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
         }
 
         func createLocation() {
             Task {
-                await self.accountService.createLocation(location: Location(id: "test", name: "test", xCoord: String(locationManager.location?.coordinate.latitude ?? 0), yCoord: String(locationManager.location?.coordinate.longitude ?? 0)))
+                await self.accountService.createLocation(xCoord: String(locationManager.location?.coordinate.latitude ?? 0), yCoord: String(locationManager.location?.coordinate.longitude ?? 0))
             }
         }
 
@@ -40,8 +40,16 @@ extension MapView {
         @objc
         func updateLocation() {
             Task {
-                await self.accountService.updateLocation(location: Location(id: "test", name: "test", xCoord: String(locationManager.location?.coordinate.latitude ?? 0), yCoord: String(locationManager.location?.coordinate.longitude ?? 0)))
+                await self.accountService.updateLocation(xCoord: String(locationManager.location?.coordinate.latitude ?? 0), yCoord: String(locationManager.location?.coordinate.longitude ?? 0))
             }
+        }
+
+        func stopTimer() {
+            self.locationTimer?.invalidate()
+        }
+
+        func startTimer() {
+            Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
         }
     }
 }

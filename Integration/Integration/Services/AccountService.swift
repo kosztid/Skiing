@@ -11,9 +11,9 @@ public protocol AccountServiceProtocol: AnyObject {
     func signUp(_ username: String,_ email: String,_ password: String) async
     func signIn(_ username: String,_ password: String) async
     func confirmSignUp(with confirmationCode: String) async
-    func createLocation(location: Location) async
+    func createLocation(xCoord: String, yCoord: String) async
     func queryLocation() async
-    func updateLocation(location: Location) async
+    func updateLocation(xCoord: String, yCoord: String) async
     func signOut() async
 }
 
@@ -68,8 +68,10 @@ extension AccountService: AccountServiceProtocol {
             .eraseToAnyPublisher()
     }
 
-    public func createLocation(location: Location) async {
+    public func createLocation(xCoord: String, yCoord: String) async {
         do {
+            let user = try await Amplify.Auth.getCurrentUser()
+            let location = Location(id: "location_" + user.userId, name: user.username, xCoord: xCoord, yCoord: yCoord)
             guard let data = location.data else { return }
             let result = try await Amplify.API.mutate(request: .create(data))
             let parsedData = try result.get()
@@ -81,8 +83,10 @@ extension AccountService: AccountServiceProtocol {
         }
     }
 
-    public func updateLocation(location: Location) async {
+    public func updateLocation(xCoord: String, yCoord: String) async {
         do {
+            let user = try await Amplify.Auth.getCurrentUser()
+            let location = Location(id: "location_" + user.userId, name: user.username, xCoord: xCoord, yCoord: yCoord)
             guard let data = location.data else { return }
             let result = try await Amplify.API.mutate(request: .update(data))
             let parsedData = try result.get()
@@ -166,6 +170,8 @@ extension AccountService: AccountServiceProtocol {
                 confirmationCode: confirmationCode
             )
             print("Confirm sign up result completed: \(confirmSignUpResult.isSignUpComplete)")
+
+            await self.createLocation(xCoord: "0", yCoord: "0")
         } catch let error as AuthError {
             print("An error occurred while confirming sign up \(error)")
         } catch {
