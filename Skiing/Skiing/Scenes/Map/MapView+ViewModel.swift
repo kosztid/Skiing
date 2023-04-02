@@ -23,6 +23,12 @@ extension MapView {
                 zoom: 14
             )
         }
+
+        func addFriend() {
+            Task {
+                await self.accountService.addFriend()
+            }
+        }
         func createLocation() {
             Task {
                 await self.accountService.createLocation(xCoord: String(locationManager.location?.coordinate.latitude ?? 0), yCoord: String(locationManager.location?.coordinate.longitude ?? 0))

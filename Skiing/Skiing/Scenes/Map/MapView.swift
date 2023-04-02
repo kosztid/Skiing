@@ -24,6 +24,12 @@ struct MapView: View {
                     Text("STOP LOCATION")
                 }
                 .buttonStyle(SkiingButtonStyle())
+                Button {
+                    viewModel.addFriend()
+                } label: {
+                    Text("Createfriendlist")
+                }
+                .buttonStyle(SkiingButtonStyle())
             }
         }
         .onChange(of: viewModel.cameraPos) { newValue in

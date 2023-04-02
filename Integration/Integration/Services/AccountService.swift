@@ -11,6 +11,7 @@ public protocol AccountServiceProtocol: AnyObject {
     func signUp(_ username: String,_ email: String,_ password: String) async
     func signIn(_ username: String,_ password: String) async
     func confirmSignUp(with confirmationCode: String) async
+    func addFriend() async
     func createLocation(xCoord: String, yCoord: String) async
     func queryLocation() async
     func updateLocation(xCoord: String, yCoord: String) async
@@ -42,23 +43,23 @@ final class AccountService {
             print("Could not initialize Amplify: \(error)")
         }
     }
-//
-//
-//    func deleteLocation(location: Location) async {
-//
-//        do {
-//            guard let data = location.data else { return }
-//            let result = try await Amplify.API.mutate(request: .delete(data))
-//            switch result {
-//            case .success(let data):
-//                print("Successfully deleted note: \(data)")
-//            case .failure(let error):
-//                print("Got failed result with \(error.errorDescription)")
-//            }
-//        } catch {
-//            print("Got failed result with error \(error)")
-//        }
-//    }
+    //
+    //
+    //    func deleteLocation(location: Location) async {
+    //
+    //        do {
+    //            guard let data = location.data else { return }
+    //            let result = try await Amplify.API.mutate(request: .delete(data))
+    //            switch result {
+    //            case .success(let data):
+    //                print("Successfully deleted note: \(data)")
+    //            case .failure(let error):
+    //                print("Got failed result with \(error.errorDescription)")
+    //            }
+    //        } catch {
+    //            print("Got failed result with error \(error)")
+    //        }
+    //    }
 }
 
 extension AccountService: AccountServiceProtocol {
@@ -81,6 +82,44 @@ extension AccountService: AccountServiceProtocol {
         } catch {
             print("Unexpected error while calling create API : \(error)")
         }
+    }
+
+    public func addFriend() async {
+        do {
+            var friends = await self.queryFriends()?.friends
+            let id = UUID().uuidString
+            friends?.append(id)
+            let user = try await Amplify.Auth.getCurrentUser()
+            let friendlist = Friendlist(id: user.userId, friends: friends)
+            guard let data = friendlist.data else { return }
+            let result = try await Amplify.API.mutate(request: .update(data))
+            let parsedData = try result.get()
+            print("Successfully create location: \(parsedData)")
+        } catch let error as APIError {
+            print("Failed to create note: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
+    }
+
+    func queryFriends() async -> Friendlist? {
+        do {
+            let queryResult = try await Amplify.API.query(request: .list(UserfriendList.self))
+
+            let user = try await Amplify.Auth.getCurrentUser()
+
+            let result = try queryResult.get().elements.map { list in
+                Friendlist(from: list)
+            }
+
+            return result.first { item in
+                item.id == user.userId
+            }
+            print(result)
+        } catch {
+            print("Can not retrieve Notes : error \(error)")
+        }
+        return nil
     }
 
     public func createLocation(xCoord: String, yCoord: String) async {
@@ -113,19 +152,19 @@ extension AccountService: AccountServiceProtocol {
         }
     }
 
-    func queryLocation() async{
-            do {
-                let queryResult = try await Amplify.API.query(request: .list(CurrentPosition.self))
+    func queryLocation() async {
+        do {
+            let queryResult = try await Amplify.API.query(request: .list(CurrentPosition.self))
 
-                let result = try queryResult.get().elements.map { cPos in
-                    Location(from: cPos)
-                }
-
-                print(result)
-            } catch {
-                print("Can not retrieve Notes : error \(error)")
+            let result = try queryResult.get().elements.map { cPos in
+                Location(from: cPos)
             }
+
+            print(result)
+        } catch {
+            print("Can not retrieve Notes : error \(error)")
         }
+    }
 
     public func login() async {
         do {

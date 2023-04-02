@@ -9,7 +9,7 @@ public class Friendlist: Identifiable, ObservableObject {
         self.friends = friends
     }
 
-    public convenience init(fron data: UserfriendList) {
+    public convenience init(from data: UserfriendList) {
         self.init(id: data.id, friends: data.friends)
         self._data = data
     }
