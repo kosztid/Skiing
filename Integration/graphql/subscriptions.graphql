@@ -35,3 +35,33 @@ subscription OnDeleteCurrentPosition(
     updatedAt
   }
 }
+subscription OnCreateUserfriendList(
+  $filter: ModelSubscriptionUserfriendListFilterInput
+) {
+  onCreateUserfriendList(filter: $filter) {
+    id
+    friends
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateUserfriendList(
+  $filter: ModelSubscriptionUserfriendListFilterInput
+) {
+  onUpdateUserfriendList(filter: $filter) {
+    id
+    friends
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteUserfriendList(
+  $filter: ModelSubscriptionUserfriendListFilterInput
+) {
+  onDeleteUserfriendList(filter: $filter) {
+    id
+    friends
+    createdAt
+    updatedAt
+  }
+}

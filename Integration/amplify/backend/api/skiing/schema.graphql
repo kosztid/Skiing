@@ -10,3 +10,10 @@ type CurrentPosition
     xCoord: String
     yCoord: String
 }
+
+type UserfriendList
+@model
+@auth (rules: [ { allow: public } ]) {
+    id: ID!
+    friends: [String]
+}

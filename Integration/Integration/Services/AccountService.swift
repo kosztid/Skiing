@@ -68,6 +68,21 @@ extension AccountService: AccountServiceProtocol {
             .eraseToAnyPublisher()
     }
 
+    public func createFriendList() async {
+        do {
+            let user = try await Amplify.Auth.getCurrentUser()
+            let friendlist = Friendlist(id: user.userId, friends: [])
+            guard let data = friendlist.data else { return }
+            let result = try await Amplify.API.mutate(request: .create(data))
+            let parsedData = try result.get()
+            print("Successfully create location: \(parsedData)")
+        } catch let error as APIError {
+            print("Failed to create note: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
+    }
+
     public func createLocation(xCoord: String, yCoord: String) async {
         do {
             let user = try await Amplify.Auth.getCurrentUser()
@@ -172,6 +187,7 @@ extension AccountService: AccountServiceProtocol {
             print("Confirm sign up result completed: \(confirmSignUpResult.isSignUpComplete)")
 
             await self.createLocation(xCoord: "0", yCoord: "0")
+            await self.createFriendList()
         } catch let error as AuthError {
             print("An error occurred while confirming sign up \(error)")
         } catch {

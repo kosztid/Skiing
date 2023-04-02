@@ -22,6 +22,9 @@
 		55D6B69E29C4FC1A00174065 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B69D29C4FC1A00174065 /* AccountService.swift */; };
 		55D6B6A929C5B3B000174065 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 55D6B6A829C5B3B000174065 /* Amplify */; };
 		55D6B6AB29C5B59700174065 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 55D6B6AA29C5B59700174065 /* AWSCognitoAuthPlugin */; };
+		55E1AC9C29D98AC400BA4F3A /* UserfriendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E1AC9A29D98AC400BA4F3A /* UserfriendList.swift */; };
+		55E1AC9D29D98AC400BA4F3A /* UserfriendList+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E1AC9B29D98AC400BA4F3A /* UserfriendList+Schema.swift */; };
+		55E1AC9F29D98C7300BA4F3A /* Friendlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E1AC9E29D98C7300BA4F3A /* Friendlist.swift */; };
 		784D40F355A47A660D74529B /* Pods_Integration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61B71BF86293018D0FF8156 /* Pods_Integration.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +57,9 @@
 		55D6B69F29C5AE3000174065 /* AWSPluginsCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSPluginsCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B6A329C5B1B400174065 /* AmplifyPlugins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AmplifyPlugins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B6AC29C5B97900174065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		55E1AC9A29D98AC400BA4F3A /* UserfriendList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserfriendList.swift; path = amplify/generated/models/UserfriendList.swift; sourceTree = SOURCE_ROOT; };
+		55E1AC9B29D98AC400BA4F3A /* UserfriendList+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UserfriendList+Schema.swift"; path = "amplify/generated/models/UserfriendList+Schema.swift"; sourceTree = SOURCE_ROOT; };
+		55E1AC9E29D98C7300BA4F3A /* Friendlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friendlist.swift; sourceTree = "<group>"; };
 		B3B50249AEE10C5C0973C5B8 /* Pods_Integration_IntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Integration_IntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3EAB343F05800F33B9683B4 /* Pods-Integration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Integration.release.xcconfig"; path = "Target Support Files/Pods-Integration/Pods-Integration.release.xcconfig"; sourceTree = "<group>"; };
 		D61B71BF86293018D0FF8156 /* Pods_Integration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Integration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,9 +93,10 @@
 		55048D6C29CDBBEF00254ADC /* LocationService */ = {
 			isa = PBXGroup;
 			children = (
-				55048D6D29CDBBF800254ADC /* Models */,
 				55048D7629CDBC4000254ADC /* LocationService.swift */,
+				55048D6D29CDBBF800254ADC /* Models */,
 				55048D7829CDC2B600254ADC /* Location.swift */,
+				55E1AC9E29D98C7300BA4F3A /* Friendlist.swift */,
 			);
 			path = LocationService;
 			sourceTree = "<group>";
@@ -97,6 +104,8 @@
 		55048D6D29CDBBF800254ADC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				55E1AC9A29D98AC400BA4F3A /* UserfriendList.swift */,
+				55E1AC9B29D98AC400BA4F3A /* UserfriendList+Schema.swift */,
 				55048D6E29CDBC0500254ADC /* AmplifyModels.swift */,
 				55048D6F29CDBC0600254ADC /* CurrentPosition.swift */,
 				55048D7029CDBC0600254ADC /* CurrentPosition+Schema.swift */,
@@ -355,13 +364,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E1AC9D29D98AC400BA4F3A /* UserfriendList+Schema.swift in Sources */,
 				55048D7329CDBC0600254ADC /* CurrentPosition+Schema.swift in Sources */,
 				55048D7229CDBC0600254ADC /* CurrentPosition.swift in Sources */,
+				55E1AC9C29D98AC400BA4F3A /* UserfriendList.swift in Sources */,
 				5572DCAB29C8DB4E00F73BC1 /* DI.swift in Sources */,
 				55048D7129CDBC0600254ADC /* AmplifyModels.swift in Sources */,
 				55048D7729CDBC4000254ADC /* LocationService.swift in Sources */,
 				55D6B69E29C4FC1A00174065 /* AccountService.swift in Sources */,
 				55048D7929CDC2B600254ADC /* Location.swift in Sources */,
+				55E1AC9F29D98C7300BA4F3A /* Friendlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

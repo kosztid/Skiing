@@ -26,3 +26,26 @@ query ListCurrentPositions(
     nextToken
   }
 }
+query GetUserfriendList($id: ID!) {
+  getUserfriendList(id: $id) {
+    id
+    friends
+    createdAt
+    updatedAt
+  }
+}
+query ListUserfriendLists(
+  $filter: ModelUserfriendListFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUserfriendLists(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      friends
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}

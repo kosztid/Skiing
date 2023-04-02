@@ -20,7 +20,7 @@ extension CurrentPosition {
     let currentPosition = CurrentPosition.keys
     
     model.authRules = [
-      rule(allow: .owner, ownerField: "owner", identityClaim: "cognito:username", provider: .userPools, operations: [.create, .update, .delete, .read])
+      rule(allow: .public, operations: [.create, .update, .delete, .read])
     ]
     
     model.pluralName = "CurrentPositions"

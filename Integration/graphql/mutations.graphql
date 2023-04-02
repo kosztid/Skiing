@@ -38,3 +38,36 @@ mutation DeleteCurrentPosition(
     updatedAt
   }
 }
+mutation CreateUserfriendList(
+  $input: CreateUserfriendListInput!
+  $condition: ModelUserfriendListConditionInput
+) {
+  createUserfriendList(input: $input, condition: $condition) {
+    id
+    friends
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateUserfriendList(
+  $input: UpdateUserfriendListInput!
+  $condition: ModelUserfriendListConditionInput
+) {
+  updateUserfriendList(input: $input, condition: $condition) {
+    id
+    friends
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteUserfriendList(
+  $input: DeleteUserfriendListInput!
+  $condition: ModelUserfriendListConditionInput
+) {
+  deleteUserfriendList(input: $input, condition: $condition) {
+    id
+    friends
+    createdAt
+    updatedAt
+  }
+}

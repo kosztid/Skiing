@@ -22,9 +22,7 @@ extension MapView {
                 longitude: self.locationManager.location?.coordinate.longitude ?? 1,
                 zoom: 14
             )
-            Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
         }
-
         func createLocation() {
             Task {
                 await self.accountService.createLocation(xCoord: String(locationManager.location?.coordinate.latitude ?? 0), yCoord: String(locationManager.location?.coordinate.longitude ?? 0))
