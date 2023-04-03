@@ -7,7 +7,7 @@ enum ViewFactory {
         Container.Skiing.view()
     }
 
-    // PROFILE
+    //MARK: -  PROFILE
     static func loginView(navigator: LoginViewNavigatorProtocol) -> LoginView {
         Container.Login.view(navigator)
     }
@@ -28,7 +28,21 @@ enum ViewFactory {
         Container.Profile.navigator()
     }
 
-    // MAP
+    //MARK: - SOCIAL
+
+    static func socialView(navigator: SocialListViewNavigatorProtocol) -> SocialView {
+        Container.Social.view(navigator)
+    }
+
+    static func socialNavigator() -> SocialNavigator {
+        Container.Social.navigator()
+    }
+
+    static func friendRequestView() -> FriendRequestView {
+        Container.FriendRequest.view()
+    }
+
+    //MARK: -  MAP
     static func googleMap(cameraPos: Binding<GMSCameraPosition>) -> GoogleMapsView {
         Container.GoogleMap.view((cameraPos))
     }

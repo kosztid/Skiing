@@ -101,4 +101,30 @@ extension Container {
             MapView.ViewModel(accountService: accountService())
         }
     }
+
+    enum Social {
+        static let view = ParameterFactory { navigator in
+            SocialView(
+                viewModel: viewModel(navigator)
+            )
+        }
+
+        static let viewModel = ParameterFactory { navigator in
+            SocialView.ViewModel(navigator: navigator)
+        }
+
+        static let navigator = Factory {
+            SocialNavigator()
+        }
+    }
+
+    enum FriendRequest {
+        static let view = Factory {
+            FriendRequestView(viewModel: viewModel())
+        }
+
+        static let viewModel = Factory {
+            FriendRequestView.ViewModel()
+        }
+    }
 }

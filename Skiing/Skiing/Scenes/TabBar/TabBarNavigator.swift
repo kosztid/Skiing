@@ -1,23 +1,22 @@
-import Factory
 import SwiftUI
 import UI
 
 public struct TabBarNavigator: View {
-    @State var selectedItem: Int = 0
+    @State var selectedItem: Int = 2
 
     public var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedItem) {
-                Container.Map.view()
+                ViewFactory.mapView()
                     .tabItem { Image(systemName: "map") }
                     .tag(0)
                 Text("Pistes")
                     .tabItem { Image(systemName: "figure.skiing.downhill") }
                     .tag(1)
-                Text("Weather")
-                    .tabItem { Image(systemName: "cloud.sun") }
+                ViewFactory.socialNavigator()
+                    .tabItem { Image(systemName: "person.3.fill") }
                     .tag(2)
-                Container.Profile.navigator()
+                ViewFactory.profileNavigator()
                     .tabItem { Image(systemName: "person") }
                     .tag(3)
                 Text("Leaderboard")

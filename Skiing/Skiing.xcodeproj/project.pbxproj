@@ -29,6 +29,7 @@
 		555D8B5A29C73BFD000B65AD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5929C73BFD000B65AD /* ProfileView.swift */; };
 		555D8B5C29C73C07000B65AD /* ProfileView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5B29C73C07000B65AD /* ProfileView+ViewModel.swift */; };
 		555D8B5E29C73E4F000B65AD /* ProfileNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5D29C73E4F000B65AD /* ProfileNavigator.swift */; };
+		5588308729D9CE5400866B4F /* SocialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588308629D9CE5400866B4F /* SocialNavigator.swift */; };
 		55D6B65729C4C68800174065 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; };
 		55D6B65829C4C68800174065 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55D6B65A29C4C68A00174065 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64B29C4C67C00174065 /* Core.framework */; };
@@ -37,6 +38,10 @@
 		55D6B65D29C4C68B00174065 /* Integration.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64C29C4C67C00174065 /* Integration.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55D6B65E29C4C68C00174065 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64D29C4C67C00174065 /* UI.framework */; };
 		55D6B65F29C4C68C00174065 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64D29C4C67C00174065 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55E1ACA229D9B99A00BA4F3A /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E1ACA129D9B99A00BA4F3A /* SocialView.swift */; };
+		55E1ACA429D9B9A400BA4F3A /* SocialView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E1ACA329D9B9A400BA4F3A /* SocialView+ViewModel.swift */; };
+		55E1ACA729D9CA7D00BA4F3A /* FriendRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E1ACA629D9CA7D00BA4F3A /* FriendRequestView.swift */; };
+		55E1ACA929D9CA8300BA4F3A /* FriendRequestView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E1ACA829D9CA8300BA4F3A /* FriendRequestView+ViewModel.swift */; };
 		55F36D4929C7934D00B9B93E /* RegisterView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D4829C7934D00B9B93E /* RegisterView+ViewModel.swift */; };
 		55F36D4B29C7935500B9B93E /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F36D4A29C7935500B9B93E /* RegisterView.swift */; };
 /* End PBXBuildFile section */
@@ -83,10 +88,15 @@
 		555D8B5929C73BFD000B65AD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		555D8B5B29C73C07000B65AD /* ProfileView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+ViewModel.swift"; sourceTree = "<group>"; };
 		555D8B5D29C73E4F000B65AD /* ProfileNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigator.swift; sourceTree = "<group>"; };
+		5588308629D9CE5400866B4F /* SocialNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNavigator.swift; sourceTree = "<group>"; };
 		55D6B64A29C4C67C00174065 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64B29C4C67C00174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64C29C4C67C00174065 /* Integration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Integration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64D29C4C67C00174065 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55E1ACA129D9B99A00BA4F3A /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
+		55E1ACA329D9B9A400BA4F3A /* SocialView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocialView+ViewModel.swift"; sourceTree = "<group>"; };
+		55E1ACA629D9CA7D00BA4F3A /* FriendRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestView.swift; sourceTree = "<group>"; };
+		55E1ACA829D9CA8300BA4F3A /* FriendRequestView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendRequestView+ViewModel.swift"; sourceTree = "<group>"; };
 		55F36D4829C7934D00B9B93E /* RegisterView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterView+ViewModel.swift"; sourceTree = "<group>"; };
 		55F36D4A29C7935500B9B93E /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		B560C24391A6E462BEA278B8 /* Pods-Skiing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skiing.release.xcconfig"; path = "Target Support Files/Pods-Skiing/Pods-Skiing.release.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +195,7 @@
 		555D8B4D29C7271D000B65AD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				55E1ACA029D9B97200BA4F3A /* Social */,
 				55048D6329CDA9E500254ADC /* Map */,
 				555D8B5329C73920000B65AD /* Profile */,
 				555D8B4E29C7272A000B65AD /* TabBar */,
@@ -219,6 +230,26 @@
 				555D8B5729C73977000B65AD /* LoginView+ViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		55E1ACA029D9B97200BA4F3A /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				55E1ACA529D9CA6000BA4F3A /* FriendRequest */,
+				55E1ACA129D9B99A00BA4F3A /* SocialView.swift */,
+				55E1ACA329D9B9A400BA4F3A /* SocialView+ViewModel.swift */,
+				5588308629D9CE5400866B4F /* SocialNavigator.swift */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		55E1ACA529D9CA6000BA4F3A /* FriendRequest */ = {
+			isa = PBXGroup;
+			children = (
+				55E1ACA629D9CA7D00BA4F3A /* FriendRequestView.swift */,
+				55E1ACA829D9CA8300BA4F3A /* FriendRequestView+ViewModel.swift */,
+			);
+			path = FriendRequest;
 			sourceTree = "<group>";
 		};
 		55F36D4729C7934000B9B93E /* Register */ = {
@@ -390,16 +421,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				554C8C0929C4BFB50028C76C /* DI.swift in Sources */,
+				55E1ACA229D9B99A00BA4F3A /* SocialView.swift in Sources */,
 				555D8B5A29C73BFD000B65AD /* ProfileView.swift in Sources */,
 				55F36D4B29C7935500B9B93E /* RegisterView.swift in Sources */,
 				555D8B5629C73970000B65AD /* LoginView.swift in Sources */,
 				554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */,
+				55E1ACA929D9CA8300BA4F3A /* FriendRequestView+ViewModel.swift in Sources */,
 				554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */,
 				5528A8F829CA59A80099703C /* VerifyView.swift in Sources */,
 				55048D6929CDABD300254ADC /* MapView.swift in Sources */,
 				554C8C0729C4BF310028C76C /* ViewFactory.swift in Sources */,
 				55048D6229CDA99700254ADC /* AppDelegate.swift in Sources */,
 				55F36D4929C7934D00B9B93E /* RegisterView+ViewModel.swift in Sources */,
+				55E1ACA729D9CA7D00BA4F3A /* FriendRequestView.swift in Sources */,
 				55048D6529CDA9F800254ADC /* GoogleMapsView.swift in Sources */,
 				554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */,
 				555D8B5C29C73C07000B65AD /* ProfileView+ViewModel.swift in Sources */,
@@ -408,6 +442,8 @@
 				55048D8529CE038B00254ADC /* MapView+ViewModel.swift in Sources */,
 				555D8B5829C73977000B65AD /* LoginView+ViewModel.swift in Sources */,
 				555D8B5E29C73E4F000B65AD /* ProfileNavigator.swift in Sources */,
+				5588308729D9CE5400866B4F /* SocialNavigator.swift in Sources */,
+				55E1ACA429D9B9A400BA4F3A /* SocialView+ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
