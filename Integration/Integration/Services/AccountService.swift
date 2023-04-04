@@ -113,6 +113,7 @@ extension AccountService: AccountServiceProtocol {
             guard let data = friendlist.data else { return }
             let result = try await Amplify.API.mutate(request: .update(data))
             let parsedData = try result.get()
+            await queryFriends()
             print("Successfully create location: \(parsedData)")
         } catch let error as APIError {
             print("Failed to create note: \(error)")

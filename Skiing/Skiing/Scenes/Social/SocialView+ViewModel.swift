@@ -43,5 +43,11 @@ extension SocialView {
             navigator.navigateToRequest()
         }
 
+        func addFriend() {
+            Task {
+                await accountService.addFriend()
+            }
+        }
+
     }
 }
