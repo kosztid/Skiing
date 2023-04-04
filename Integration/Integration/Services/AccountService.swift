@@ -7,6 +7,7 @@ import AWSAPIPlugin
 
 public protocol AccountServiceProtocol: AnyObject {
     var isSignedInPublisher: AnyPublisher<Bool, Never> { get }
+    var friendListPublisher: AnyPublisher<Friendlist?, Never> { get }
     func login() async
     func signUp(_ username: String,_ email: String,_ password: String) async
     func signIn(_ username: String,_ password: String) async
@@ -14,12 +15,15 @@ public protocol AccountServiceProtocol: AnyObject {
     func addFriend() async
     func createLocation(xCoord: String, yCoord: String) async
     func queryLocation() async
+    func queryFriends() async
+    func queryFriendLocation(userId: String) async
     func updateLocation(xCoord: String, yCoord: String) async
     func signOut() async
 }
 
 final class AccountService {
     private let isSignedIn: CurrentValueSubject<Bool, Never> = .init(false)
+    private let friendList: CurrentValueSubject<Friendlist?, Never> = .init(nil)
     private var cancellables: Set<AnyCancellable> = []
     private var username: String = ""
 
@@ -63,6 +67,12 @@ final class AccountService {
 }
 
 extension AccountService: AccountServiceProtocol {
+    var friendListPublisher: AnyPublisher<Friendlist?, Never> {
+        friendList
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
     var isSignedInPublisher: AnyPublisher<Bool, Never> {
         isSignedIn
             .receive(on: DispatchQueue.main)
@@ -86,10 +96,19 @@ extension AccountService: AccountServiceProtocol {
 
     public func addFriend() async {
         do {
-            var friends = await self.queryFriends()?.friends
+            let user = try await Amplify.Auth.getCurrentUser()
+            let friendQueryResults = try await Amplify.API.query(request: .list(UserfriendList.self))
+            let friendQueryResultsMapped = try friendQueryResults.get().elements.map { list in
+                Friendlist(from: list)
+            }
+
+            var friends = friendQueryResultsMapped.first { item in
+                item.id == user.userId
+            }?.friends
+
             let id = UUID().uuidString
             friends?.append(id)
-            let user = try await Amplify.Auth.getCurrentUser()
+
             let friendlist = Friendlist(id: user.userId, friends: friends)
             guard let data = friendlist.data else { return }
             let result = try await Amplify.API.mutate(request: .update(data))
@@ -102,24 +121,25 @@ extension AccountService: AccountServiceProtocol {
         }
     }
 
-    func queryFriends() async -> Friendlist? {
+    func queryFriends() async {
         do {
-            let queryResult = try await Amplify.API.query(request: .list(UserfriendList.self))
+            let friendQueryResults = try await Amplify.API.query(request: .list(UserfriendList.self))
 
             let user = try await Amplify.Auth.getCurrentUser()
 
-            let result = try queryResult.get().elements.map { list in
+            let result = try friendQueryResults.get().elements.map { list in
                 Friendlist(from: list)
             }
 
-            return result.first { item in
+            let currentFriendList = result.first { item in
                 item.id == user.userId
             }
+
+            friendList.send(currentFriendList)
             print(result)
         } catch {
             print("Can not retrieve Notes : error \(error)")
         }
-        return nil
     }
 
     public func createLocation(xCoord: String, yCoord: String) async {
@@ -161,6 +181,23 @@ extension AccountService: AccountServiceProtocol {
             }
 
             print(result)
+        } catch {
+            print("Can not retrieve Notes : error \(error)")
+        }
+    }
+
+    func queryFriendLocation(userId: String) async {
+        do {
+            let queryResult = try await Amplify.API.query(request: .list(CurrentPosition.self))
+
+            let result = try queryResult.get().elements.map { cPos in
+                Location(from: cPos)
+            }
+
+            let newResult = result.first { loc in
+                loc.id == ("location_" + userId)
+            }
+            print(newResult?.data)
         } catch {
             print("Can not retrieve Notes : error \(error)")
         }

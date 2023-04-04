@@ -24,9 +24,15 @@ extension MapView {
             )
         }
 
-        func addFriend() {
+        func getLoc() {
             Task {
-                await self.accountService.addFriend()
+                await self.accountService.queryLocation()
+            }
+        }
+
+        func getFriend() {
+            Task {
+                await self.accountService.queryFriendLocation(userId: "c0598ecb-9bff-47b4-90fe-4c6e5888db12")
             }
         }
         func createLocation() {

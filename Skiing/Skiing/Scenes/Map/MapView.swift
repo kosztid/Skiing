@@ -25,9 +25,16 @@ struct MapView: View {
                 }
                 .buttonStyle(SkiingButtonStyle())
                 Button {
-                    viewModel.addFriend()
+                    viewModel.getLoc()
                 } label: {
-                    Text("Createfriendlist")
+                    Text("getLocation")
+                }
+                .buttonStyle(SkiingButtonStyle())
+
+                Button {
+                    viewModel.getFriend()
+                } label: {
+                    Text("Getfriend")
                 }
                 .buttonStyle(SkiingButtonStyle())
             }

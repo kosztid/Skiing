@@ -8,8 +8,8 @@ struct SocialView: View {
         ZStack {
             ScrollView {
                 LazyVStack {
-                    ForEach(viewModel.friends) { friend in
-                        FriendListItem(friend: friend)
+                    ForEach(viewModel.friendList?.friends ?? [], id: \.self) { friend in
+                        FriendListItem(friend: friend!)
                     }
                 }
             }
@@ -41,11 +41,11 @@ public struct Friend: Identifiable {
 }
 
 public struct FriendListItem: View {
-    var friend: Friend
+    var friend: String
     @State var isTracking: Bool
     public var body: some View {
         HStack {
-            Text(friend.name)
+            Text(friend)
             Spacer()
             Toggle(isOn: $isTracking) {
             }
@@ -53,7 +53,7 @@ public struct FriendListItem: View {
         .padding(.horizontal, 20)
     }
     
-    public init(friend: Friend, isTracking: Bool = false) {
+    public init(friend: String, isTracking: Bool = false) {
         self.friend = friend
         self.isTracking = isTracking
     }

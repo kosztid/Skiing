@@ -110,7 +110,7 @@ extension Container {
         }
 
         static let viewModel = ParameterFactory { navigator in
-            SocialView.ViewModel(navigator: navigator)
+            SocialView.ViewModel(navigator: navigator, accountService: accountService())
         }
 
         static let navigator = Factory {
