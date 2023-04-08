@@ -2,9 +2,9 @@ import SwiftUI
 
 public class Friendlist: Identifiable, ObservableObject {
     public var id: String
-    public var friends: [String?]?
+    public var friends: [Friend]?
 
-    public init(id: String, friends: [String?]?) {
+    public init(id: String, friends: [Friend]?) {
         self.id = id
         self.friends = friends
     }

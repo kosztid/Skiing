@@ -1,3 +1,4 @@
+import Integration
 import SwiftUI
 
 struct SocialView: View {
@@ -8,8 +9,8 @@ struct SocialView: View {
         ZStack {
             ScrollView {
                 LazyVStack {
-                    ForEach(viewModel.friendList?.friends ?? [], id: \.self) { friend in
-                        FriendListItem(friend: friend!)
+                    ForEach(viewModel.friendList?.friends ?? []) { friend in
+                        FriendListItem(friend: friend)
                     }
                 }
             }
@@ -35,17 +36,17 @@ struct SocialView: View {
     }
 }
 
-public struct Friend: Identifiable {
+public struct FriendModel: Identifiable {
     public var id: String
     public var name: String
 }
 
 public struct FriendListItem: View {
-    var friend: String
+    var friend: Friend
     @State var isTracking: Bool
     public var body: some View {
         HStack {
-            Text(friend)
+            Text(friend.name)
             Spacer()
             Toggle(isOn: $isTracking) {
             }
@@ -53,7 +54,7 @@ public struct FriendListItem: View {
         .padding(.horizontal, 20)
     }
     
-    public init(friend: String, isTracking: Bool = false) {
+    public init(friend: Friend, isTracking: Bool = false) {
         self.friend = friend
         self.isTracking = isTracking
     }

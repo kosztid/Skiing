@@ -29,7 +29,7 @@ extension UserfriendList {
     
     model.fields(
       .field(userfriendList.id, is: .required, ofType: .string),
-      .field(userfriendList.friends, is: .optional, ofType: .embeddedCollection(of: String.self)),
+      .field(userfriendList.friends, is: .optional, ofType: .embeddedCollection(of: Friend.self)),
       .field(userfriendList.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(userfriendList.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )

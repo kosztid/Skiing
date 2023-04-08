@@ -40,7 +40,10 @@ subscription OnCreateUserfriendList(
 ) {
   onCreateUserfriendList(filter: $filter) {
     id
-    friends
+    friends {
+      id
+      name
+    }
     createdAt
     updatedAt
   }
@@ -50,7 +53,10 @@ subscription OnUpdateUserfriendList(
 ) {
   onUpdateUserfriendList(filter: $filter) {
     id
-    friends
+    friends {
+      id
+      name
+    }
     createdAt
     updatedAt
   }
@@ -60,7 +66,10 @@ subscription OnDeleteUserfriendList(
 ) {
   onDeleteUserfriendList(filter: $filter) {
     id
-    friends
+    friends {
+      id
+      name
+    }
     createdAt
     updatedAt
   }

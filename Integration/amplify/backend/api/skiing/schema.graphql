@@ -11,9 +11,17 @@ type CurrentPosition
     yCoord: String
 }
 
+type Friend
+{
+    id: ID!
+    name: String!
+}
+
 type UserfriendList
 @model
 @auth (rules: [ { allow: public } ]) {
     id: ID!
-    friends: [String]
+    friends: [Friend!]
 }
+
+

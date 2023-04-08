@@ -29,7 +29,10 @@ query ListCurrentPositions(
 query GetUserfriendList($id: ID!) {
   getUserfriendList(id: $id) {
     id
-    friends
+    friends {
+      id
+      name
+    }
     createdAt
     updatedAt
   }
@@ -42,7 +45,10 @@ query ListUserfriendLists(
   listUserfriendLists(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      friends
+      friends {
+        id
+        name
+      }
       createdAt
       updatedAt
     }

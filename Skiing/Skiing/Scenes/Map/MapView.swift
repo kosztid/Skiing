@@ -12,31 +12,31 @@ struct MapView: View {
             )
             .ignoresSafeArea()
             VStack {
-                Button {
-                    viewModel.startTimer()
-                } label: {
-                    Text("START LOCATION")
-                }
-                .buttonStyle(SkiingButtonStyle())
-                Button {
-                    viewModel.stopTimer()
-                } label: {
-                    Text("STOP LOCATION")
-                }
-                .buttonStyle(SkiingButtonStyle())
-                Button {
-                    viewModel.getLoc()
-                } label: {
-                    Text("getLocation")
-                }
-                .buttonStyle(SkiingButtonStyle())
-
-                Button {
-                    viewModel.getFriend()
-                } label: {
-                    Text("Getfriend")
-                }
-                .buttonStyle(SkiingButtonStyle())
+//                Button {
+//                    viewModel.startTimer()
+//                } label: {
+//                    Text("START LOCATION")
+//                }
+//                .buttonStyle(SkiingButtonStyle())
+//                Button {
+//                    viewModel.stopTimer()
+//                } label: {
+//                    Text("STOP LOCATION")
+//                }
+//                .buttonStyle(SkiingButtonStyle())
+//                Button {
+//                    viewModel.getLoc()
+//                } label: {
+//                    Text("getLocation")
+//                }
+//                .buttonStyle(SkiingButtonStyle())
+//
+//                Button {
+//                    viewModel.getFriend()
+//                } label: {
+//                    Text("Getfriend")
+//                }
+//                .buttonStyle(SkiingButtonStyle())
             }
         }
         .onChange(of: viewModel.cameraPos) { newValue in

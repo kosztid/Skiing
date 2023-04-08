@@ -44,7 +44,10 @@ mutation CreateUserfriendList(
 ) {
   createUserfriendList(input: $input, condition: $condition) {
     id
-    friends
+    friends {
+      id
+      name
+    }
     createdAt
     updatedAt
   }
@@ -55,7 +58,10 @@ mutation UpdateUserfriendList(
 ) {
   updateUserfriendList(input: $input, condition: $condition) {
     id
-    friends
+    friends {
+      id
+      name
+    }
     createdAt
     updatedAt
   }
@@ -66,7 +72,10 @@ mutation DeleteUserfriendList(
 ) {
   deleteUserfriendList(input: $input, condition: $condition) {
     id
-    friends
+    friends {
+      id
+      name
+    }
     createdAt
     updatedAt
   }

@@ -107,7 +107,7 @@ extension AccountService: AccountServiceProtocol {
             }?.friends
 
             let id = UUID().uuidString
-            friends?.append(id)
+            friends?.append(Friend(id: id, name: "asd"))
 
             let friendlist = Friendlist(id: user.userId, friends: friends)
             guard let data = friendlist.data else { return }

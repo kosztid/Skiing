@@ -433,7 +433,7 @@ public struct DeleteCurrentPositionInput: GraphQLMapConvertible {
 public struct CreateUserfriendListInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID? = nil, friends: [String?]? = nil) {
+  public init(id: GraphQLID? = nil, friends: [FriendInput?]? = nil) {
     graphQLMap = ["id": id, "friends": friends]
   }
 
@@ -446,9 +446,9 @@ public struct CreateUserfriendListInput: GraphQLMapConvertible {
     }
   }
 
-  public var friends: [String?]? {
+  public var friends: [FriendInput?]? {
     get {
-      return graphQLMap["friends"] as! [String?]?
+      return graphQLMap["friends"] as! [FriendInput?]?
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "friends")
@@ -456,20 +456,37 @@ public struct CreateUserfriendListInput: GraphQLMapConvertible {
   }
 }
 
+public struct FriendInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: GraphQLID? = nil, name: String) {
+    graphQLMap = ["id": id, "name": name]
+  }
+
+  public var id: GraphQLID? {
+    get {
+      return graphQLMap["id"] as! GraphQLID?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var name: String {
+    get {
+      return graphQLMap["name"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "name")
+    }
+  }
+}
+
 public struct ModelUserfriendListConditionInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(friends: ModelStringInput? = nil, and: [ModelUserfriendListConditionInput?]? = nil, or: [ModelUserfriendListConditionInput?]? = nil, not: ModelUserfriendListConditionInput? = nil) {
-    graphQLMap = ["friends": friends, "and": and, "or": or, "not": not]
-  }
-
-  public var friends: ModelStringInput? {
-    get {
-      return graphQLMap["friends"] as! ModelStringInput?
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "friends")
-    }
+  public init(and: [ModelUserfriendListConditionInput?]? = nil, or: [ModelUserfriendListConditionInput?]? = nil, not: ModelUserfriendListConditionInput? = nil) {
+    graphQLMap = ["and": and, "or": or, "not": not]
   }
 
   public var and: [ModelUserfriendListConditionInput?]? {
@@ -503,7 +520,7 @@ public struct ModelUserfriendListConditionInput: GraphQLMapConvertible {
 public struct UpdateUserfriendListInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID, friends: [String?]? = nil) {
+  public init(id: GraphQLID, friends: [FriendInput?]? = nil) {
     graphQLMap = ["id": id, "friends": friends]
   }
 
@@ -516,9 +533,9 @@ public struct UpdateUserfriendListInput: GraphQLMapConvertible {
     }
   }
 
-  public var friends: [String?]? {
+  public var friends: [FriendInput?]? {
     get {
-      return graphQLMap["friends"] as! [String?]?
+      return graphQLMap["friends"] as! [FriendInput?]?
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "friends")
@@ -742,8 +759,8 @@ public struct ModelIDInput: GraphQLMapConvertible {
 public struct ModelUserfriendListFilterInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: ModelIDInput? = nil, friends: ModelStringInput? = nil, and: [ModelUserfriendListFilterInput?]? = nil, or: [ModelUserfriendListFilterInput?]? = nil, not: ModelUserfriendListFilterInput? = nil) {
-    graphQLMap = ["id": id, "friends": friends, "and": and, "or": or, "not": not]
+  public init(id: ModelIDInput? = nil, and: [ModelUserfriendListFilterInput?]? = nil, or: [ModelUserfriendListFilterInput?]? = nil, not: ModelUserfriendListFilterInput? = nil) {
+    graphQLMap = ["id": id, "and": and, "or": or, "not": not]
   }
 
   public var id: ModelIDInput? {
@@ -752,15 +769,6 @@ public struct ModelUserfriendListFilterInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "id")
-    }
-  }
-
-  public var friends: ModelStringInput? {
-    get {
-      return graphQLMap["friends"] as! ModelStringInput?
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "friends")
     }
   }
 
@@ -1089,8 +1097,8 @@ public struct ModelSubscriptionStringInput: GraphQLMapConvertible {
 public struct ModelSubscriptionUserfriendListFilterInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: ModelSubscriptionIDInput? = nil, friends: ModelSubscriptionStringInput? = nil, and: [ModelSubscriptionUserfriendListFilterInput?]? = nil, or: [ModelSubscriptionUserfriendListFilterInput?]? = nil) {
-    graphQLMap = ["id": id, "friends": friends, "and": and, "or": or]
+  public init(id: ModelSubscriptionIDInput? = nil, and: [ModelSubscriptionUserfriendListFilterInput?]? = nil, or: [ModelSubscriptionUserfriendListFilterInput?]? = nil) {
+    graphQLMap = ["id": id, "and": and, "or": or]
   }
 
   public var id: ModelSubscriptionIDInput? {
@@ -1099,15 +1107,6 @@ public struct ModelSubscriptionUserfriendListFilterInput: GraphQLMapConvertible 
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "id")
-    }
-  }
-
-  public var friends: ModelSubscriptionStringInput? {
-    get {
-      return graphQLMap["friends"] as! ModelSubscriptionStringInput?
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "friends")
     }
   }
 
@@ -1525,7 +1524,7 @@ public final class DeleteCurrentPositionMutation: GraphQLMutation {
 
 public final class CreateUserfriendListMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateUserfriendList($input: CreateUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  createUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation CreateUserfriendList($input: CreateUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  createUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: CreateUserfriendListInput
   public var condition: ModelUserfriendListConditionInput?
@@ -1571,7 +1570,7 @@ public final class CreateUserfriendListMutation: GraphQLMutation {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("friends", type: .list(.scalar(String.self))),
+        GraphQLField("friends", type: .list(.object(Friend.selections))),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -1582,8 +1581,8 @@ public final class CreateUserfriendListMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, friends: [String?]? = nil, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, friends: [Friend?]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1604,12 +1603,12 @@ public final class CreateUserfriendListMutation: GraphQLMutation {
         }
       }
 
-      public var friends: [String?]? {
+      public var friends: [Friend?]? {
         get {
-          return snapshot["friends"] as? [String?]
+          return (snapshot["friends"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Friend(snapshot: $0) } } }
         }
         set {
-          snapshot.updateValue(newValue, forKey: "friends")
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "friends")
         }
       }
 
@@ -1630,13 +1629,60 @@ public final class CreateUserfriendListMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
+
+      public struct Friend: GraphQLSelectionSet {
+        public static let possibleTypes = ["Friend"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+      }
     }
   }
 }
 
 public final class UpdateUserfriendListMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateUserfriendList($input: UpdateUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  updateUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation UpdateUserfriendList($input: UpdateUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  updateUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: UpdateUserfriendListInput
   public var condition: ModelUserfriendListConditionInput?
@@ -1682,7 +1728,7 @@ public final class UpdateUserfriendListMutation: GraphQLMutation {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("friends", type: .list(.scalar(String.self))),
+        GraphQLField("friends", type: .list(.object(Friend.selections))),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -1693,8 +1739,8 @@ public final class UpdateUserfriendListMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, friends: [String?]? = nil, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, friends: [Friend?]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1715,12 +1761,12 @@ public final class UpdateUserfriendListMutation: GraphQLMutation {
         }
       }
 
-      public var friends: [String?]? {
+      public var friends: [Friend?]? {
         get {
-          return snapshot["friends"] as? [String?]
+          return (snapshot["friends"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Friend(snapshot: $0) } } }
         }
         set {
-          snapshot.updateValue(newValue, forKey: "friends")
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "friends")
         }
       }
 
@@ -1741,13 +1787,60 @@ public final class UpdateUserfriendListMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
+
+      public struct Friend: GraphQLSelectionSet {
+        public static let possibleTypes = ["Friend"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+      }
     }
   }
 }
 
 public final class DeleteUserfriendListMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteUserfriendList($input: DeleteUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  deleteUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation DeleteUserfriendList($input: DeleteUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  deleteUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: DeleteUserfriendListInput
   public var condition: ModelUserfriendListConditionInput?
@@ -1793,7 +1886,7 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("friends", type: .list(.scalar(String.self))),
+        GraphQLField("friends", type: .list(.object(Friend.selections))),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -1804,8 +1897,8 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, friends: [String?]? = nil, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, friends: [Friend?]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1826,12 +1919,12 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
         }
       }
 
-      public var friends: [String?]? {
+      public var friends: [Friend?]? {
         get {
-          return snapshot["friends"] as? [String?]
+          return (snapshot["friends"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Friend(snapshot: $0) } } }
         }
         set {
-          snapshot.updateValue(newValue, forKey: "friends")
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "friends")
         }
       }
 
@@ -1850,6 +1943,53 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public struct Friend: GraphQLSelectionSet {
+        public static let possibleTypes = ["Friend"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
         }
       }
     }
@@ -2167,7 +2307,7 @@ public final class ListCurrentPositionsQuery: GraphQLQuery {
 
 public final class GetUserfriendListQuery: GraphQLQuery {
   public static let operationString =
-    "query GetUserfriendList($id: ID!) {\n  getUserfriendList(id: $id) {\n    __typename\n    id\n    friends\n    createdAt\n    updatedAt\n  }\n}"
+    "query GetUserfriendList($id: ID!) {\n  getUserfriendList(id: $id) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -2211,7 +2351,7 @@ public final class GetUserfriendListQuery: GraphQLQuery {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("friends", type: .list(.scalar(String.self))),
+        GraphQLField("friends", type: .list(.object(Friend.selections))),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -2222,8 +2362,8 @@ public final class GetUserfriendListQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, friends: [String?]? = nil, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, friends: [Friend?]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -2244,12 +2384,12 @@ public final class GetUserfriendListQuery: GraphQLQuery {
         }
       }
 
-      public var friends: [String?]? {
+      public var friends: [Friend?]? {
         get {
-          return snapshot["friends"] as? [String?]
+          return (snapshot["friends"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Friend(snapshot: $0) } } }
         }
         set {
-          snapshot.updateValue(newValue, forKey: "friends")
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "friends")
         }
       }
 
@@ -2270,13 +2410,60 @@ public final class GetUserfriendListQuery: GraphQLQuery {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
+
+      public struct Friend: GraphQLSelectionSet {
+        public static let possibleTypes = ["Friend"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+      }
     }
   }
 }
 
 public final class ListUserfriendListsQuery: GraphQLQuery {
   public static let operationString =
-    "query ListUserfriendLists($filter: ModelUserfriendListFilterInput, $limit: Int, $nextToken: String) {\n  listUserfriendLists(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      friends\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
+    "query ListUserfriendLists($filter: ModelUserfriendListFilterInput, $limit: Int, $nextToken: String) {\n  listUserfriendLists(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      friends {\n        __typename\n        id\n        name\n      }\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
 
   public var filter: ModelUserfriendListFilterInput?
   public var limit: Int?
@@ -2370,7 +2557,7 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-          GraphQLField("friends", type: .list(.scalar(String.self))),
+          GraphQLField("friends", type: .list(.object(Friend.selections))),
           GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
           GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
         ]
@@ -2381,8 +2568,8 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, friends: [String?]? = nil, createdAt: String, updatedAt: String) {
-          self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends, "createdAt": createdAt, "updatedAt": updatedAt])
+        public init(id: GraphQLID, friends: [Friend?]? = nil, createdAt: String, updatedAt: String) {
+          self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "createdAt": createdAt, "updatedAt": updatedAt])
         }
 
         public var __typename: String {
@@ -2403,12 +2590,12 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
           }
         }
 
-        public var friends: [String?]? {
+        public var friends: [Friend?]? {
           get {
-            return snapshot["friends"] as? [String?]
+            return (snapshot["friends"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Friend(snapshot: $0) } } }
           }
           set {
-            snapshot.updateValue(newValue, forKey: "friends")
+            snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "friends")
           }
         }
 
@@ -2427,6 +2614,53 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
           }
           set {
             snapshot.updateValue(newValue, forKey: "updatedAt")
+          }
+        }
+
+        public struct Friend: GraphQLSelectionSet {
+          public static let possibleTypes = ["Friend"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          ]
+
+          public var snapshot: Snapshot
+
+          public init(snapshot: Snapshot) {
+            self.snapshot = snapshot
+          }
+
+          public init(id: GraphQLID, name: String) {
+            self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+          }
+
+          public var __typename: String {
+            get {
+              return snapshot["__typename"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: GraphQLID {
+            get {
+              return snapshot["id"]! as! GraphQLID
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          public var name: String {
+            get {
+              return snapshot["name"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "name")
+            }
           }
         }
       }
@@ -2823,7 +3057,7 @@ public final class OnDeleteCurrentPositionSubscription: GraphQLSubscription {
 
 public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onCreateUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnCreateUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onCreateUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionUserfriendListFilterInput?
 
@@ -2867,7 +3101,7 @@ public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("friends", type: .list(.scalar(String.self))),
+        GraphQLField("friends", type: .list(.object(Friend.selections))),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -2878,8 +3112,8 @@ public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, friends: [String?]? = nil, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, friends: [Friend?]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -2900,12 +3134,12 @@ public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
         }
       }
 
-      public var friends: [String?]? {
+      public var friends: [Friend?]? {
         get {
-          return snapshot["friends"] as? [String?]
+          return (snapshot["friends"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Friend(snapshot: $0) } } }
         }
         set {
-          snapshot.updateValue(newValue, forKey: "friends")
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "friends")
         }
       }
 
@@ -2926,13 +3160,60 @@ public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
+
+      public struct Friend: GraphQLSelectionSet {
+        public static let possibleTypes = ["Friend"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+      }
     }
   }
 }
 
 public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onUpdateUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnUpdateUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onUpdateUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionUserfriendListFilterInput?
 
@@ -2976,7 +3257,7 @@ public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("friends", type: .list(.scalar(String.self))),
+        GraphQLField("friends", type: .list(.object(Friend.selections))),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -2987,8 +3268,8 @@ public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, friends: [String?]? = nil, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, friends: [Friend?]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -3009,12 +3290,12 @@ public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
         }
       }
 
-      public var friends: [String?]? {
+      public var friends: [Friend?]? {
         get {
-          return snapshot["friends"] as? [String?]
+          return (snapshot["friends"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Friend(snapshot: $0) } } }
         }
         set {
-          snapshot.updateValue(newValue, forKey: "friends")
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "friends")
         }
       }
 
@@ -3035,13 +3316,60 @@ public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
+
+      public struct Friend: GraphQLSelectionSet {
+        public static let possibleTypes = ["Friend"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+      }
     }
   }
 }
 
 public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onDeleteUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnDeleteUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onDeleteUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionUserfriendListFilterInput?
 
@@ -3085,7 +3413,7 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("friends", type: .list(.scalar(String.self))),
+        GraphQLField("friends", type: .list(.object(Friend.selections))),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -3096,8 +3424,8 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, friends: [String?]? = nil, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, friends: [Friend?]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserfriendList", "id": id, "friends": friends.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -3118,12 +3446,12 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
         }
       }
 
-      public var friends: [String?]? {
+      public var friends: [Friend?]? {
         get {
-          return snapshot["friends"] as? [String?]
+          return (snapshot["friends"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Friend(snapshot: $0) } } }
         }
         set {
-          snapshot.updateValue(newValue, forKey: "friends")
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "friends")
         }
       }
 
@@ -3142,6 +3470,53 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public struct Friend: GraphQLSelectionSet {
+        public static let possibleTypes = ["Friend"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
         }
       }
     }

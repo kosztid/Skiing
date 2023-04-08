@@ -14,7 +14,7 @@ struct FriendRequestView: View {
 }
 
 public struct FriendRequestRowView: View {
-    var requester: Friend
+    var requester: FriendModel
     let action: () -> Void
 
     public var body: some View {
