@@ -127,4 +127,14 @@ extension Container {
             FriendRequestView.ViewModel()
         }
     }
+
+    enum FriendAdd {
+        static let view = ParameterFactory { navigator in
+            FriendAddView(viewModel: viewModel(navigator))
+        }
+
+        static let viewModel = ParameterFactory { navigator in
+            FriendAddView.ViewModel(navigator: navigator, service: accountService())
+        }
+    }
 }

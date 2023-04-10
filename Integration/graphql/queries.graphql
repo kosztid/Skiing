@@ -55,3 +55,36 @@ query ListUserfriendLists(
     nextToken
   }
 }
+query GetFriendRequest($id: ID!) {
+  getFriendRequest(id: $id) {
+    id
+    senderEmail
+    sender {
+      id
+      name
+    }
+    recipient
+    createdAt
+    updatedAt
+  }
+}
+query ListFriendRequests(
+  $filter: ModelFriendRequestFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listFriendRequests(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      senderEmail
+      sender {
+        id
+        name
+      }
+      recipient
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}

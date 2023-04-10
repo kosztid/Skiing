@@ -30,6 +30,8 @@
 		555D8B5C29C73C07000B65AD /* ProfileView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5B29C73C07000B65AD /* ProfileView+ViewModel.swift */; };
 		555D8B5E29C73E4F000B65AD /* ProfileNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5D29C73E4F000B65AD /* ProfileNavigator.swift */; };
 		5588308729D9CE5400866B4F /* SocialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588308629D9CE5400866B4F /* SocialNavigator.swift */; };
+		55C0EAF229E41B1500FF40F3 /* FriendAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAF129E41B1500FF40F3 /* FriendAddView.swift */; };
+		55C0EAF429E41B2300FF40F3 /* FriendAddView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAF329E41B2300FF40F3 /* FriendAddView+ViewModel.swift */; };
 		55D6B65729C4C68800174065 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; };
 		55D6B65829C4C68800174065 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64A29C4C67C00174065 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55D6B65A29C4C68A00174065 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64B29C4C67C00174065 /* Core.framework */; };
@@ -89,6 +91,8 @@
 		555D8B5B29C73C07000B65AD /* ProfileView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+ViewModel.swift"; sourceTree = "<group>"; };
 		555D8B5D29C73E4F000B65AD /* ProfileNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigator.swift; sourceTree = "<group>"; };
 		5588308629D9CE5400866B4F /* SocialNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNavigator.swift; sourceTree = "<group>"; };
+		55C0EAF129E41B1500FF40F3 /* FriendAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAddView.swift; sourceTree = "<group>"; };
+		55C0EAF329E41B2300FF40F3 /* FriendAddView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendAddView+ViewModel.swift"; sourceTree = "<group>"; };
 		55D6B64A29C4C67C00174065 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64B29C4C67C00174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B64C29C4C67C00174065 /* Integration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Integration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,9 +236,19 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		55C0EAF029E41B0B00FF40F3 /* FriendAdd */ = {
+			isa = PBXGroup;
+			children = (
+				55C0EAF129E41B1500FF40F3 /* FriendAddView.swift */,
+				55C0EAF329E41B2300FF40F3 /* FriendAddView+ViewModel.swift */,
+			);
+			path = FriendAdd;
+			sourceTree = "<group>";
+		};
 		55E1ACA029D9B97200BA4F3A /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				55C0EAF029E41B0B00FF40F3 /* FriendAdd */,
 				55E1ACA529D9CA6000BA4F3A /* FriendRequest */,
 				55E1ACA129D9B99A00BA4F3A /* SocialView.swift */,
 				55E1ACA329D9B9A400BA4F3A /* SocialView+ViewModel.swift */,
@@ -421,9 +435,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				554C8C0929C4BFB50028C76C /* DI.swift in Sources */,
+				55C0EAF429E41B2300FF40F3 /* FriendAddView+ViewModel.swift in Sources */,
 				55E1ACA229D9B99A00BA4F3A /* SocialView.swift in Sources */,
 				555D8B5A29C73BFD000B65AD /* ProfileView.swift in Sources */,
 				55F36D4B29C7935500B9B93E /* RegisterView.swift in Sources */,
+				55C0EAF229E41B1500FF40F3 /* FriendAddView.swift in Sources */,
 				555D8B5629C73970000B65AD /* LoginView.swift in Sources */,
 				554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */,
 				55E1ACA929D9CA8300BA4F3A /* FriendRequestView+ViewModel.swift in Sources */,

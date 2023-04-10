@@ -27,7 +27,7 @@ struct SocialView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    viewModel.addFriend()
+                    viewModel.navigateToAddFriend()
                 } label: {
                     Image(systemName: "plus")
                 }

@@ -80,3 +80,51 @@ mutation DeleteUserfriendList(
     updatedAt
   }
 }
+mutation CreateFriendRequest(
+  $input: CreateFriendRequestInput!
+  $condition: ModelFriendRequestConditionInput
+) {
+  createFriendRequest(input: $input, condition: $condition) {
+    id
+    senderEmail
+    sender {
+      id
+      name
+    }
+    recipient
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateFriendRequest(
+  $input: UpdateFriendRequestInput!
+  $condition: ModelFriendRequestConditionInput
+) {
+  updateFriendRequest(input: $input, condition: $condition) {
+    id
+    senderEmail
+    sender {
+      id
+      name
+    }
+    recipient
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteFriendRequest(
+  $input: DeleteFriendRequestInput!
+  $condition: ModelFriendRequestConditionInput
+) {
+  deleteFriendRequest(input: $input, condition: $condition) {
+    id
+    senderEmail
+    sender {
+      id
+      name
+    }
+    recipient
+    createdAt
+    updatedAt
+  }
+}

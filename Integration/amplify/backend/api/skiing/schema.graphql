@@ -24,4 +24,12 @@ type UserfriendList
     friends: [Friend!]
 }
 
+type FriendRequest
+@model
+@auth (rules: [ { allow: public } ]) {
+    id: ID!
+    senderEmail: String!
+    sender: Friend!
+    recipient: String!
+}
 

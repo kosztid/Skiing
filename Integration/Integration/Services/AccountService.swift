@@ -13,6 +13,7 @@ public protocol AccountServiceProtocol: AnyObject {
     func signIn(_ username: String,_ password: String) async
     func confirmSignUp(with confirmationCode: String) async
     func addFriend() async
+    func sendFriendRequest(recipient: String) async
     func createLocation(xCoord: String, yCoord: String) async
     func queryLocation() async
     func queryFriends() async
@@ -119,6 +120,66 @@ extension AccountService: AccountServiceProtocol {
             print("Failed to create note: \(error)")
         } catch {
             print("Unexpected error while calling create API : \(error)")
+        }
+    }
+
+    public func sendFriendRequest(recipient: String) async {
+        do {
+            let user = try await Amplify.Auth.getCurrentUser()
+            var email = ""
+            do {
+                var attributes = try await Amplify.Auth.fetchUserAttributes()
+                for attribute in attributes {
+                    if (attribute.key.rawValue == "email") {
+                        email = attribute.value
+                        print(email)
+                    }
+                }
+            } catch let error as APIError {
+                    print(error)
+            }
+
+
+            let request = FriendRequest(senderEmail: email, sender: Friend(id: user.userId, name: user.username), recipient: recipient)
+
+            let result = try await Amplify.API.mutate(request: .create(request))
+            let parsedData = try result.get()
+            print("Successfully create location: \(parsedData)")
+
+        } catch let error as APIError {
+            print("Failed to create note: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
+    }
+
+    public func queryFriendRequests() async {
+        do {
+            let friendQueryResults = try await Amplify.API.query(request: .list(FriendRequest.self))
+
+            let user = try await Amplify.Auth.getCurrentUser()
+
+            let result = try friendQueryResults.get().elements
+
+            var email = ""
+            do {
+                var attributes = try await Amplify.Auth.fetchUserAttributes()
+                for attribute in attributes {
+                    if (attribute.key.rawValue == "email") {
+                        email = attribute.value
+                        print(email)
+                    }
+                }
+            } catch let error as APIError {
+                    print(error)
+            }
+
+            let currentFriendRequests = result.compactMap { item in
+                if item.recipient == email { return item } else { return nil }
+            }
+            print(currentFriendRequests)
+        } catch {
+            print("Can not retrieve Notes : error \(error)")
         }
     }
 

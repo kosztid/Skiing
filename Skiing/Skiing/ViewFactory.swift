@@ -42,6 +42,10 @@ enum ViewFactory {
         Container.FriendRequest.view()
     }
 
+    static func friendAddView(navigator: SocialAddViewNavigatorProtocol) -> FriendAddView {
+        Container.FriendAdd.view(navigator)
+    }
+
     //MARK: -  MAP
     static func googleMap(cameraPos: Binding<GMSCameraPosition>) -> GoogleMapsView {
         Container.GoogleMap.view((cameraPos))

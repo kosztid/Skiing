@@ -19,6 +19,8 @@
 		5572DCAB29C8DB4E00F73BC1 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572DCAA29C8DB4E00F73BC1 /* DI.swift */; };
 		55C0EAEC29E1FE4A00FF40F3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAEA29E1FE4A00FF40F3 /* Friend.swift */; };
 		55C0EAED29E1FE4A00FF40F3 /* Friend+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAEB29E1FE4A00FF40F3 /* Friend+Schema.swift */; };
+		55C0EAF729E4304700FF40F3 /* FriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAF529E4304700FF40F3 /* FriendRequest.swift */; };
+		55C0EAF829E4304700FF40F3 /* FriendRequest+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAF629E4304700FF40F3 /* FriendRequest+Schema.swift */; };
 		55D6B5F529C4C5F800174065 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B5F429C4C5F800174065 /* IntegrationTests.swift */; };
 		55D6B64729C4C66100174065 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D6B64629C4C66100174065 /* Core.framework */; };
 		55D6B69E29C4FC1A00174065 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6B69D29C4FC1A00174065 /* AccountService.swift */; };
@@ -53,6 +55,8 @@
 		5572DCAA29C8DB4E00F73BC1 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		55C0EAEA29E1FE4A00FF40F3 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Friend.swift; path = amplify/generated/models/Friend.swift; sourceTree = SOURCE_ROOT; };
 		55C0EAEB29E1FE4A00FF40F3 /* Friend+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Friend+Schema.swift"; path = "amplify/generated/models/Friend+Schema.swift"; sourceTree = SOURCE_ROOT; };
+		55C0EAF529E4304700FF40F3 /* FriendRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendRequest.swift; path = amplify/generated/models/FriendRequest.swift; sourceTree = SOURCE_ROOT; };
+		55C0EAF629E4304700FF40F3 /* FriendRequest+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FriendRequest+Schema.swift"; path = "amplify/generated/models/FriendRequest+Schema.swift"; sourceTree = SOURCE_ROOT; };
 		55D6B5F429C4C5F800174065 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		55D6B64629C4C66100174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B69A29C4E11000174065 /* Integration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Integration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +117,8 @@
 				55048D6E29CDBC0500254ADC /* AmplifyModels.swift */,
 				55048D6F29CDBC0600254ADC /* CurrentPosition.swift */,
 				55048D7029CDBC0600254ADC /* CurrentPosition+Schema.swift */,
+				55C0EAF529E4304700FF40F3 /* FriendRequest.swift */,
+				55C0EAF629E4304700FF40F3 /* FriendRequest+Schema.swift */,
 				55C0EAEA29E1FE4A00FF40F3 /* Friend.swift */,
 				55C0EAEB29E1FE4A00FF40F3 /* Friend+Schema.swift */,
 			);
@@ -371,10 +377,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				55E1AC9D29D98AC400BA4F3A /* UserfriendList+Schema.swift in Sources */,
+				55C0EAF729E4304700FF40F3 /* FriendRequest.swift in Sources */,
 				55048D7329CDBC0600254ADC /* CurrentPosition+Schema.swift in Sources */,
 				55C0EAED29E1FE4A00FF40F3 /* Friend+Schema.swift in Sources */,
 				55048D7229CDBC0600254ADC /* CurrentPosition.swift in Sources */,
 				55E1AC9C29D98AC400BA4F3A /* UserfriendList.swift in Sources */,
+				55C0EAF829E4304700FF40F3 /* FriendRequest+Schema.swift in Sources */,
 				5572DCAB29C8DB4E00F73BC1 /* DI.swift in Sources */,
 				55048D7129CDBC0600254ADC /* AmplifyModels.swift in Sources */,
 				55048D7729CDBC4000254ADC /* LocationService.swift in Sources */,

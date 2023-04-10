@@ -74,3 +74,48 @@ subscription OnDeleteUserfriendList(
     updatedAt
   }
 }
+subscription OnCreateFriendRequest(
+  $filter: ModelSubscriptionFriendRequestFilterInput
+) {
+  onCreateFriendRequest(filter: $filter) {
+    id
+    senderEmail
+    sender {
+      id
+      name
+    }
+    recipient
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateFriendRequest(
+  $filter: ModelSubscriptionFriendRequestFilterInput
+) {
+  onUpdateFriendRequest(filter: $filter) {
+    id
+    senderEmail
+    sender {
+      id
+      name
+    }
+    recipient
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteFriendRequest(
+  $filter: ModelSubscriptionFriendRequestFilterInput
+) {
+  onDeleteFriendRequest(filter: $filter) {
+    id
+    senderEmail
+    sender {
+      id
+      name
+    }
+    recipient
+    createdAt
+    updatedAt
+  }
+}

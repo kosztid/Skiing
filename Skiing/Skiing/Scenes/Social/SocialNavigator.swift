@@ -13,6 +13,7 @@ protocol SocialListViewNavigatorProtocol {
 }
 
 protocol SocialAddViewNavigatorProtocol {
+    func navigateBack()
 }
 
 protocol SocialRequestsViewNavigatorProtocol {
@@ -25,7 +26,7 @@ public struct SocialNavigator: Navigator {
         Router($routes) { screen, _ in
             switch screen {
             case .list: ViewFactory.socialView(navigator: self)
-            case .add: Text("Add")
+            case .add: ViewFactory.friendAddView(navigator: self)
             case .requests: ViewFactory.friendRequestView()
             }
         }
@@ -42,6 +43,12 @@ extension SocialNavigator: SocialListViewNavigatorProtocol {
     }
 
     func navigateToAdd() {
-        routes.push(.add)
+        routes.presentSheet(.add)
+    }
+}
+
+extension SocialNavigator: SocialAddViewNavigatorProtocol {
+    func navigateBack() {
+        routes.dismiss()
     }
 }
