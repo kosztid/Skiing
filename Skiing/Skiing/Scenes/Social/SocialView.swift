@@ -7,13 +7,15 @@ struct SocialView: View {
     
     var body: some View {
         ZStack {
-            ScrollView {
-                LazyVStack {
-                    ForEach(viewModel.friendList?.friends ?? []) { friend in
-                        FriendListItem(friend: friend)
-                    }
+            List {
+                ForEach(viewModel.friendList?.friends ?? []) { friend in
+                    FriendListItem(friend: friend)
+                        .listRowSeparator(.hidden)
                 }
+                .onDelete(perform: viewModel.delete)
             }
+            .listStyle(.plain)
+
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

@@ -8,15 +8,19 @@ import AWSAPIPlugin
 public protocol AccountServiceProtocol: AnyObject {
     var isSignedInPublisher: AnyPublisher<Bool, Never> { get }
     var friendListPublisher: AnyPublisher<Friendlist?, Never> { get }
+    var friendRequestsPublisher: AnyPublisher<[FriendRequest], Never> { get }
     func login() async
     func signUp(_ username: String,_ email: String,_ password: String) async
     func signIn(_ username: String,_ password: String) async
     func confirmSignUp(with confirmationCode: String) async
-    func addFriend() async
+    func addFriend(request: FriendRequest) async
+    func deleteFriend(friendlist: Friendlist) async
     func sendFriendRequest(recipient: String) async
     func createLocation(xCoord: String, yCoord: String) async
     func queryLocation() async
     func queryFriends() async
+    func createFriendList() async
+    func queryFriendRequests() async
     func queryFriendLocation(userId: String) async
     func updateLocation(xCoord: String, yCoord: String) async
     func signOut() async
@@ -25,6 +29,7 @@ public protocol AccountServiceProtocol: AnyObject {
 final class AccountService {
     private let isSignedIn: CurrentValueSubject<Bool, Never> = .init(false)
     private let friendList: CurrentValueSubject<Friendlist?, Never> = .init(nil)
+    private let friendRequests: CurrentValueSubject<[FriendRequest], Never> = .init([])
     private var cancellables: Set<AnyCancellable> = []
     private var username: String = ""
 
@@ -68,6 +73,12 @@ final class AccountService {
 }
 
 extension AccountService: AccountServiceProtocol {
+    var friendRequestsPublisher: AnyPublisher<[FriendRequest], Never> {
+        friendRequests
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
     var friendListPublisher: AnyPublisher<Friendlist?, Never> {
         friendList
             .receive(on: DispatchQueue.main)
@@ -95,7 +106,7 @@ extension AccountService: AccountServiceProtocol {
         }
     }
 
-    public func addFriend() async {
+    public func addFriend(request: FriendRequest) async {
         do {
             let user = try await Amplify.Auth.getCurrentUser()
             let friendQueryResults = try await Amplify.API.query(request: .list(UserfriendList.self))
@@ -107,11 +118,33 @@ extension AccountService: AccountServiceProtocol {
                 item.id == user.userId
             }?.friends
 
-            let id = UUID().uuidString
-            friends?.append(Friend(id: id, name: "asd"))
+            friends?.append(request.sender)
 
             let friendlist = Friendlist(id: user.userId, friends: friends)
             guard let data = friendlist.data else { return }
+            let result = try await Amplify.API.mutate(request: .update(data))
+            let _ = try await Amplify.API.mutate(request: .delete(request))
+            let parsedData = try result.get()
+            await queryFriends()
+            await queryFriendRequests()
+            print("Successfully create location: \(parsedData)")
+        } catch let error as APIError {
+            print("Failed to create note: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
+    }
+
+    public func deleteFriend(friendlist: Friendlist) async {
+        do {
+            let data = UserfriendList(
+                id: friendlist.id,
+                friends: friendlist.friends,
+                createdAt: friendlist.data?.createdAt,
+                updatedAt: friendlist.data?.updatedAt
+            )
+            print("servicefriends", data.friends)
+            print("friendlist", friendlist.friends)
             let result = try await Amplify.API.mutate(request: .update(data))
             let parsedData = try result.get()
             await queryFriends()
@@ -143,6 +176,7 @@ extension AccountService: AccountServiceProtocol {
             let request = FriendRequest(senderEmail: email, sender: Friend(id: user.userId, name: user.username), recipient: recipient)
 
             let result = try await Amplify.API.mutate(request: .create(request))
+
             let parsedData = try result.get()
             print("Successfully create location: \(parsedData)")
 
@@ -174,9 +208,12 @@ extension AccountService: AccountServiceProtocol {
                     print(error)
             }
 
+            print("Result", result)
             let currentFriendRequests = result.compactMap { item in
                 if item.recipient == email { return item } else { return nil }
             }
+
+            friendRequests.send(currentFriendRequests)
             print(currentFriendRequests)
         } catch {
             print("Can not retrieve Notes : error \(error)")

@@ -27,6 +27,7 @@ extension SocialView {
             initFriendList()
             Task {
                 await accountService.queryFriends()
+                await accountService.queryFriendRequests()
             }
         }
 
@@ -39,6 +40,14 @@ extension SocialView {
                 .store(in: &cancellables)
         }
 
+        func delete(at offsets: IndexSet) {
+            Task {
+                friendList?.friends?.remove(atOffsets: offsets)
+                guard let list = friendList else { return }
+                await accountService.deleteFriend(friendlist: list)
+            }
+        }
+
         func navigateToRequests() {
             navigator.navigateToRequest()
         }
@@ -46,12 +55,5 @@ extension SocialView {
         func navigateToAddFriend() {
             navigator.navigateToAdd()
         }
-
-        func addFriend() {
-            Task {
-                await accountService.addFriend()
-            }
-        }
-
     }
 }

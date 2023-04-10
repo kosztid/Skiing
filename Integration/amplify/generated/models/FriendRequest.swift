@@ -2,7 +2,7 @@
 import Amplify
 import Foundation
 
-public struct FriendRequest: Model {
+public struct FriendRequest: Model, Identifiable {
   public let id: String
   public var senderEmail: String
   public var sender: Friend

@@ -1,10 +1,41 @@
+import Combine
+import Integration
 import SwiftUI
 
 extension FriendRequestView {
     final class ViewModel: ObservableObject {
-        var requests: [FriendModel] = [
-            FriendModel(id: UUID().uuidString, name: "Béla"),
-            FriendModel(id: UUID().uuidString, name: "Pista")
-        ]
+        @Published var friendRequests: [FriendRequest] = []
+
+        private let service: AccountServiceProtocol
+
+        var requests: [FriendModel] = []
+        private var cancellables: Set<AnyCancellable> = []
+
+        public init(service: AccountServiceProtocol) {
+            self.service = service
+
+            initFriendRequests()
+        }
+
+        func initFriendRequests() {
+            service.friendRequestsPublisher
+                .sink { _ in
+                } receiveValue: { [weak self] requests in
+                    self?.friendRequests = requests
+                }
+                .store(in: &cancellables)
+        }
+
+        func addFriend(request: FriendRequest) {
+            Task {
+                await service.addFriend(request: request)
+            }
+        }
+
+        func refreshRequests() {
+            Task {
+                await service.queryFriendRequests()
+            }
+        }
     }
 }

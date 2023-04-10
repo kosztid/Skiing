@@ -5,21 +5,26 @@ struct FriendRequestView: View {
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(viewModel.requests) { request in
-                    FriendRequestRowView(requester: request, action: {})
+                ForEach(viewModel.friendRequests) { request in
+                    FriendRequestRowView(requester: request.senderEmail, action: {
+                        viewModel.addFriend(request: request)
+                    })
                 }
             }
+        }
+        .refreshable {
+            viewModel.refreshRequests()
         }
     }
 }
 
 public struct FriendRequestRowView: View {
-    var requester: FriendModel
+    var requester: String
     let action: () -> Void
 
     public var body: some View {
         HStack {
-            Text(requester.name)
+            Text(requester)
             Spacer()
             Button {
                 action()
@@ -27,12 +32,6 @@ public struct FriendRequestRowView: View {
                 Text("Accept")
             }
         }
-        .padding(.horizontal, 20)
-    }
-}
-
-struct FriendRequestView_Previews: PreviewProvider {
-    static var previews: some View {
-        FriendRequestView(viewModel: .init())
+        .padding(20)
     }
 }

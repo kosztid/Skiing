@@ -125,7 +125,7 @@ extension Container {
         }
 
         static let viewModel = Factory {
-            FriendRequestView.ViewModel()
+            FriendRequestView.ViewModel(service: accountService())
         }
     }
 
