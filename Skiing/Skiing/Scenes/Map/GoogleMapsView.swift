@@ -9,6 +9,7 @@ struct GoogleMapsView: UIViewRepresentable {
     let accountService: AccountServiceProtocol
 
     @Binding var cameraPos: GMSCameraPosition
+    @Binding var markers: [GMSMarker]
 
     func makeUIView(context: Context) -> GMSMapView {
         GMSServices.setMetalRendererEnabled(true)
@@ -30,6 +31,9 @@ struct GoogleMapsView: UIViewRepresentable {
                 view.camera = cameraPos
             }
         }
+        for marker in markers {
+            marker.map = view
+        }
     }
 
     func makeCoordinator() -> Coordinator {
@@ -38,9 +42,11 @@ struct GoogleMapsView: UIViewRepresentable {
 
     public init(
         cameraPos: Binding<GMSCameraPosition>,
+        markers: Binding<[GMSMarker]>,
         service: AccountServiceProtocol
     ) {
         self._cameraPos = cameraPos
+        self._markers = markers
         self.accountService = service
     }
 }

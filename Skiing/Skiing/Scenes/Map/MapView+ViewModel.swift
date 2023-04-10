@@ -14,6 +14,7 @@ extension MapView {
 
         @Published var path: NavigationRoute = .init()
         @Published var cameraPos: GMSCameraPosition
+        @Published var markers: [GMSMarker]
 
         init(accountService: AccountServiceProtocol) {
             self.accountService = accountService
@@ -22,29 +23,14 @@ extension MapView {
                 longitude: self.locationManager.location?.coordinate.longitude ?? 1,
                 zoom: 14
             )
-        }
+            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: 47.1873, longitude: 17.60286))
+            marker.title = "ME"
 
-        func getLoc() {
-            Task {
-                await self.accountService.queryLocation()
-            }
-        }
+            let marker2 = GMSMarker(position: CLLocationCoordinate2D(latitude: 47.1973, longitude: 17.60086))
+            marker2.title = "HER"
 
-        func getFriend() {
-            Task {
-                await self.accountService.queryFriendLocation(userId: "c0598ecb-9bff-47b4-90fe-4c6e5888db12")
-            }
-        }
-        func createLocation() {
-            Task {
-                await self.accountService.createLocation(xCoord: String(locationManager.location?.coordinate.latitude ?? 0), yCoord: String(locationManager.location?.coordinate.longitude ?? 0))
-            }
-        }
+            self.markers = [marker, marker2]
 
-        func listLocation() {
-            Task {
-                await self.accountService.queryLocation()
-            }
         }
 
         @objc
