@@ -13,6 +13,7 @@ extension MapView {
         var locationTimer: Timer?
 
         @Published var path: NavigationRoute = .init()
+        @Published var friendLocation: Location?
         @Published var cameraPos: GMSCameraPosition
         @Published var markers: [GMSMarker]
 
@@ -23,6 +24,7 @@ extension MapView {
                 longitude: self.locationManager.location?.coordinate.longitude ?? 1,
                 zoom: 14
             )
+
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: 47.1873, longitude: 17.60286))
             marker.title = "ME"
 
@@ -31,12 +33,33 @@ extension MapView {
 
             self.markers = [marker, marker2]
 
+            self.startTimer()
+
+            accountService.friendPositionPublisher
+                .sink { _ in
+                } receiveValue: { [weak self] loc in
+                    self?.friendLocation = loc
+                }
+                .store(in: &cancellables)
+        }
+
+        func confirm() {
+            Task {
+                await self.accountService.confirm()
+            }
+        }
+
+        func queryLocation() {
+            Task {
+                await self.accountService.queryLocation()
+            }
         }
 
         @objc
         func updateLocation() {
             Task {
                 await self.accountService.updateLocation(xCoord: String(locationManager.location?.coordinate.latitude ?? 0), yCoord: String(locationManager.location?.coordinate.longitude ?? 0))
+                await self.accountService.queryFriendLocation(userId: "c0598ecb-9bff-47b4-90fe-4c6e5888db12")
             }
         }
 
@@ -45,7 +68,7 @@ extension MapView {
         }
 
         func startTimer() {
-            Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
+            Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
         }
     }
 }

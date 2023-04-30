@@ -12,8 +12,24 @@ struct MapView: View {
                 markers: $viewModel.markers
             )
             .ignoresSafeArea()
+            VStack {
+                Button {
+                    viewModel.queryLocation()
+                } label: {
+                    Text("QueryLoc")
+                }
+
+                Button {
+                    viewModel.confirm()
+                } label: {
+                    Text("Confirm")
+                }
+            }
         }
         .onChange(of: viewModel.cameraPos) { newValue in
+            print(newValue)
+        }
+        .onChange(of: viewModel.friendLocation?.xCoord) { newValue in
             print(newValue)
         }
     }
