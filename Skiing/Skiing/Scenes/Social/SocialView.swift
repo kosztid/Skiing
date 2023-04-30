@@ -9,8 +9,10 @@ struct SocialView: View {
         ZStack {
             List {
                 ForEach(viewModel.friendList?.friends ?? []) { friend in
-                    FriendListItem(friend: friend)
-                        .listRowSeparator(.hidden)
+                    FriendListItem(friend: friend) {
+                        viewModel.updateTracking(id: friend.id)
+                    }
+                    .listRowSeparator(.hidden)
                 }
                 .onDelete(perform: viewModel.delete)
             }
@@ -46,6 +48,8 @@ public struct FriendModel: Identifiable {
 public struct FriendListItem: View {
     var friend: Friend
     @State var isTracking: Bool
+    let action: () -> Void
+
     public var body: some View {
         HStack {
             Text(friend.name)
@@ -53,11 +57,15 @@ public struct FriendListItem: View {
             Toggle(isOn: $isTracking) {
             }
         }
+        .onChange(of: isTracking) { _ in
+            action()
+        }
         .padding(.horizontal, 20)
     }
     
-    public init(friend: Friend, isTracking: Bool = false) {
+    public init(friend: Friend, isTracking: Bool = false, action: @escaping () -> Void) {
         self.friend = friend
-        self.isTracking = isTracking
+        self.isTracking = .init(friend.isTracking)
+        self.action = action
     }
 }

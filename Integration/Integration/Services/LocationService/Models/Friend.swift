@@ -3,6 +3,7 @@ import Amplify
 import Foundation
 
 public struct Friend: Embeddable, Identifiable {
-  public var id: String
-  public var name: String
+    public var id: String
+    public var name: String
+    public var isTracking: Bool
 }

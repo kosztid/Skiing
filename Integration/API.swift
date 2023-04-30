@@ -459,8 +459,8 @@ public struct CreateUserfriendListInput: GraphQLMapConvertible {
 public struct FriendInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID? = nil, name: String) {
-    graphQLMap = ["id": id, "name": name]
+  public init(id: GraphQLID? = nil, name: String, isTracking: Bool) {
+    graphQLMap = ["id": id, "name": name, "isTracking": isTracking]
   }
 
   public var id: GraphQLID? {
@@ -478,6 +478,15 @@ public struct FriendInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "name")
+    }
+  }
+
+  public var isTracking: Bool {
+    get {
+      return graphQLMap["isTracking"] as! Bool
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "isTracking")
     }
   }
 }
@@ -1797,7 +1806,7 @@ public final class DeleteCurrentPositionMutation: GraphQLMutation {
 
 public final class CreateUserfriendListMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateUserfriendList($input: CreateUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  createUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation CreateUserfriendList($input: CreateUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  createUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n      isTracking\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: CreateUserfriendListInput
   public var condition: ModelUserfriendListConditionInput?
@@ -1910,6 +1919,7 @@ public final class CreateUserfriendListMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -1918,8 +1928,8 @@ public final class CreateUserfriendListMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -1948,6 +1958,15 @@ public final class CreateUserfriendListMutation: GraphQLMutation {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -1955,7 +1974,7 @@ public final class CreateUserfriendListMutation: GraphQLMutation {
 
 public final class UpdateUserfriendListMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateUserfriendList($input: UpdateUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  updateUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation UpdateUserfriendList($input: UpdateUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  updateUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n      isTracking\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: UpdateUserfriendListInput
   public var condition: ModelUserfriendListConditionInput?
@@ -2068,6 +2087,7 @@ public final class UpdateUserfriendListMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -2076,8 +2096,8 @@ public final class UpdateUserfriendListMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -2106,6 +2126,15 @@ public final class UpdateUserfriendListMutation: GraphQLMutation {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -2113,7 +2142,7 @@ public final class UpdateUserfriendListMutation: GraphQLMutation {
 
 public final class DeleteUserfriendListMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteUserfriendList($input: DeleteUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  deleteUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation DeleteUserfriendList($input: DeleteUserfriendListInput!, $condition: ModelUserfriendListConditionInput) {\n  deleteUserfriendList(input: $input, condition: $condition) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n      isTracking\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: DeleteUserfriendListInput
   public var condition: ModelUserfriendListConditionInput?
@@ -2226,6 +2255,7 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -2234,8 +2264,8 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -2264,6 +2294,15 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -2271,7 +2310,7 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
 
 public final class CreateFriendRequestMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateFriendRequest($input: CreateFriendRequestInput!, $condition: ModelFriendRequestConditionInput) {\n  createFriendRequest(input: $input, condition: $condition) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation CreateFriendRequest($input: CreateFriendRequestInput!, $condition: ModelFriendRequestConditionInput) {\n  createFriendRequest(input: $input, condition: $condition) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n      isTracking\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: CreateFriendRequestInput
   public var condition: ModelFriendRequestConditionInput?
@@ -2404,6 +2443,7 @@ public final class CreateFriendRequestMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -2412,8 +2452,8 @@ public final class CreateFriendRequestMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -2442,6 +2482,15 @@ public final class CreateFriendRequestMutation: GraphQLMutation {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -2449,7 +2498,7 @@ public final class CreateFriendRequestMutation: GraphQLMutation {
 
 public final class UpdateFriendRequestMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateFriendRequest($input: UpdateFriendRequestInput!, $condition: ModelFriendRequestConditionInput) {\n  updateFriendRequest(input: $input, condition: $condition) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation UpdateFriendRequest($input: UpdateFriendRequestInput!, $condition: ModelFriendRequestConditionInput) {\n  updateFriendRequest(input: $input, condition: $condition) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n      isTracking\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: UpdateFriendRequestInput
   public var condition: ModelFriendRequestConditionInput?
@@ -2582,6 +2631,7 @@ public final class UpdateFriendRequestMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -2590,8 +2640,8 @@ public final class UpdateFriendRequestMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -2620,6 +2670,15 @@ public final class UpdateFriendRequestMutation: GraphQLMutation {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -2627,7 +2686,7 @@ public final class UpdateFriendRequestMutation: GraphQLMutation {
 
 public final class DeleteFriendRequestMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteFriendRequest($input: DeleteFriendRequestInput!, $condition: ModelFriendRequestConditionInput) {\n  deleteFriendRequest(input: $input, condition: $condition) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation DeleteFriendRequest($input: DeleteFriendRequestInput!, $condition: ModelFriendRequestConditionInput) {\n  deleteFriendRequest(input: $input, condition: $condition) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n      isTracking\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: DeleteFriendRequestInput
   public var condition: ModelFriendRequestConditionInput?
@@ -2760,6 +2819,7 @@ public final class DeleteFriendRequestMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -2768,8 +2828,8 @@ public final class DeleteFriendRequestMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -2796,6 +2856,15 @@ public final class DeleteFriendRequestMutation: GraphQLMutation {
           }
           set {
             snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
           }
         }
       }
@@ -3114,7 +3183,7 @@ public final class ListCurrentPositionsQuery: GraphQLQuery {
 
 public final class GetUserfriendListQuery: GraphQLQuery {
   public static let operationString =
-    "query GetUserfriendList($id: ID!) {\n  getUserfriendList(id: $id) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "query GetUserfriendList($id: ID!) {\n  getUserfriendList(id: $id) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n      isTracking\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -3225,6 +3294,7 @@ public final class GetUserfriendListQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -3233,8 +3303,8 @@ public final class GetUserfriendListQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -3263,6 +3333,15 @@ public final class GetUserfriendListQuery: GraphQLQuery {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -3270,7 +3349,7 @@ public final class GetUserfriendListQuery: GraphQLQuery {
 
 public final class ListUserfriendListsQuery: GraphQLQuery {
   public static let operationString =
-    "query ListUserfriendLists($filter: ModelUserfriendListFilterInput, $limit: Int, $nextToken: String) {\n  listUserfriendLists(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      friends {\n        __typename\n        id\n        name\n      }\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
+    "query ListUserfriendLists($filter: ModelUserfriendListFilterInput, $limit: Int, $nextToken: String) {\n  listUserfriendLists(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      friends {\n        __typename\n        id\n        name\n        isTracking\n      }\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
 
   public var filter: ModelUserfriendListFilterInput?
   public var limit: Int?
@@ -3431,6 +3510,7 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
           ]
 
           public var snapshot: Snapshot
@@ -3439,8 +3519,8 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String) {
-            self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+          public init(id: GraphQLID, name: String, isTracking: Bool) {
+            self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
           }
 
           public var __typename: String {
@@ -3469,6 +3549,15 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
               snapshot.updateValue(newValue, forKey: "name")
             }
           }
+
+          public var isTracking: Bool {
+            get {
+              return snapshot["isTracking"]! as! Bool
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "isTracking")
+            }
+          }
         }
       }
     }
@@ -3477,7 +3566,7 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
 
 public final class GetFriendRequestQuery: GraphQLQuery {
   public static let operationString =
-    "query GetFriendRequest($id: ID!) {\n  getFriendRequest(id: $id) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
+    "query GetFriendRequest($id: ID!) {\n  getFriendRequest(id: $id) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n      isTracking\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -3608,6 +3697,7 @@ public final class GetFriendRequestQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -3616,8 +3706,8 @@ public final class GetFriendRequestQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -3646,6 +3736,15 @@ public final class GetFriendRequestQuery: GraphQLQuery {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -3653,7 +3752,7 @@ public final class GetFriendRequestQuery: GraphQLQuery {
 
 public final class ListFriendRequestsQuery: GraphQLQuery {
   public static let operationString =
-    "query ListFriendRequests($filter: ModelFriendRequestFilterInput, $limit: Int, $nextToken: String) {\n  listFriendRequests(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      senderEmail\n      sender {\n        __typename\n        id\n        name\n      }\n      recipient\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
+    "query ListFriendRequests($filter: ModelFriendRequestFilterInput, $limit: Int, $nextToken: String) {\n  listFriendRequests(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      senderEmail\n      sender {\n        __typename\n        id\n        name\n        isTracking\n      }\n      recipient\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
 
   public var filter: ModelFriendRequestFilterInput?
   public var limit: Int?
@@ -3834,6 +3933,7 @@ public final class ListFriendRequestsQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
           ]
 
           public var snapshot: Snapshot
@@ -3842,8 +3942,8 @@ public final class ListFriendRequestsQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String) {
-            self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+          public init(id: GraphQLID, name: String, isTracking: Bool) {
+            self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
           }
 
           public var __typename: String {
@@ -3870,6 +3970,15 @@ public final class ListFriendRequestsQuery: GraphQLQuery {
             }
             set {
               snapshot.updateValue(newValue, forKey: "name")
+            }
+          }
+
+          public var isTracking: Bool {
+            get {
+              return snapshot["isTracking"]! as! Bool
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "isTracking")
             }
           }
         }
@@ -4267,7 +4376,7 @@ public final class OnDeleteCurrentPositionSubscription: GraphQLSubscription {
 
 public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onCreateUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnCreateUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onCreateUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n      isTracking\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionUserfriendListFilterInput?
 
@@ -4378,6 +4487,7 @@ public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -4386,8 +4496,8 @@ public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -4416,6 +4526,15 @@ public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -4423,7 +4542,7 @@ public final class OnCreateUserfriendListSubscription: GraphQLSubscription {
 
 public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onUpdateUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnUpdateUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onUpdateUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n      isTracking\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionUserfriendListFilterInput?
 
@@ -4534,6 +4653,7 @@ public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -4542,8 +4662,8 @@ public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -4572,6 +4692,15 @@ public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -4579,7 +4708,7 @@ public final class OnUpdateUserfriendListSubscription: GraphQLSubscription {
 
 public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onDeleteUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnDeleteUserfriendList($filter: ModelSubscriptionUserfriendListFilterInput) {\n  onDeleteUserfriendList(filter: $filter) {\n    __typename\n    id\n    friends {\n      __typename\n      id\n      name\n      isTracking\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionUserfriendListFilterInput?
 
@@ -4690,6 +4819,7 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -4698,8 +4828,8 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -4728,6 +4858,15 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -4735,7 +4874,7 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
 
 public final class OnCreateFriendRequestSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateFriendRequest($filter: ModelSubscriptionFriendRequestFilterInput) {\n  onCreateFriendRequest(filter: $filter) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnCreateFriendRequest($filter: ModelSubscriptionFriendRequestFilterInput) {\n  onCreateFriendRequest(filter: $filter) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n      isTracking\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionFriendRequestFilterInput?
 
@@ -4866,6 +5005,7 @@ public final class OnCreateFriendRequestSubscription: GraphQLSubscription {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -4874,8 +5014,8 @@ public final class OnCreateFriendRequestSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -4904,6 +5044,15 @@ public final class OnCreateFriendRequestSubscription: GraphQLSubscription {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -4911,7 +5060,7 @@ public final class OnCreateFriendRequestSubscription: GraphQLSubscription {
 
 public final class OnUpdateFriendRequestSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateFriendRequest($filter: ModelSubscriptionFriendRequestFilterInput) {\n  onUpdateFriendRequest(filter: $filter) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnUpdateFriendRequest($filter: ModelSubscriptionFriendRequestFilterInput) {\n  onUpdateFriendRequest(filter: $filter) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n      isTracking\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionFriendRequestFilterInput?
 
@@ -5042,6 +5191,7 @@ public final class OnUpdateFriendRequestSubscription: GraphQLSubscription {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -5050,8 +5200,8 @@ public final class OnUpdateFriendRequestSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -5080,6 +5230,15 @@ public final class OnUpdateFriendRequestSubscription: GraphQLSubscription {
             snapshot.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
       }
     }
   }
@@ -5087,7 +5246,7 @@ public final class OnUpdateFriendRequestSubscription: GraphQLSubscription {
 
 public final class OnDeleteFriendRequestSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteFriendRequest($filter: ModelSubscriptionFriendRequestFilterInput) {\n  onDeleteFriendRequest(filter: $filter) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnDeleteFriendRequest($filter: ModelSubscriptionFriendRequestFilterInput) {\n  onDeleteFriendRequest(filter: $filter) {\n    __typename\n    id\n    senderEmail\n    sender {\n      __typename\n      id\n      name\n      isTracking\n    }\n    recipient\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionFriendRequestFilterInput?
 
@@ -5218,6 +5377,7 @@ public final class OnDeleteFriendRequestSubscription: GraphQLSubscription {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isTracking", type: .nonNull(.scalar(Bool.self))),
         ]
 
         public var snapshot: Snapshot
@@ -5226,8 +5386,8 @@ public final class OnDeleteFriendRequestSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String) {
-          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name])
+        public init(id: GraphQLID, name: String, isTracking: Bool) {
+          self.init(snapshot: ["__typename": "Friend", "id": id, "name": name, "isTracking": isTracking])
         }
 
         public var __typename: String {
@@ -5254,6 +5414,15 @@ public final class OnDeleteFriendRequestSubscription: GraphQLSubscription {
           }
           set {
             snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var isTracking: Bool {
+          get {
+            return snapshot["isTracking"]! as! Bool
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "isTracking")
           }
         }
       }

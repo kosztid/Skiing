@@ -48,6 +48,12 @@ extension SocialView {
             }
         }
 
+        func updateTracking(id: String) {
+            Task {
+                await accountService.updateTracking(id: id)
+            }
+        }
+
         func navigateToRequests() {
             navigator.navigateToRequest()
         }

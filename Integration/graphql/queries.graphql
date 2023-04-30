@@ -32,6 +32,7 @@ query GetUserfriendList($id: ID!) {
     friends {
       id
       name
+      isTracking
     }
     createdAt
     updatedAt
@@ -48,6 +49,7 @@ query ListUserfriendLists(
       friends {
         id
         name
+        isTracking
       }
       createdAt
       updatedAt
@@ -62,6 +64,7 @@ query GetFriendRequest($id: ID!) {
     sender {
       id
       name
+      isTracking
     }
     recipient
     createdAt
@@ -80,6 +83,7 @@ query ListFriendRequests(
       sender {
         id
         name
+        isTracking
       }
       recipient
       createdAt

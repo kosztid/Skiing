@@ -7,6 +7,7 @@ extension Friend {
    public enum CodingKeys: String, ModelKey {
     case id
     case name
+    case isTracking
   }
   
   public static let keys = CodingKeys.self
@@ -19,7 +20,8 @@ extension Friend {
     
     model.fields(
       .field(friend.id, is: .required, ofType: .string),
-      .field(friend.name, is: .required, ofType: .string)
+      .field(friend.name, is: .required, ofType: .string),
+      .field(friend.isTracking, is: .required, ofType: .bool)
     )
     }
 }

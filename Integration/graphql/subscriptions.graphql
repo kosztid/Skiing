@@ -43,6 +43,7 @@ subscription OnCreateUserfriendList(
     friends {
       id
       name
+      isTracking
     }
     createdAt
     updatedAt
@@ -56,6 +57,7 @@ subscription OnUpdateUserfriendList(
     friends {
       id
       name
+      isTracking
     }
     createdAt
     updatedAt
@@ -69,6 +71,7 @@ subscription OnDeleteUserfriendList(
     friends {
       id
       name
+      isTracking
     }
     createdAt
     updatedAt
@@ -83,6 +86,7 @@ subscription OnCreateFriendRequest(
     sender {
       id
       name
+      isTracking
     }
     recipient
     createdAt
@@ -98,6 +102,7 @@ subscription OnUpdateFriendRequest(
     sender {
       id
       name
+      isTracking
     }
     recipient
     createdAt
@@ -113,6 +118,7 @@ subscription OnDeleteFriendRequest(
     sender {
       id
       name
+      isTracking
     }
     recipient
     createdAt
