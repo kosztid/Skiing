@@ -29,8 +29,5 @@ struct MapView: View {
         .onChange(of: viewModel.cameraPos) { newValue in
             print(newValue)
         }
-        .onChange(of: viewModel.friendLocation?.xCoord) { newValue in
-            print(newValue)
-        }
     }
 }

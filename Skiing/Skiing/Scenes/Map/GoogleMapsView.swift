@@ -11,6 +11,7 @@ struct GoogleMapsView: UIViewRepresentable {
     @Binding var cameraPos: GMSCameraPosition
     @Binding var markers: [GMSMarker]
 
+
     func makeUIView(context: Context) -> GMSMapView {
         GMSServices.setMetalRendererEnabled(true)
         let view = GMSMapView.map(
@@ -27,10 +28,11 @@ struct GoogleMapsView: UIViewRepresentable {
         if cameraPos != view.camera {
             if context.transaction.animation != nil {
                 view.animate(with: GMSCameraUpdate.setCamera(cameraPos))
-            } else {
-                view.camera = cameraPos
             }
         }
+
+        view.clear()
+
         for marker in markers {
             marker.map = view
         }

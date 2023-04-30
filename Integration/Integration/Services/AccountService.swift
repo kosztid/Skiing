@@ -10,6 +10,7 @@ public protocol AccountServiceProtocol: AnyObject {
     var friendListPublisher: AnyPublisher<Friendlist?, Never> { get }
     var friendRequestsPublisher: AnyPublisher<[FriendRequest], Never> { get }
     var friendPositionPublisher: AnyPublisher<Location?, Never> { get }
+    var friendPositionsPublisher: AnyPublisher<[Location], Never> { get }
     func login() async
     func signUp(_ username: String,_ email: String,_ password: String) async
     func signIn(_ username: String,_ password: String) async
@@ -23,6 +24,7 @@ public protocol AccountServiceProtocol: AnyObject {
     func createFriendList() async
     func queryFriendRequests() async
     func queryFriendLocation(userId: String) async
+    func queryFriendLocations(userIds: [String]) async
     func updateLocation(xCoord: String, yCoord: String) async
     func signOut() async
     func confirm() async
@@ -33,6 +35,7 @@ final class AccountService {
     private let friendList: CurrentValueSubject<Friendlist?, Never> = .init(nil)
     private let friendRequests: CurrentValueSubject<[FriendRequest], Never> = .init([])
     private let friendPosition: CurrentValueSubject<Location?, Never> = .init(nil)
+    private let friendPositions: CurrentValueSubject<[Location], Never> = .init([])
     private var cancellables: Set<AnyCancellable> = []
     private var username: String = ""
 
@@ -78,6 +81,12 @@ final class AccountService {
 extension AccountService: AccountServiceProtocol {
     var friendPositionPublisher: AnyPublisher<Location?, Never> {
         friendPosition
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
+    var friendPositionsPublisher: AnyPublisher<[Location], Never> {
+        friendPositions
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
@@ -300,6 +309,24 @@ extension AccountService: AccountServiceProtocol {
             print(result)
         } catch {
             print("Can not retrieve location : error \(error)")
+        }
+    }
+
+    func queryFriendLocations(userIds: [String]) async {
+        do {
+            let queryResult = try await Amplify.API.query(request: .list(CurrentPosition.self))
+
+            let result = try queryResult.get().elements.compactMap { cPos in
+                if userIds.contains(cPos.id) {
+                    return Location(from: cPos)
+                } else {
+                    return nil
+                }
+            }
+
+            self.friendPositions.send(result)
+        } catch {
+            print("Can not retrieve friendlocations : error \(error)")
         }
     }
 
