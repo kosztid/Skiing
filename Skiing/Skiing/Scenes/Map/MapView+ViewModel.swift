@@ -62,7 +62,7 @@ extension MapView {
         func updateLocation() {
             Task {
                 await self.accountService.updateLocation(xCoord: String(locationManager.location?.coordinate.latitude ?? 0), yCoord: String(locationManager.location?.coordinate.longitude ?? 0))
-                await self.accountService.queryFriendLocations(userIds: ["location_c0598ecb-9bff-47b4-90fe-4c6e5888db12"])
+                await self.accountService.queryFriendLocations()
             }
         }
 

@@ -24,7 +24,7 @@ public protocol AccountServiceProtocol: AnyObject {
     func createFriendList() async
     func queryFriendRequests() async
     func queryFriendLocation(userId: String) async
-    func queryFriendLocations(userIds: [String]) async
+    func queryFriendLocations() async
     func updateLocation(xCoord: String, yCoord: String) async
     func signOut() async
     func confirm() async
@@ -312,12 +312,18 @@ extension AccountService: AccountServiceProtocol {
         }
     }
 
-    func queryFriendLocations(userIds: [String]) async {
+    func queryFriendLocations() async {
         do {
+            await queryFriends()
+            var userIdList: [String] = []
+            userIdList = self.friendList.value?.friends?.compactMap { friendlist in
+                return ("location_" + friendlist.id)
+            } ?? []
+
             let queryResult = try await Amplify.API.query(request: .list(CurrentPosition.self))
 
             let result = try queryResult.get().elements.compactMap { cPos in
-                if userIds.contains(cPos.id) {
+                if userIdList.contains(cPos.id) {
                     return Location(from: cPos)
                 } else {
                     return nil
