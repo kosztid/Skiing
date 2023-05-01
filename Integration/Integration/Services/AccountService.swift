@@ -139,7 +139,7 @@ extension AccountService: AccountServiceProtocol {
 
             let friendlist = Friendlist(id: user.userId, friends: friends)
             guard let data = friendlist.data else { return }
-            let result = try await Amplify.API.mutate(request: .update(data))
+            let _ = try await Amplify.API.mutate(request: .update(data))
             let _ = try await Amplify.API.mutate(request: .delete(request))
 
             var senderFriends = friendQueryResultsMapped.first { item in
@@ -304,7 +304,11 @@ extension AccountService: AccountServiceProtocol {
             await queryFriends()
             var userIdList: [String] = []
             userIdList = self.friendList.value?.friends?.compactMap { friendlist in
-                return ("location_" + friendlist.id)
+                if friendlist.isTracking {
+                    return ("location_" + friendlist.id)
+                } else {
+                    return nil
+                }
             } ?? []
 
             let queryResult = try await Amplify.API.query(request: .list(CurrentPosition.self))
