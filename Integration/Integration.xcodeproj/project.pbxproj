@@ -16,6 +16,7 @@
 		55048D7929CDC2B600254ADC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D7829CDC2B600254ADC /* Location.swift */; };
 		5513D3CD29FF1F900079D5F6 /* Friend+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5513D3CB29FF1F900079D5F6 /* Friend+Schema.swift */; };
 		5513D3CE29FF1F900079D5F6 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5513D3CC29FF1F900079D5F6 /* Friend.swift */; };
+		5513D3D32A0121CC0079D5F6 /* TrackedPathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5513D3D22A0121CC0079D5F6 /* TrackedPathModel.swift */; };
 		555D8B3529C64CFF000B65AD /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3329C64CFF000B65AD /* amplifyconfiguration.json */; };
 		555D8B3629C64CFF000B65AD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3429C64CFF000B65AD /* awsconfiguration.json */; };
 		5572DCAB29C8DB4E00F73BC1 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572DCAA29C8DB4E00F73BC1 /* DI.swift */; };
@@ -52,6 +53,7 @@
 		55048D7829CDC2B600254ADC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5513D3CB29FF1F900079D5F6 /* Friend+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Friend+Schema.swift"; sourceTree = "<group>"; };
 		5513D3CC29FF1F900079D5F6 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		5513D3D22A0121CC0079D5F6 /* TrackedPathModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedPathModel.swift; sourceTree = "<group>"; };
 		555D8B3329C64CFF000B65AD /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		555D8B3429C64CFF000B65AD /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		5572DCAA29C8DB4E00F73BC1 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				55048D6D29CDBBF800254ADC /* Models */,
 				55048D7829CDC2B600254ADC /* Location.swift */,
 				55E1AC9E29D98C7300BA4F3A /* Friendlist.swift */,
+				5513D3D22A0121CC0079D5F6 /* TrackedPathModel.swift */,
 			);
 			path = LocationService;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5513D3D32A0121CC0079D5F6 /* TrackedPathModel.swift in Sources */,
 				55E1AC9D29D98AC400BA4F3A /* UserfriendList+Schema.swift in Sources */,
 				55C0EAF729E4304700FF40F3 /* FriendRequest.swift in Sources */,
 				5513D3CD29FF1F900079D5F6 /* Friend+Schema.swift in Sources */,

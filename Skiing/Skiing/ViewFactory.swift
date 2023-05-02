@@ -1,4 +1,5 @@
 import GoogleMaps
+import Integration
 import Factory
 import SwiftUI
 
@@ -47,8 +48,8 @@ enum ViewFactory {
     }
 
     //MARK: -  MAP
-    static func googleMap(cameraPos: Binding<GMSCameraPosition>, markers: Binding<[GMSMarker]>) -> GoogleMapsView {
-        Container.GoogleMap.view((cameraPos, markers))
+    static func googleMap(cameraPos: Binding<GMSCameraPosition>, markers: Binding<[GMSMarker]>, trackedPath: Binding<[TrackedPathModel]>) -> GoogleMapsView {
+        Container.GoogleMap.view((cameraPos, markers, trackedPath))
     }
 
     static func mapView() -> MapView {

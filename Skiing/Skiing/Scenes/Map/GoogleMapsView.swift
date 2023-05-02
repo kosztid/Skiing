@@ -10,6 +10,9 @@ struct GoogleMapsView: UIViewRepresentable {
 
     @Binding var cameraPos: GMSCameraPosition
     @Binding var markers: [GMSMarker]
+    @Binding var trackedPath: [TrackedPathModel]
+
+    var coordinates: [CLLocationCoordinate2D] = [CLLocationCoordinate2D(latitude: 47.1986, longitude: 17.60286), CLLocationCoordinate2D(latitude: 47.1786, longitude: 17.62286), CLLocationCoordinate2D(latitude: 47.1786, longitude: 17.65286), CLLocationCoordinate2D(latitude: 47.2186, longitude: 17.62286)]
 
 
     func makeUIView(context: Context) -> GMSMapView {
@@ -36,6 +39,20 @@ struct GoogleMapsView: UIViewRepresentable {
         for marker in markers {
             marker.map = view
         }
+
+        for track in trackedPath {
+            let path = GMSMutablePath()
+            for index in 0..<track.xCoord.count {
+                path.add(CLLocationCoordinate2D(latitude: track.xCoord[index], longitude: track.yCoord[index]))
+            }
+            let line = GMSPolyline(path: path)
+            line.strokeColor = UIColor.blue
+            line.strokeWidth = 3.0
+            line.map = view
+        }
+
+
+
     }
 
     func makeCoordinator() -> Coordinator {
@@ -45,10 +62,12 @@ struct GoogleMapsView: UIViewRepresentable {
     public init(
         cameraPos: Binding<GMSCameraPosition>,
         markers: Binding<[GMSMarker]>,
+        trackedPath: Binding<[TrackedPathModel]>,
         service: AccountServiceProtocol
     ) {
         self._cameraPos = cameraPos
         self._markers = markers
+        self._trackedPath = trackedPath
         self.accountService = service
     }
 }

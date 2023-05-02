@@ -127,11 +127,19 @@
 		55048D6329CDA9E500254ADC /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				5513D3CF2A0121A00079D5F6 /* Models */,
 				55048D6429CDA9F800254ADC /* GoogleMapsView.swift */,
 				55048D6829CDABD300254ADC /* MapView.swift */,
 				55048D8429CE038B00254ADC /* MapView+ViewModel.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		5513D3CF2A0121A00079D5F6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5528A8F429CA59890099703C /* Verify */ = {

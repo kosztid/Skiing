@@ -9,25 +9,29 @@ struct MapView: View {
         ZStack {
             ViewFactory.googleMap(
                 cameraPos: $viewModel.cameraPos,
-                markers: $viewModel.markers
+                markers: $viewModel.markers,
+                trackedPath: $viewModel.trackedPath
             )
             .ignoresSafeArea()
             VStack {
                 Button {
-                    viewModel.queryLocation()
+                    viewModel.startTracking()
                 } label: {
-                    Text("QueryLoc")
+                    Text("StartTracking")
                 }
 
                 Button {
-                    viewModel.confirm()
+                    viewModel.stopTracking()
                 } label: {
-                    Text("Confirm")
+                    Text("Stop tracking")
                 }
             }
         }
         .onChange(of: viewModel.cameraPos) { newValue in
             print(newValue)
+        }
+        .onChange(of: viewModel.trackedPath) { newValue in
+            print(viewModel.trackedPath)
         }
     }
 }
