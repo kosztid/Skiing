@@ -5,6 +5,11 @@ import GoogleMaps
 import Integration
 
 extension MapView {
+    enum TrackingState {
+        case paused
+        case on
+        case off
+    }
     final class ViewModel: ObservableObject, NavigationViewModel {
         private var cancellables: Set<AnyCancellable> = []
 
@@ -13,6 +18,7 @@ extension MapView {
         var locationTimer: Timer?
         var trackTimer: Timer?
 
+        @Published var isTracking = TrackingState.off
         @Published var path: NavigationRoute = .init()
         @Published var friendLocations: [Location] = []
         @Published var friendLocation: Location?
@@ -72,19 +78,32 @@ extension MapView {
             self.trackTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(trackRoute), userInfo: nil, repeats: true)
 //            self.trackedPath.append(TrackedPathModel(id: UUID().uuidString, name: "Path \(self.trackedPath.count)"))
             self.trackedPath.append(TrackedPathModel(id: UUID().uuidString, name: "Path \(self.trackedPath.count)"))
+            self.isTracking = .on
         }
 
+        func resumeTracking() {
+            self.trackTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(trackRoute), userInfo: nil, repeats: true)
+            self.isTracking = .on
+        }
+
+        func pauseTracking() {
+            self.trackTimer?.invalidate()
+            self.trackTimer = nil
+            self.isTracking = .paused
+        }
         func stopTracking() {
             self.trackTimer?.invalidate()
+            self.trackTimer = nil
+            self.isTracking = .off
         }
 
         @objc
         func trackRoute() {
-            var modified = self.trackedPath
+            let modified = self.trackedPath
             var xCoords = modified.last?.xCoord
             var yCoords = modified.last?.yCoord
-            xCoords?.append((47.1986 + (0.01 * Double(trackedPath.last?.xCoord.count ?? 0))))
-            yCoords?.append(17.60286 + Double(trackedPath.count) * 0.1)
+            xCoords?.append((47.1986 + (0.001 * Double(trackedPath.last?.xCoord.count ?? 0))))
+            yCoords?.append(17.60286 + Double(trackedPath.count) * 0.01)
 
             modified.last?.xCoord = xCoords ?? []
             modified.last?.yCoord = yCoords ?? []

@@ -14,17 +14,49 @@ struct MapView: View {
             )
             .ignoresSafeArea()
             VStack {
-                Button {
-                    viewModel.startTracking()
-                } label: {
-                    Text("StartTracking")
-                }
+                Spacer()
+                HStack {
+                    if viewModel.isTracking == .off {
+                        Spacer()
+                        Button {
+                            viewModel.startTracking()
+                        } label: {
+                            Text("Start Tracking")
+                        }
+                        .buttonStyle(SkiingButtonStyle())
+                    } else {
+                        if viewModel.isTracking == .on {
+                            Button {
+                                viewModel.pauseTracking()
+                            } label: {
+                                Text("Pause")
+                            }
+                            .buttonStyle(SkiingButtonStyle())
 
-                Button {
-                    viewModel.stopTracking()
-                } label: {
-                    Text("Stop tracking")
+                            Button {
+                                viewModel.stopTracking()
+                            } label: {
+                                Text("Stop")
+                            }
+                            .buttonStyle(SkiingButtonStyle())
+                        } else {
+                            Button {
+                                viewModel.resumeTracking()
+                            } label: {
+                                Text("Resume")
+                            }
+                            .buttonStyle(SkiingButtonStyle())
+
+                            Button {
+                                viewModel.stopTracking()
+                            } label: {
+                                Text("Stop")
+                            }
+                            .buttonStyle(SkiingButtonStyle())
+                        }
+                    }
                 }
+                .padding()
             }
         }
         .onChange(of: viewModel.cameraPos) { newValue in
