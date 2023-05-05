@@ -42,8 +42,8 @@ struct GoogleMapsView: UIViewRepresentable {
 
         for track in trackedPath {
             let path = GMSMutablePath()
-            for index in 0..<track.xCoord.count {
-                path.add(CLLocationCoordinate2D(latitude: track.xCoord[index], longitude: track.yCoord[index]))
+            for index in 0..<track.xCoords.count {
+                path.add(CLLocationCoordinate2D(latitude: track.xCoords[index], longitude: track.yCoords[index]))
             }
             let line = GMSPolyline(path: path)
             line.strokeColor = UIColor.blue

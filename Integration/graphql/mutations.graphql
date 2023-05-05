@@ -83,6 +83,54 @@ mutation DeleteUserfriendList(
     updatedAt
   }
 }
+mutation CreateUserTrackedPaths(
+  $input: CreateUserTrackedPathsInput!
+  $condition: ModelUserTrackedPathsConditionInput
+) {
+  createUserTrackedPaths(input: $input, condition: $condition) {
+    id
+    tracks {
+      id
+      name
+      xCoords
+      yCoords
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateUserTrackedPaths(
+  $input: UpdateUserTrackedPathsInput!
+  $condition: ModelUserTrackedPathsConditionInput
+) {
+  updateUserTrackedPaths(input: $input, condition: $condition) {
+    id
+    tracks {
+      id
+      name
+      xCoords
+      yCoords
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteUserTrackedPaths(
+  $input: DeleteUserTrackedPathsInput!
+  $condition: ModelUserTrackedPathsConditionInput
+) {
+  deleteUserTrackedPaths(input: $input, condition: $condition) {
+    id
+    tracks {
+      id
+      name
+      xCoords
+      yCoords
+    }
+    createdAt
+    updatedAt
+  }
+}
 mutation CreateFriendRequest(
   $input: CreateFriendRequestInput!
   $condition: ModelFriendRequestConditionInput

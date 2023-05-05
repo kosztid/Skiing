@@ -25,6 +25,21 @@ type UserfriendList
     friends: [Friend!]
 }
 
+type TrackedPath
+{
+    id: ID!
+    name: String!
+    xCoords: [Float!]
+    yCoords: [Float!]
+}
+
+type UserTrackedPaths
+@model
+@auth (rules: [ { allow: public } ]) {
+    id: ID!
+    tracks: [TrackedPath!]
+}
+
 type FriendRequest
 @model
 @auth (rules: [ { allow: public } ]) {

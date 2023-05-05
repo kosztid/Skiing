@@ -57,6 +57,39 @@ query ListUserfriendLists(
     nextToken
   }
 }
+query GetUserTrackedPaths($id: ID!) {
+  getUserTrackedPaths(id: $id) {
+    id
+    tracks {
+      id
+      name
+      xCoords
+      yCoords
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListUserTrackedPaths(
+  $filter: ModelUserTrackedPathsFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUserTrackedPaths(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      tracks {
+        id
+        name
+        xCoords
+        yCoords
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
 query GetFriendRequest($id: ID!) {
   getFriendRequest(id: $id) {
     id

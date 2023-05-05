@@ -569,6 +569,154 @@ public struct DeleteUserfriendListInput: GraphQLMapConvertible {
   }
 }
 
+public struct CreateUserTrackedPathsInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: GraphQLID? = nil, tracks: [TrackedPathInput]? = nil) {
+    graphQLMap = ["id": id, "tracks": tracks]
+  }
+
+  public var id: GraphQLID? {
+    get {
+      return graphQLMap["id"] as! GraphQLID?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var tracks: [TrackedPathInput]? {
+    get {
+      return graphQLMap["tracks"] as! [TrackedPathInput]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "tracks")
+    }
+  }
+}
+
+public struct TrackedPathInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: GraphQLID? = nil, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+    graphQLMap = ["id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords]
+  }
+
+  public var id: GraphQLID? {
+    get {
+      return graphQLMap["id"] as! GraphQLID?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var name: String {
+    get {
+      return graphQLMap["name"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "name")
+    }
+  }
+
+  public var xCoords: [Double]? {
+    get {
+      return graphQLMap["xCoords"] as! [Double]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "xCoords")
+    }
+  }
+
+  public var yCoords: [Double]? {
+    get {
+      return graphQLMap["yCoords"] as! [Double]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "yCoords")
+    }
+  }
+}
+
+public struct ModelUserTrackedPathsConditionInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(and: [ModelUserTrackedPathsConditionInput?]? = nil, or: [ModelUserTrackedPathsConditionInput?]? = nil, not: ModelUserTrackedPathsConditionInput? = nil) {
+    graphQLMap = ["and": and, "or": or, "not": not]
+  }
+
+  public var and: [ModelUserTrackedPathsConditionInput?]? {
+    get {
+      return graphQLMap["and"] as! [ModelUserTrackedPathsConditionInput?]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "and")
+    }
+  }
+
+  public var or: [ModelUserTrackedPathsConditionInput?]? {
+    get {
+      return graphQLMap["or"] as! [ModelUserTrackedPathsConditionInput?]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "or")
+    }
+  }
+
+  public var not: ModelUserTrackedPathsConditionInput? {
+    get {
+      return graphQLMap["not"] as! ModelUserTrackedPathsConditionInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "not")
+    }
+  }
+}
+
+public struct UpdateUserTrackedPathsInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: GraphQLID, tracks: [TrackedPathInput]? = nil) {
+    graphQLMap = ["id": id, "tracks": tracks]
+  }
+
+  public var id: GraphQLID {
+    get {
+      return graphQLMap["id"] as! GraphQLID
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var tracks: [TrackedPathInput]? {
+    get {
+      return graphQLMap["tracks"] as! [TrackedPathInput]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "tracks")
+    }
+  }
+}
+
+public struct DeleteUserTrackedPathsInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: GraphQLID) {
+    graphQLMap = ["id": id]
+  }
+
+  public var id: GraphQLID {
+    get {
+      return graphQLMap["id"] as! GraphQLID
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+}
+
 public struct CreateFriendRequestInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
@@ -967,6 +1115,50 @@ public struct ModelUserfriendListFilterInput: GraphQLMapConvertible {
   }
 }
 
+public struct ModelUserTrackedPathsFilterInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: ModelIDInput? = nil, and: [ModelUserTrackedPathsFilterInput?]? = nil, or: [ModelUserTrackedPathsFilterInput?]? = nil, not: ModelUserTrackedPathsFilterInput? = nil) {
+    graphQLMap = ["id": id, "and": and, "or": or, "not": not]
+  }
+
+  public var id: ModelIDInput? {
+    get {
+      return graphQLMap["id"] as! ModelIDInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var and: [ModelUserTrackedPathsFilterInput?]? {
+    get {
+      return graphQLMap["and"] as! [ModelUserTrackedPathsFilterInput?]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "and")
+    }
+  }
+
+  public var or: [ModelUserTrackedPathsFilterInput?]? {
+    get {
+      return graphQLMap["or"] as! [ModelUserTrackedPathsFilterInput?]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "or")
+    }
+  }
+
+  public var not: ModelUserTrackedPathsFilterInput? {
+    get {
+      return graphQLMap["not"] as! ModelUserTrackedPathsFilterInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "not")
+    }
+  }
+}
+
 public struct ModelFriendRequestFilterInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
@@ -1351,6 +1543,41 @@ public struct ModelSubscriptionUserfriendListFilterInput: GraphQLMapConvertible 
   public var or: [ModelSubscriptionUserfriendListFilterInput?]? {
     get {
       return graphQLMap["or"] as! [ModelSubscriptionUserfriendListFilterInput?]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "or")
+    }
+  }
+}
+
+public struct ModelSubscriptionUserTrackedPathsFilterInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: ModelSubscriptionIDInput? = nil, and: [ModelSubscriptionUserTrackedPathsFilterInput?]? = nil, or: [ModelSubscriptionUserTrackedPathsFilterInput?]? = nil) {
+    graphQLMap = ["id": id, "and": and, "or": or]
+  }
+
+  public var id: ModelSubscriptionIDInput? {
+    get {
+      return graphQLMap["id"] as! ModelSubscriptionIDInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var and: [ModelSubscriptionUserTrackedPathsFilterInput?]? {
+    get {
+      return graphQLMap["and"] as! [ModelSubscriptionUserTrackedPathsFilterInput?]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "and")
+    }
+  }
+
+  public var or: [ModelSubscriptionUserTrackedPathsFilterInput?]? {
+    get {
+      return graphQLMap["or"] as! [ModelSubscriptionUserTrackedPathsFilterInput?]?
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "or")
@@ -2301,6 +2528,540 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
           }
           set {
             snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class CreateUserTrackedPathsMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation CreateUserTrackedPaths($input: CreateUserTrackedPathsInput!, $condition: ModelUserTrackedPathsConditionInput) {\n  createUserTrackedPaths(input: $input, condition: $condition) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+
+  public var input: CreateUserTrackedPathsInput
+  public var condition: ModelUserTrackedPathsConditionInput?
+
+  public init(input: CreateUserTrackedPathsInput, condition: ModelUserTrackedPathsConditionInput? = nil) {
+    self.input = input
+    self.condition = condition
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input, "condition": condition]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("createUserTrackedPaths", arguments: ["input": GraphQLVariable("input"), "condition": GraphQLVariable("condition")], type: .object(CreateUserTrackedPath.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(createUserTrackedPaths: CreateUserTrackedPath? = nil) {
+      self.init(snapshot: ["__typename": "Mutation", "createUserTrackedPaths": createUserTrackedPaths.flatMap { $0.snapshot }])
+    }
+
+    public var createUserTrackedPaths: CreateUserTrackedPath? {
+      get {
+        return (snapshot["createUserTrackedPaths"] as? Snapshot).flatMap { CreateUserTrackedPath(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "createUserTrackedPaths")
+      }
+    }
+
+    public struct CreateUserTrackedPath: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserTrackedPaths"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("tracks", type: .list(.nonNull(.object(Track.selections)))),
+        GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+        GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, tracks: [Track]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserTrackedPaths", "id": id, "tracks": tracks.flatMap { $0.map { $0.snapshot } }, "createdAt": createdAt, "updatedAt": updatedAt])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var tracks: [Track]? {
+        get {
+          return (snapshot["tracks"] as? [Snapshot]).flatMap { $0.map { Track(snapshot: $0) } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.snapshot } }, forKey: "tracks")
+        }
+      }
+
+      public var createdAt: String {
+        get {
+          return snapshot["createdAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var updatedAt: String {
+        get {
+          return snapshot["updatedAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public struct Track: GraphQLSelectionSet {
+        public static let possibleTypes = ["TrackedPath"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
+          GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var xCoords: [Double]? {
+          get {
+            return snapshot["xCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "xCoords")
+          }
+        }
+
+        public var yCoords: [Double]? {
+          get {
+            return snapshot["yCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "yCoords")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class UpdateUserTrackedPathsMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation UpdateUserTrackedPaths($input: UpdateUserTrackedPathsInput!, $condition: ModelUserTrackedPathsConditionInput) {\n  updateUserTrackedPaths(input: $input, condition: $condition) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+
+  public var input: UpdateUserTrackedPathsInput
+  public var condition: ModelUserTrackedPathsConditionInput?
+
+  public init(input: UpdateUserTrackedPathsInput, condition: ModelUserTrackedPathsConditionInput? = nil) {
+    self.input = input
+    self.condition = condition
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input, "condition": condition]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateUserTrackedPaths", arguments: ["input": GraphQLVariable("input"), "condition": GraphQLVariable("condition")], type: .object(UpdateUserTrackedPath.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(updateUserTrackedPaths: UpdateUserTrackedPath? = nil) {
+      self.init(snapshot: ["__typename": "Mutation", "updateUserTrackedPaths": updateUserTrackedPaths.flatMap { $0.snapshot }])
+    }
+
+    public var updateUserTrackedPaths: UpdateUserTrackedPath? {
+      get {
+        return (snapshot["updateUserTrackedPaths"] as? Snapshot).flatMap { UpdateUserTrackedPath(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "updateUserTrackedPaths")
+      }
+    }
+
+    public struct UpdateUserTrackedPath: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserTrackedPaths"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("tracks", type: .list(.nonNull(.object(Track.selections)))),
+        GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+        GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, tracks: [Track]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserTrackedPaths", "id": id, "tracks": tracks.flatMap { $0.map { $0.snapshot } }, "createdAt": createdAt, "updatedAt": updatedAt])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var tracks: [Track]? {
+        get {
+          return (snapshot["tracks"] as? [Snapshot]).flatMap { $0.map { Track(snapshot: $0) } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.snapshot } }, forKey: "tracks")
+        }
+      }
+
+      public var createdAt: String {
+        get {
+          return snapshot["createdAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var updatedAt: String {
+        get {
+          return snapshot["updatedAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public struct Track: GraphQLSelectionSet {
+        public static let possibleTypes = ["TrackedPath"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
+          GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var xCoords: [Double]? {
+          get {
+            return snapshot["xCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "xCoords")
+          }
+        }
+
+        public var yCoords: [Double]? {
+          get {
+            return snapshot["yCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "yCoords")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class DeleteUserTrackedPathsMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation DeleteUserTrackedPaths($input: DeleteUserTrackedPathsInput!, $condition: ModelUserTrackedPathsConditionInput) {\n  deleteUserTrackedPaths(input: $input, condition: $condition) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+
+  public var input: DeleteUserTrackedPathsInput
+  public var condition: ModelUserTrackedPathsConditionInput?
+
+  public init(input: DeleteUserTrackedPathsInput, condition: ModelUserTrackedPathsConditionInput? = nil) {
+    self.input = input
+    self.condition = condition
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input, "condition": condition]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("deleteUserTrackedPaths", arguments: ["input": GraphQLVariable("input"), "condition": GraphQLVariable("condition")], type: .object(DeleteUserTrackedPath.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(deleteUserTrackedPaths: DeleteUserTrackedPath? = nil) {
+      self.init(snapshot: ["__typename": "Mutation", "deleteUserTrackedPaths": deleteUserTrackedPaths.flatMap { $0.snapshot }])
+    }
+
+    public var deleteUserTrackedPaths: DeleteUserTrackedPath? {
+      get {
+        return (snapshot["deleteUserTrackedPaths"] as? Snapshot).flatMap { DeleteUserTrackedPath(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "deleteUserTrackedPaths")
+      }
+    }
+
+    public struct DeleteUserTrackedPath: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserTrackedPaths"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("tracks", type: .list(.nonNull(.object(Track.selections)))),
+        GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+        GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, tracks: [Track]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserTrackedPaths", "id": id, "tracks": tracks.flatMap { $0.map { $0.snapshot } }, "createdAt": createdAt, "updatedAt": updatedAt])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var tracks: [Track]? {
+        get {
+          return (snapshot["tracks"] as? [Snapshot]).flatMap { $0.map { Track(snapshot: $0) } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.snapshot } }, forKey: "tracks")
+        }
+      }
+
+      public var createdAt: String {
+        get {
+          return snapshot["createdAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var updatedAt: String {
+        get {
+          return snapshot["updatedAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public struct Track: GraphQLSelectionSet {
+        public static let possibleTypes = ["TrackedPath"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
+          GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var xCoords: [Double]? {
+          get {
+            return snapshot["xCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "xCoords")
+          }
+        }
+
+        public var yCoords: [Double]? {
+          get {
+            return snapshot["yCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "yCoords")
           }
         }
       }
@@ -3556,6 +4317,409 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
             }
             set {
               snapshot.updateValue(newValue, forKey: "isTracking")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class GetUserTrackedPathsQuery: GraphQLQuery {
+  public static let operationString =
+    "query GetUserTrackedPaths($id: ID!) {\n  getUserTrackedPaths(id: $id) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+
+  public var id: GraphQLID
+
+  public init(id: GraphQLID) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("getUserTrackedPaths", arguments: ["id": GraphQLVariable("id")], type: .object(GetUserTrackedPath.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(getUserTrackedPaths: GetUserTrackedPath? = nil) {
+      self.init(snapshot: ["__typename": "Query", "getUserTrackedPaths": getUserTrackedPaths.flatMap { $0.snapshot }])
+    }
+
+    public var getUserTrackedPaths: GetUserTrackedPath? {
+      get {
+        return (snapshot["getUserTrackedPaths"] as? Snapshot).flatMap { GetUserTrackedPath(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "getUserTrackedPaths")
+      }
+    }
+
+    public struct GetUserTrackedPath: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserTrackedPaths"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("tracks", type: .list(.nonNull(.object(Track.selections)))),
+        GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+        GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, tracks: [Track]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserTrackedPaths", "id": id, "tracks": tracks.flatMap { $0.map { $0.snapshot } }, "createdAt": createdAt, "updatedAt": updatedAt])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var tracks: [Track]? {
+        get {
+          return (snapshot["tracks"] as? [Snapshot]).flatMap { $0.map { Track(snapshot: $0) } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.snapshot } }, forKey: "tracks")
+        }
+      }
+
+      public var createdAt: String {
+        get {
+          return snapshot["createdAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var updatedAt: String {
+        get {
+          return snapshot["updatedAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public struct Track: GraphQLSelectionSet {
+        public static let possibleTypes = ["TrackedPath"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
+          GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var xCoords: [Double]? {
+          get {
+            return snapshot["xCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "xCoords")
+          }
+        }
+
+        public var yCoords: [Double]? {
+          get {
+            return snapshot["yCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "yCoords")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class ListUserTrackedPathsQuery: GraphQLQuery {
+  public static let operationString =
+    "query ListUserTrackedPaths($filter: ModelUserTrackedPathsFilterInput, $limit: Int, $nextToken: String) {\n  listUserTrackedPaths(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      tracks {\n        __typename\n        id\n        name\n        xCoords\n        yCoords\n      }\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
+
+  public var filter: ModelUserTrackedPathsFilterInput?
+  public var limit: Int?
+  public var nextToken: String?
+
+  public init(filter: ModelUserTrackedPathsFilterInput? = nil, limit: Int? = nil, nextToken: String? = nil) {
+    self.filter = filter
+    self.limit = limit
+    self.nextToken = nextToken
+  }
+
+  public var variables: GraphQLMap? {
+    return ["filter": filter, "limit": limit, "nextToken": nextToken]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("listUserTrackedPaths", arguments: ["filter": GraphQLVariable("filter"), "limit": GraphQLVariable("limit"), "nextToken": GraphQLVariable("nextToken")], type: .object(ListUserTrackedPath.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(listUserTrackedPaths: ListUserTrackedPath? = nil) {
+      self.init(snapshot: ["__typename": "Query", "listUserTrackedPaths": listUserTrackedPaths.flatMap { $0.snapshot }])
+    }
+
+    public var listUserTrackedPaths: ListUserTrackedPath? {
+      get {
+        return (snapshot["listUserTrackedPaths"] as? Snapshot).flatMap { ListUserTrackedPath(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "listUserTrackedPaths")
+      }
+    }
+
+    public struct ListUserTrackedPath: GraphQLSelectionSet {
+      public static let possibleTypes = ["ModelUserTrackedPathsConnection"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("items", type: .nonNull(.list(.object(Item.selections)))),
+        GraphQLField("nextToken", type: .scalar(String.self)),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(items: [Item?], nextToken: String? = nil) {
+        self.init(snapshot: ["__typename": "ModelUserTrackedPathsConnection", "items": items.map { $0.flatMap { $0.snapshot } }, "nextToken": nextToken])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var items: [Item?] {
+        get {
+          return (snapshot["items"] as! [Snapshot?]).map { $0.flatMap { Item(snapshot: $0) } }
+        }
+        set {
+          snapshot.updateValue(newValue.map { $0.flatMap { $0.snapshot } }, forKey: "items")
+        }
+      }
+
+      public var nextToken: String? {
+        get {
+          return snapshot["nextToken"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "nextToken")
+        }
+      }
+
+      public struct Item: GraphQLSelectionSet {
+        public static let possibleTypes = ["UserTrackedPaths"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("tracks", type: .list(.nonNull(.object(Track.selections)))),
+          GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+          GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, tracks: [Track]? = nil, createdAt: String, updatedAt: String) {
+          self.init(snapshot: ["__typename": "UserTrackedPaths", "id": id, "tracks": tracks.flatMap { $0.map { $0.snapshot } }, "createdAt": createdAt, "updatedAt": updatedAt])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var tracks: [Track]? {
+          get {
+            return (snapshot["tracks"] as? [Snapshot]).flatMap { $0.map { Track(snapshot: $0) } }
+          }
+          set {
+            snapshot.updateValue(newValue.flatMap { $0.map { $0.snapshot } }, forKey: "tracks")
+          }
+        }
+
+        public var createdAt: String {
+          get {
+            return snapshot["createdAt"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "createdAt")
+          }
+        }
+
+        public var updatedAt: String {
+          get {
+            return snapshot["updatedAt"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "updatedAt")
+          }
+        }
+
+        public struct Track: GraphQLSelectionSet {
+          public static let possibleTypes = ["TrackedPath"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
+            GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
+          ]
+
+          public var snapshot: Snapshot
+
+          public init(snapshot: Snapshot) {
+            self.snapshot = snapshot
+          }
+
+          public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+            self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+          }
+
+          public var __typename: String {
+            get {
+              return snapshot["__typename"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: GraphQLID {
+            get {
+              return snapshot["id"]! as! GraphQLID
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          public var name: String {
+            get {
+              return snapshot["name"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "name")
+            }
+          }
+
+          public var xCoords: [Double]? {
+            get {
+              return snapshot["xCoords"] as? [Double]
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "xCoords")
+            }
+          }
+
+          public var yCoords: [Double]? {
+            get {
+              return snapshot["yCoords"] as? [Double]
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "yCoords")
             }
           }
         }
@@ -4865,6 +6029,534 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
           }
           set {
             snapshot.updateValue(newValue, forKey: "isTracking")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class OnCreateUserTrackedPathsSubscription: GraphQLSubscription {
+  public static let operationString =
+    "subscription OnCreateUserTrackedPaths($filter: ModelSubscriptionUserTrackedPathsFilterInput) {\n  onCreateUserTrackedPaths(filter: $filter) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+
+  public var filter: ModelSubscriptionUserTrackedPathsFilterInput?
+
+  public init(filter: ModelSubscriptionUserTrackedPathsFilterInput? = nil) {
+    self.filter = filter
+  }
+
+  public var variables: GraphQLMap? {
+    return ["filter": filter]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Subscription"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("onCreateUserTrackedPaths", arguments: ["filter": GraphQLVariable("filter")], type: .object(OnCreateUserTrackedPath.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(onCreateUserTrackedPaths: OnCreateUserTrackedPath? = nil) {
+      self.init(snapshot: ["__typename": "Subscription", "onCreateUserTrackedPaths": onCreateUserTrackedPaths.flatMap { $0.snapshot }])
+    }
+
+    public var onCreateUserTrackedPaths: OnCreateUserTrackedPath? {
+      get {
+        return (snapshot["onCreateUserTrackedPaths"] as? Snapshot).flatMap { OnCreateUserTrackedPath(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "onCreateUserTrackedPaths")
+      }
+    }
+
+    public struct OnCreateUserTrackedPath: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserTrackedPaths"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("tracks", type: .list(.nonNull(.object(Track.selections)))),
+        GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+        GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, tracks: [Track]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserTrackedPaths", "id": id, "tracks": tracks.flatMap { $0.map { $0.snapshot } }, "createdAt": createdAt, "updatedAt": updatedAt])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var tracks: [Track]? {
+        get {
+          return (snapshot["tracks"] as? [Snapshot]).flatMap { $0.map { Track(snapshot: $0) } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.snapshot } }, forKey: "tracks")
+        }
+      }
+
+      public var createdAt: String {
+        get {
+          return snapshot["createdAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var updatedAt: String {
+        get {
+          return snapshot["updatedAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public struct Track: GraphQLSelectionSet {
+        public static let possibleTypes = ["TrackedPath"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
+          GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var xCoords: [Double]? {
+          get {
+            return snapshot["xCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "xCoords")
+          }
+        }
+
+        public var yCoords: [Double]? {
+          get {
+            return snapshot["yCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "yCoords")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class OnUpdateUserTrackedPathsSubscription: GraphQLSubscription {
+  public static let operationString =
+    "subscription OnUpdateUserTrackedPaths($filter: ModelSubscriptionUserTrackedPathsFilterInput) {\n  onUpdateUserTrackedPaths(filter: $filter) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+
+  public var filter: ModelSubscriptionUserTrackedPathsFilterInput?
+
+  public init(filter: ModelSubscriptionUserTrackedPathsFilterInput? = nil) {
+    self.filter = filter
+  }
+
+  public var variables: GraphQLMap? {
+    return ["filter": filter]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Subscription"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("onUpdateUserTrackedPaths", arguments: ["filter": GraphQLVariable("filter")], type: .object(OnUpdateUserTrackedPath.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(onUpdateUserTrackedPaths: OnUpdateUserTrackedPath? = nil) {
+      self.init(snapshot: ["__typename": "Subscription", "onUpdateUserTrackedPaths": onUpdateUserTrackedPaths.flatMap { $0.snapshot }])
+    }
+
+    public var onUpdateUserTrackedPaths: OnUpdateUserTrackedPath? {
+      get {
+        return (snapshot["onUpdateUserTrackedPaths"] as? Snapshot).flatMap { OnUpdateUserTrackedPath(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "onUpdateUserTrackedPaths")
+      }
+    }
+
+    public struct OnUpdateUserTrackedPath: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserTrackedPaths"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("tracks", type: .list(.nonNull(.object(Track.selections)))),
+        GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+        GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, tracks: [Track]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserTrackedPaths", "id": id, "tracks": tracks.flatMap { $0.map { $0.snapshot } }, "createdAt": createdAt, "updatedAt": updatedAt])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var tracks: [Track]? {
+        get {
+          return (snapshot["tracks"] as? [Snapshot]).flatMap { $0.map { Track(snapshot: $0) } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.snapshot } }, forKey: "tracks")
+        }
+      }
+
+      public var createdAt: String {
+        get {
+          return snapshot["createdAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var updatedAt: String {
+        get {
+          return snapshot["updatedAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public struct Track: GraphQLSelectionSet {
+        public static let possibleTypes = ["TrackedPath"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
+          GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var xCoords: [Double]? {
+          get {
+            return snapshot["xCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "xCoords")
+          }
+        }
+
+        public var yCoords: [Double]? {
+          get {
+            return snapshot["yCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "yCoords")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class OnDeleteUserTrackedPathsSubscription: GraphQLSubscription {
+  public static let operationString =
+    "subscription OnDeleteUserTrackedPaths($filter: ModelSubscriptionUserTrackedPathsFilterInput) {\n  onDeleteUserTrackedPaths(filter: $filter) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+
+  public var filter: ModelSubscriptionUserTrackedPathsFilterInput?
+
+  public init(filter: ModelSubscriptionUserTrackedPathsFilterInput? = nil) {
+    self.filter = filter
+  }
+
+  public var variables: GraphQLMap? {
+    return ["filter": filter]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Subscription"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("onDeleteUserTrackedPaths", arguments: ["filter": GraphQLVariable("filter")], type: .object(OnDeleteUserTrackedPath.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(onDeleteUserTrackedPaths: OnDeleteUserTrackedPath? = nil) {
+      self.init(snapshot: ["__typename": "Subscription", "onDeleteUserTrackedPaths": onDeleteUserTrackedPaths.flatMap { $0.snapshot }])
+    }
+
+    public var onDeleteUserTrackedPaths: OnDeleteUserTrackedPath? {
+      get {
+        return (snapshot["onDeleteUserTrackedPaths"] as? Snapshot).flatMap { OnDeleteUserTrackedPath(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "onDeleteUserTrackedPaths")
+      }
+    }
+
+    public struct OnDeleteUserTrackedPath: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserTrackedPaths"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("tracks", type: .list(.nonNull(.object(Track.selections)))),
+        GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+        GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, tracks: [Track]? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "UserTrackedPaths", "id": id, "tracks": tracks.flatMap { $0.map { $0.snapshot } }, "createdAt": createdAt, "updatedAt": updatedAt])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var tracks: [Track]? {
+        get {
+          return (snapshot["tracks"] as? [Snapshot]).flatMap { $0.map { Track(snapshot: $0) } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.snapshot } }, forKey: "tracks")
+        }
+      }
+
+      public var createdAt: String {
+        get {
+          return snapshot["createdAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var updatedAt: String {
+        get {
+          return snapshot["updatedAt"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public struct Track: GraphQLSelectionSet {
+        public static let possibleTypes = ["TrackedPath"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
+          GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var xCoords: [Double]? {
+          get {
+            return snapshot["xCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "xCoords")
+          }
+        }
+
+        public var yCoords: [Double]? {
+          get {
+            return snapshot["yCoords"] as? [Double]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "yCoords")
           }
         }
       }

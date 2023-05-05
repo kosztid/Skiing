@@ -100,13 +100,13 @@ extension MapView {
         @objc
         func trackRoute() {
             let modified = self.trackedPath
-            var xCoords = modified.last?.xCoord
-            var yCoords = modified.last?.yCoord
-            xCoords?.append((47.1986 + (0.001 * Double(trackedPath.last?.xCoord.count ?? 0))))
+            var xCoords = modified.last?.xCoords
+            var yCoords = modified.last?.yCoords
+            xCoords?.append((47.1986 + (0.001 * Double(trackedPath.last?.xCoords.count ?? 0))))
             yCoords?.append(17.60286 + Double(trackedPath.count) * 0.01)
 
-            modified.last?.xCoord = xCoords ?? []
-            modified.last?.yCoord = yCoords ?? []
+            modified.last?.xCoords = xCoords ?? []
+            modified.last?.yCoords = yCoords ?? []
 
             self.trackedPath = modified
         }

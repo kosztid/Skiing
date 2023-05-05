@@ -77,6 +77,51 @@ subscription OnDeleteUserfriendList(
     updatedAt
   }
 }
+subscription OnCreateUserTrackedPaths(
+  $filter: ModelSubscriptionUserTrackedPathsFilterInput
+) {
+  onCreateUserTrackedPaths(filter: $filter) {
+    id
+    tracks {
+      id
+      name
+      xCoords
+      yCoords
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateUserTrackedPaths(
+  $filter: ModelSubscriptionUserTrackedPathsFilterInput
+) {
+  onUpdateUserTrackedPaths(filter: $filter) {
+    id
+    tracks {
+      id
+      name
+      xCoords
+      yCoords
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteUserTrackedPaths(
+  $filter: ModelSubscriptionUserTrackedPathsFilterInput
+) {
+  onDeleteUserTrackedPaths(filter: $filter) {
+    id
+    tracks {
+      id
+      name
+      xCoords
+      yCoords
+    }
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateFriendRequest(
   $filter: ModelSubscriptionFriendRequestFilterInput
 ) {

@@ -19,6 +19,10 @@
 		5513D3D32A0121CC0079D5F6 /* TrackedPathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5513D3D22A0121CC0079D5F6 /* TrackedPathModel.swift */; };
 		555D8B3529C64CFF000B65AD /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3329C64CFF000B65AD /* amplifyconfiguration.json */; };
 		555D8B3629C64CFF000B65AD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 555D8B3429C64CFF000B65AD /* awsconfiguration.json */; };
+		55653AEF2A03BB6E00EE312B /* UserTrackedPaths+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55653AEB2A03BB6E00EE312B /* UserTrackedPaths+Schema.swift */; };
+		55653AF02A03BB6E00EE312B /* TrackedPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55653AEC2A03BB6E00EE312B /* TrackedPath.swift */; };
+		55653AF12A03BB6E00EE312B /* TrackedPath+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55653AED2A03BB6E00EE312B /* TrackedPath+Schema.swift */; };
+		55653AF22A03BB6E00EE312B /* UserTrackedPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55653AEE2A03BB6E00EE312B /* UserTrackedPaths.swift */; };
 		5572DCAB29C8DB4E00F73BC1 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572DCAA29C8DB4E00F73BC1 /* DI.swift */; };
 		55C0EAF729E4304700FF40F3 /* FriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAF529E4304700FF40F3 /* FriendRequest.swift */; };
 		55C0EAF829E4304700FF40F3 /* FriendRequest+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAF629E4304700FF40F3 /* FriendRequest+Schema.swift */; };
@@ -56,6 +60,10 @@
 		5513D3D22A0121CC0079D5F6 /* TrackedPathModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedPathModel.swift; sourceTree = "<group>"; };
 		555D8B3329C64CFF000B65AD /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		555D8B3429C64CFF000B65AD /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		55653AEB2A03BB6E00EE312B /* UserTrackedPaths+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UserTrackedPaths+Schema.swift"; path = "amplify/generated/models/UserTrackedPaths+Schema.swift"; sourceTree = SOURCE_ROOT; };
+		55653AEC2A03BB6E00EE312B /* TrackedPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrackedPath.swift; path = amplify/generated/models/TrackedPath.swift; sourceTree = SOURCE_ROOT; };
+		55653AED2A03BB6E00EE312B /* TrackedPath+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TrackedPath+Schema.swift"; path = "amplify/generated/models/TrackedPath+Schema.swift"; sourceTree = SOURCE_ROOT; };
+		55653AEE2A03BB6E00EE312B /* UserTrackedPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTrackedPaths.swift; path = amplify/generated/models/UserTrackedPaths.swift; sourceTree = SOURCE_ROOT; };
 		5572DCAA29C8DB4E00F73BC1 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		55C0EAF529E4304700FF40F3 /* FriendRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendRequest.swift; path = amplify/generated/models/FriendRequest.swift; sourceTree = SOURCE_ROOT; };
 		55C0EAF629E4304700FF40F3 /* FriendRequest+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FriendRequest+Schema.swift"; path = "amplify/generated/models/FriendRequest+Schema.swift"; sourceTree = SOURCE_ROOT; };
@@ -115,6 +123,10 @@
 		55048D6D29CDBBF800254ADC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				55653AEC2A03BB6E00EE312B /* TrackedPath.swift */,
+				55653AED2A03BB6E00EE312B /* TrackedPath+Schema.swift */,
+				55653AEE2A03BB6E00EE312B /* UserTrackedPaths.swift */,
+				55653AEB2A03BB6E00EE312B /* UserTrackedPaths+Schema.swift */,
 				55E1AC9A29D98AC400BA4F3A /* UserfriendList.swift */,
 				55E1AC9B29D98AC400BA4F3A /* UserfriendList+Schema.swift */,
 				55048D6E29CDBC0500254ADC /* AmplifyModels.swift */,
@@ -380,13 +392,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5513D3D32A0121CC0079D5F6 /* TrackedPathModel.swift in Sources */,
+				55653AF22A03BB6E00EE312B /* UserTrackedPaths.swift in Sources */,
+				55653AEF2A03BB6E00EE312B /* UserTrackedPaths+Schema.swift in Sources */,
 				55E1AC9D29D98AC400BA4F3A /* UserfriendList+Schema.swift in Sources */,
 				55C0EAF729E4304700FF40F3 /* FriendRequest.swift in Sources */,
 				5513D3CD29FF1F900079D5F6 /* Friend+Schema.swift in Sources */,
 				55048D7329CDBC0600254ADC /* CurrentPosition+Schema.swift in Sources */,
 				55048D7229CDBC0600254ADC /* CurrentPosition.swift in Sources */,
 				55E1AC9C29D98AC400BA4F3A /* UserfriendList.swift in Sources */,
+				55653AF12A03BB6E00EE312B /* TrackedPath+Schema.swift in Sources */,
 				55C0EAF829E4304700FF40F3 /* FriendRequest+Schema.swift in Sources */,
+				55653AF02A03BB6E00EE312B /* TrackedPath.swift in Sources */,
 				5572DCAB29C8DB4E00F73BC1 /* DI.swift in Sources */,
 				55048D7129CDBC0600254ADC /* AmplifyModels.swift in Sources */,
 				55048D7729CDBC4000254ADC /* LocationService.swift in Sources */,

@@ -7,13 +7,13 @@ public class TrackedPathModel: Identifiable, Equatable, ObservableObject {
 
     public var id: String
     public var name: String
-    public var xCoord: [Double]
-    public var yCoord: [Double]
+    public var xCoords: [Double]
+    public var yCoords: [Double]
 
     public init(id: String, name: String, xCoord: [Double] = [], yCoord: [Double] = []) {
         self.id = id
         self.name = name
-        self.xCoord = xCoord
-        self.yCoord = yCoord
+        self.xCoords = xCoord
+        self.yCoords = yCoord
     }
 }

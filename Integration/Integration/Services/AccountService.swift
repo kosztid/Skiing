@@ -11,6 +11,7 @@ public protocol AccountServiceProtocol: AnyObject {
     var friendRequestsPublisher: AnyPublisher<[FriendRequest], Never> { get }
     var friendPositionPublisher: AnyPublisher<Location?, Never> { get }
     var friendPositionsPublisher: AnyPublisher<[Location], Never> { get }
+    var trackedPathPublisher: AnyPublisher<UserTrackedPaths?, Never> { get }
     func login() async
     func signUp(_ username: String,_ email: String,_ password: String) async
     func signIn(_ username: String,_ password: String) async
@@ -37,6 +38,7 @@ final class AccountService {
     private let friendRequests: CurrentValueSubject<[FriendRequest], Never> = .init([])
     private let friendPosition: CurrentValueSubject<Location?, Never> = .init(nil)
     private let friendPositions: CurrentValueSubject<[Location], Never> = .init([])
+    private let trackedPathModel: CurrentValueSubject<UserTrackedPaths?, Never> = .init(nil)
     private var cancellables: Set<AnyCancellable> = []
     private var username: String = ""
 
@@ -106,6 +108,12 @@ extension AccountService: AccountServiceProtocol {
 
     var isSignedInPublisher: AnyPublisher<Bool, Never> {
         isSignedIn
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
+    var trackedPathPublisher: AnyPublisher<UserTrackedPaths?, Never> {
+        trackedPathModel
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
