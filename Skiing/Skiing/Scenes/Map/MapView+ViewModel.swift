@@ -24,7 +24,9 @@ extension MapView {
         @Published var friendLocation: Location?
         @Published var cameraPos: GMSCameraPosition
         @Published var markers: [GMSMarker] = []
-        @Published var trackedPath: [TrackedPathModel] = []
+        @Published var trackedPath: TrackedPathModel?
+
+        @Published var track: [TrackedPath]?
 
         init(accountService: AccountServiceProtocol) {
             self.accountService = accountService
@@ -44,6 +46,18 @@ extension MapView {
                 }
                 .store(in: &cancellables)
 
+            accountService.trackedPathPublisher
+                .sink { _ in
+                } receiveValue: { [weak self] track in
+                    self?.track = track?.tracks
+                    self?.trackedPath = track
+                }
+                .store(in: &cancellables)
+
+            Task {
+                await accountService.queryTrackedPaths()
+            }
+
         }
 
         func makeMarkers() {
@@ -56,7 +70,7 @@ extension MapView {
 
         func confirm() {
             Task {
-                await self.accountService.confirm()
+                await self.accountService.createUserTrackedPaths()
             }
         }
 
@@ -77,7 +91,7 @@ extension MapView {
         func startTracking() {
             self.trackTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(trackRoute), userInfo: nil, repeats: true)
 //            self.trackedPath.append(TrackedPathModel(id: UUID().uuidString, name: "Path \(self.trackedPath.count)"))
-            self.trackedPath.append(TrackedPathModel(id: UUID().uuidString, name: "Path \(self.trackedPath.count)"))
+            self.trackedPath?.tracks?.append(.init(id: UUID().uuidString, name: "Path \(UUID().uuidString)"))
             self.isTracking = .on
         }
 
@@ -95,20 +109,25 @@ extension MapView {
             self.trackTimer?.invalidate()
             self.trackTimer = nil
             self.isTracking = .off
+            guard let path = trackedPath?.tracks?.last else { return }
+            Task {
+                await accountService.updateTrackedPath(path)
+            }
         }
 
         @objc
         func trackRoute() {
-            let modified = self.trackedPath
+            guard var modified = self.trackedPath?.tracks else { return }
             var xCoords = modified.last?.xCoords
             var yCoords = modified.last?.yCoords
-            xCoords?.append((47.1986 + (0.001 * Double(trackedPath.last?.xCoords.count ?? 0))))
-            yCoords?.append(17.60286 + Double(trackedPath.count) * 0.01)
+            xCoords?.append((47.1986 + (0.001 * Double(trackedPath?.tracks?.last?.xCoords?.count ?? 0))))
+            yCoords?.append(17.60286 + Double(trackedPath?.tracks?.last?.yCoords?.count ?? 0) * 0.01)
 
-            modified.last?.xCoords = xCoords ?? []
-            modified.last?.yCoords = yCoords ?? []
+            modified[modified.count - 1].xCoords = xCoords ?? []
+            modified[modified.count - 1].yCoords = yCoords ?? []
 
-            self.trackedPath = modified
+            self.trackedPath?.tracks = modified
+            self.track = modified
         }
 
         func stopTimer() {

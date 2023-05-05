@@ -10,7 +10,7 @@ struct GoogleMapsView: UIViewRepresentable {
 
     @Binding var cameraPos: GMSCameraPosition
     @Binding var markers: [GMSMarker]
-    @Binding var trackedPath: [TrackedPathModel]
+    @Binding var trackedPath: [TrackedPath]?
 
     var coordinates: [CLLocationCoordinate2D] = [CLLocationCoordinate2D(latitude: 47.1986, longitude: 17.60286), CLLocationCoordinate2D(latitude: 47.1786, longitude: 17.62286), CLLocationCoordinate2D(latitude: 47.1786, longitude: 17.65286), CLLocationCoordinate2D(latitude: 47.2186, longitude: 17.62286)]
 
@@ -40,10 +40,11 @@ struct GoogleMapsView: UIViewRepresentable {
             marker.map = view
         }
 
-        for track in trackedPath {
+        guard let paths = trackedPath else { return }
+        for track in paths {
             let path = GMSMutablePath()
-            for index in 0..<track.xCoords.count {
-                path.add(CLLocationCoordinate2D(latitude: track.xCoords[index], longitude: track.yCoords[index]))
+            for index in 0..<(track.xCoords?.count ?? 0) {
+                path.add(CLLocationCoordinate2D(latitude: track.xCoords?[index] ?? 0, longitude: track.yCoords?[index] ?? 0))
             }
             let line = GMSPolyline(path: path)
             line.strokeColor = UIColor.blue
@@ -62,7 +63,7 @@ struct GoogleMapsView: UIViewRepresentable {
     public init(
         cameraPos: Binding<GMSCameraPosition>,
         markers: Binding<[GMSMarker]>,
-        trackedPath: Binding<[TrackedPathModel]>,
+        trackedPath: Binding<[TrackedPath]?>,
         service: AccountServiceProtocol
     ) {
         self._cameraPos = cameraPos

@@ -10,11 +10,17 @@ struct MapView: View {
             ViewFactory.googleMap(
                 cameraPos: $viewModel.cameraPos,
                 markers: $viewModel.markers,
-                trackedPath: $viewModel.trackedPath
+                trackedPath: $viewModel.track
             )
             .ignoresSafeArea()
             VStack {
                 Spacer()
+                Button {
+                    viewModel.confirm()
+                } label: {
+                    Text("Init tracks")
+                }
+                .buttonStyle(SkiingButtonStyle())
                 HStack {
                     if viewModel.isTracking == .off {
                         Spacer()

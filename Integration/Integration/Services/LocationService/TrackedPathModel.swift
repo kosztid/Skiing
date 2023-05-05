@@ -6,14 +6,27 @@ public class TrackedPathModel: Identifiable, Equatable, ObservableObject {
     }
 
     public var id: String
-    public var name: String
-    public var xCoords: [Double]
-    public var yCoords: [Double]
+    public var tracks: [TrackedPath]?
 
-    public init(id: String, name: String, xCoord: [Double] = [], yCoord: [Double] = []) {
+    public init(id: String, tracks: [TrackedPath]?) {
         self.id = id
-        self.name = name
-        self.xCoords = xCoord
-        self.yCoords = yCoord
+        self.tracks = tracks
+    }
+
+    public convenience init(from data: UserTrackedPaths) {
+        self.init(id: data.id, tracks: data.tracks)
+        self._data = data
+    }
+
+    fileprivate var _data: UserTrackedPaths?
+
+    public var data : UserTrackedPaths? {
+        if (_data == nil) {
+            _data = UserTrackedPaths(
+                id: self.id,
+                tracks: self.tracks
+            )
+        }
+        return _data
     }
 }

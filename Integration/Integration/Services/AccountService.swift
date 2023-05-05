@@ -11,22 +11,29 @@ public protocol AccountServiceProtocol: AnyObject {
     var friendRequestsPublisher: AnyPublisher<[FriendRequest], Never> { get }
     var friendPositionPublisher: AnyPublisher<Location?, Never> { get }
     var friendPositionsPublisher: AnyPublisher<[Location], Never> { get }
-    var trackedPathPublisher: AnyPublisher<UserTrackedPaths?, Never> { get }
+    var trackedPathPublisher: AnyPublisher<TrackedPathModel?, Never> { get }
     func login() async
     func signUp(_ username: String,_ email: String,_ password: String) async
     func signIn(_ username: String,_ password: String) async
     func confirmSignUp(with confirmationCode: String) async
+
+    func queryFriends() async
+    func createFriendList() async
     func addFriend(request: FriendRequest) async
     func deleteFriend(friendlist: Friendlist) async
     func sendFriendRequest(recipient: String) async
-    func createLocation(xCoord: String, yCoord: String) async
-    func queryLocation() async
-    func queryFriends() async
-    func createFriendList() async
     func queryFriendRequests() async
     func queryFriendLocation(userId: String) async
     func queryFriendLocations() async
+
+    func createLocation(xCoord: String, yCoord: String) async
     func updateLocation(xCoord: String, yCoord: String) async
+    func queryLocation() async
+
+    func createUserTrackedPaths() async
+    func updateTrackedPath(_ trackedPath: TrackedPath) async
+    func queryTrackedPaths() async
+
     func signOut() async
     func confirm() async
     func updateTracking(id: String) async
@@ -38,7 +45,7 @@ final class AccountService {
     private let friendRequests: CurrentValueSubject<[FriendRequest], Never> = .init([])
     private let friendPosition: CurrentValueSubject<Location?, Never> = .init(nil)
     private let friendPositions: CurrentValueSubject<[Location], Never> = .init([])
-    private let trackedPathModel: CurrentValueSubject<UserTrackedPaths?, Never> = .init(nil)
+    private let trackedPathModel: CurrentValueSubject<TrackedPathModel?, Never> = .init(nil)
     private var cancellables: Set<AnyCancellable> = []
     private var username: String = ""
 
@@ -112,7 +119,7 @@ extension AccountService: AccountServiceProtocol {
             .eraseToAnyPublisher()
     }
 
-    var trackedPathPublisher: AnyPublisher<UserTrackedPaths?, Never> {
+    var trackedPathPublisher: AnyPublisher<TrackedPathModel?, Never> {
         trackedPathModel
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
@@ -381,6 +388,63 @@ extension AccountService: AccountServiceProtocol {
         }
     }
 
+    func createUserTrackedPaths() async {
+        do {
+            let user = try await Amplify.Auth.getCurrentUser()
+            let trackedPaths = TrackedPathModel(id: user.userId, tracks: [])
+            guard let data = trackedPaths.data else { return }
+            let _ = try await Amplify.API.mutate(request: .create(data))
+        } catch let error as APIError {
+            print("Failed to create note: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
+    }
+
+    func updateTrackedPath(_ trackedPath: TrackedPath) async {
+        do {
+            let user = try await Amplify.Auth.getCurrentUser()
+            let tracksQueryResults = try await Amplify.API.query(request: .list(UserTrackedPaths.self))
+            let tracksQueryResultsMapped = try tracksQueryResults.get().elements.map { item in
+                TrackedPathModel(from: item)
+            }
+
+            var tracks = tracksQueryResultsMapped.first { item in
+                item.id == user.userId
+            }?.tracks
+
+            tracks?.append(trackedPath)
+
+            let trackModel = TrackedPathModel(id: user.userId, tracks: tracks)
+            guard let data = trackModel.data else { return }
+            let _ = try await Amplify.API.mutate(request: .update(data))
+
+            await queryTrackedPaths()
+        } catch let error as APIError {
+            print("Failed to create note: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
+    }
+
+    func queryTrackedPaths() async {
+        do {
+            let queryResult = try await Amplify.API.query(request: .list(UserTrackedPaths.self))
+
+            let user = try await Amplify.Auth.getCurrentUser()
+
+            let result = try queryResult.get().elements.map { model in
+                TrackedPathModel(from: model)
+            }
+
+            let currentPaths = result.first { $0.id == user.userId }
+
+            trackedPathModel.send(currentPaths)
+        } catch {
+            print("Can not retrieve friendlocation : error \(error)")
+        }
+    }
+
     public func login() async {
         do {
             let signInResult = try await Amplify.Auth.signInWithWebUI(presentationAnchor: UIApplication.shared.windows.first!)
@@ -442,6 +506,7 @@ extension AccountService: AccountServiceProtocol {
 
             await self.createLocation(xCoord: "0", yCoord: "0")
             await self.createFriendList()
+            await self.createUserTrackedPaths()
         } catch let error as AuthError {
             print("An error occurred while confirming sign up \(error)")
         } catch {
@@ -452,6 +517,7 @@ extension AccountService: AccountServiceProtocol {
     func confirm() async {
         await self.createLocation(xCoord: "0", yCoord: "0")
         await self.createFriendList()
+        await self.createUserTrackedPaths()
     }
 
     // signout
