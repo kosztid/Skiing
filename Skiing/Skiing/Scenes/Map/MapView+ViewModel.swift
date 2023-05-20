@@ -51,7 +51,6 @@ extension MapView {
                 } receiveValue: { [weak self] track in
                     self?.track = track?.tracks ?? []
                     self?.trackedPath = track
-                    self?.calculateDistance()
                 }
                 .store(in: &cancellables)
 
@@ -67,21 +66,6 @@ extension MapView {
                 tempMarkers.append(GMSMarker(position: CLLocationCoordinate2D(latitude: Double(loc.xCoord ?? "") ?? 0, longitude: Double(loc.yCoord ?? "") ?? 0)))
             }
             self.markers = tempMarkers
-        }
-
-        func calculateDistance() {
-            var list: [CLLocation] = []
-            var distance = 0.0
-            for path in track {
-                list = []
-                for index in 0..<(path.xCoords?.count ?? 0) {
-                    list.append(CLLocation(latitude: path.xCoords?[index] ?? 0, longitude: path.yCoords?[index] ?? 0))
-                }
-                for itemDx in 1...list.count {
-                    distance += list[itemDx].distance(from: list[itemDx - 1])
-                }
-                print(path.name, distance)
-            }
         }
 
         func confirm() {
@@ -151,7 +135,7 @@ extension MapView {
         }
 
         func startTimer() {
-            self.locationTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
+            self.locationTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
         }
     }
 }

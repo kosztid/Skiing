@@ -139,4 +139,14 @@ extension Container {
             FriendAddView.ViewModel(navigator: navigator, service: accountService())
         }
     }
+
+    enum TrackList {
+        static let view = Factory {
+            TrackListView(viewModel: viewModel())
+        }
+
+        static let viewModel = Factory {
+            TrackListView.ViewModel(accountService: accountService())
+        }
+    }
 }

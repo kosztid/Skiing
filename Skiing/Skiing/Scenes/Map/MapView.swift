@@ -15,12 +15,12 @@ struct MapView: View {
             .ignoresSafeArea()
             VStack {
                 Spacer()
-                Button {
-                    viewModel.confirm()
-                } label: {
-                    Text("Init tracks")
-                }
-                .buttonStyle(SkiingButtonStyle())
+//                Button {
+//                    viewModel.confirm()
+//                } label: {
+//                    Text("Init tracks")
+//                }
+//                .buttonStyle(SkiingButtonStyle())
                 HStack {
                     if viewModel.isTracking == .off {
                         Spacer()

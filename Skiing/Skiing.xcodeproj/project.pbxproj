@@ -13,6 +13,7 @@
 		55048D8229CDFF7B00254ADC /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 55048D8029CDFF7A00254ADC /* amplifyconfiguration.json */; };
 		55048D8329CDFF7B00254ADC /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 55048D8129CDFF7B00254ADC /* awsconfiguration.json */; };
 		55048D8529CE038B00254ADC /* MapView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55048D8429CE038B00254ADC /* MapView+ViewModel.swift */; };
+		5522292C2A18FDC0003FE5BB /* TrackListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5522292B2A18FDC0003FE5BB /* TrackListItem.swift */; };
 		5528A8F629CA599F0099703C /* VerifyView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528A8F529CA599F0099703C /* VerifyView+ViewModel.swift */; };
 		5528A8F829CA59A80099703C /* VerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528A8F729CA59A80099703C /* VerifyView.swift */; };
 		554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8B7029C4BD910028C76C /* SkiingApp.swift */; };
@@ -29,6 +30,8 @@
 		555D8B5A29C73BFD000B65AD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5929C73BFD000B65AD /* ProfileView.swift */; };
 		555D8B5C29C73C07000B65AD /* ProfileView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5B29C73C07000B65AD /* ProfileView+ViewModel.swift */; };
 		555D8B5E29C73E4F000B65AD /* ProfileNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D8B5D29C73E4F000B65AD /* ProfileNavigator.swift */; };
+		557FBBE02A18F6B8000EB145 /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557FBBDF2A18F6B8000EB145 /* TrackListView.swift */; };
+		557FBBE22A18F6C2000EB145 /* TrackListView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557FBBE12A18F6C2000EB145 /* TrackListView+ViewModel.swift */; };
 		5588308729D9CE5400866B4F /* SocialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588308629D9CE5400866B4F /* SocialNavigator.swift */; };
 		55C0EAF229E41B1500FF40F3 /* FriendAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAF129E41B1500FF40F3 /* FriendAddView.swift */; };
 		55C0EAF429E41B2300FF40F3 /* FriendAddView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EAF329E41B2300FF40F3 /* FriendAddView+ViewModel.swift */; };
@@ -72,6 +75,7 @@
 		55048D8029CDFF7A00254ADC /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		55048D8129CDFF7B00254ADC /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		55048D8429CE038B00254ADC /* MapView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+ViewModel.swift"; sourceTree = "<group>"; };
+		5522292B2A18FDC0003FE5BB /* TrackListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListItem.swift; sourceTree = "<group>"; };
 		5528A8F529CA599F0099703C /* VerifyView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyView+ViewModel.swift"; sourceTree = "<group>"; };
 		5528A8F729CA59A80099703C /* VerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyView.swift; sourceTree = "<group>"; };
 		554C8B6D29C4BD910028C76C /* Skiing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skiing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +94,8 @@
 		555D8B5929C73BFD000B65AD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		555D8B5B29C73C07000B65AD /* ProfileView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+ViewModel.swift"; sourceTree = "<group>"; };
 		555D8B5D29C73E4F000B65AD /* ProfileNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigator.swift; sourceTree = "<group>"; };
+		557FBBDF2A18F6B8000EB145 /* TrackListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
+		557FBBE12A18F6C2000EB145 /* TrackListView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackListView+ViewModel.swift"; sourceTree = "<group>"; };
 		5588308629D9CE5400866B4F /* SocialNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNavigator.swift; sourceTree = "<group>"; };
 		55C0EAF129E41B1500FF40F3 /* FriendAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAddView.swift; sourceTree = "<group>"; };
 		55C0EAF329E41B2300FF40F3 /* FriendAddView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendAddView+ViewModel.swift"; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 		555D8B4D29C7271D000B65AD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				557FBBDD2A18F6A3000EB145 /* TrackList */,
 				55E1ACA029D9B97200BA4F3A /* Social */,
 				55048D6329CDA9E500254ADC /* Map */,
 				555D8B5329C73920000B65AD /* Profile */,
@@ -242,6 +249,16 @@
 				555D8B5729C73977000B65AD /* LoginView+ViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		557FBBDD2A18F6A3000EB145 /* TrackList */ = {
+			isa = PBXGroup;
+			children = (
+				5522292B2A18FDC0003FE5BB /* TrackListItem.swift */,
+				557FBBDF2A18F6B8000EB145 /* TrackListView.swift */,
+				557FBBE12A18F6C2000EB145 /* TrackListView+ViewModel.swift */,
+			);
+			path = TrackList;
 			sourceTree = "<group>";
 		};
 		55C0EAF029E41B0B00FF40F3 /* FriendAdd */ = {
@@ -449,6 +466,7 @@
 				55F36D4B29C7935500B9B93E /* RegisterView.swift in Sources */,
 				55C0EAF229E41B1500FF40F3 /* FriendAddView.swift in Sources */,
 				555D8B5629C73970000B65AD /* LoginView.swift in Sources */,
+				557FBBE22A18F6C2000EB145 /* TrackListView+ViewModel.swift in Sources */,
 				554C8C0B29C4C06C0028C76C /* SkiingView+ViewModel.swift in Sources */,
 				55E1ACA929D9CA8300BA4F3A /* FriendRequestView+ViewModel.swift in Sources */,
 				554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */,
@@ -458,6 +476,7 @@
 				55048D6229CDA99700254ADC /* AppDelegate.swift in Sources */,
 				55F36D4929C7934D00B9B93E /* RegisterView+ViewModel.swift in Sources */,
 				55E1ACA729D9CA7D00BA4F3A /* FriendRequestView.swift in Sources */,
+				557FBBE02A18F6B8000EB145 /* TrackListView.swift in Sources */,
 				55048D6529CDA9F800254ADC /* GoogleMapsView.swift in Sources */,
 				554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */,
 				555D8B5C29C73C07000B65AD /* ProfileView+ViewModel.swift in Sources */,
@@ -467,6 +486,7 @@
 				555D8B5829C73977000B65AD /* LoginView+ViewModel.swift in Sources */,
 				555D8B5E29C73E4F000B65AD /* ProfileNavigator.swift in Sources */,
 				5588308729D9CE5400866B4F /* SocialNavigator.swift in Sources */,
+				5522292C2A18FDC0003FE5BB /* TrackListItem.swift in Sources */,
 				55E1ACA429D9B9A400BA4F3A /* SocialView+ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

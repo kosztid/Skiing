@@ -55,4 +55,10 @@ enum ViewFactory {
     static func mapView() -> MapView {
         Container.Map.view()
     }
+
+    //MARK: - Tracklist
+
+    static func trackListView() -> TrackListView {
+        Container.TrackList.view()
+    }
 }

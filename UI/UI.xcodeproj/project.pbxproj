@@ -76,6 +76,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		552229242A18FB47003FE5BB /* TrackListItem */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TrackListItem;
+			sourceTree = "<group>";
+		};
 		554C8B9E29C4BE5E0028C76C = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +135,7 @@
 		55D6B66029C4C6B300174065 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				552229242A18FB47003FE5BB /* TrackListItem */,
 				55F36D4C29C796F300B9B93E /* TextField */,
 				555D8B3D29C71F72000B65AD /* Navigation */,
 				55D6B69829C4D13D00174065 /* SkiingButton.swift */,
