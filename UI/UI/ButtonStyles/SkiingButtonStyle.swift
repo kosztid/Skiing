@@ -14,13 +14,15 @@ public struct SkiingButtonStyle: ButtonStyle {
         case secondary
         case secondaryCompact
         case bordered
+        case borderedRed
         case imageBordered(Image)
 
         var foregroundColor: Color {
             switch self {
             case .primary: return Color.white
-            case .secondary, .secondaryCompact: return Color.black
+            case .secondary, .secondaryCompact: return Color.white
             case .bordered: return Color.teal
+            case .borderedRed: return Color.red
             case .imageBordered: return Color.black
             }
         }
@@ -30,6 +32,7 @@ public struct SkiingButtonStyle: ButtonStyle {
             case .primary: return Color.blue
             case .secondary, .secondaryCompact: return Color.teal
             case .bordered: return Color.black
+            case .borderedRed: return Color.black
             case .imageBordered: return Color.black
             }
         }
@@ -58,6 +61,8 @@ public struct SkiingButtonStyle: ButtonStyle {
         case .secondaryCompact:
             plainCompactStyle(configuration)
         case .bordered:
+            borderedStyle(configuration)
+        case .borderedRed:
             borderedStyle(configuration)
         case .imageBordered(let image):
             imageBorderedStyle(configuration, image: image)
@@ -109,7 +114,7 @@ public struct SkiingButtonStyle: ButtonStyle {
             .font(.subheadline)
             .foregroundColor(style.foregroundColor)
             .padding(.vertical, 10)
-            .padding(.horizontal, 20)
+            .padding(.horizontal, Layout.paddingWidth)
             .overlay(
                 RoundedRectangle(cornerRadius: Layout.cornerRadius)
                     .stroke(style.foregroundColor, lineWidth: Layout.stroke)

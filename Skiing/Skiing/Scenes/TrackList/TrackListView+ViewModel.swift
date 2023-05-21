@@ -37,5 +37,18 @@ extension TrackListView {
             }
             return distance
         }
+
+        func onAppear() {
+            Task {
+                await accountService.queryTrackedPaths()
+            }
+        }
+
+
+        func removeTrack(_ trackedPath: TrackedPath) {
+            Task {
+                await accountService.removeTrackedPath(trackedPath)
+            }
+        }
     }
 }

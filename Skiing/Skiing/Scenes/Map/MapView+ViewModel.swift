@@ -13,6 +13,7 @@ extension MapView {
     final class ViewModel: ObservableObject, NavigationViewModel {
         private var cancellables: Set<AnyCancellable> = []
 
+        let dateFormatter: DateFormatter = DateFormatter()
         let accountService: AccountServiceProtocol
         var locationManager = CLLocationManager()
         var locationTimer: Timer?
@@ -35,7 +36,7 @@ extension MapView {
                 longitude: self.locationManager.location?.coordinate.longitude ?? 1,
                 zoom: 13
             )
-
+            self.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             self.startTimer()
 
             accountService.friendPositionsPublisher
@@ -91,7 +92,7 @@ extension MapView {
         func startTracking() {
             self.trackTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(trackRoute), userInfo: nil, repeats: true)
 //            self.trackedPath.append(TrackedPathModel(id: UUID().uuidString, name: "Path \(self.trackedPath.count)"))
-            self.trackedPath?.tracks?.append(.init(id: UUID().uuidString, name: "Path \(UUID().uuidString)"))
+            self.trackedPath?.tracks?.append(.init(id: UUID().uuidString, name: "Path \(UUID().uuidString)", startDate: "\(dateFormatter.string(from: Date()))", endDate: ""))
             self.isTracking = .on
         }
 
@@ -109,7 +110,9 @@ extension MapView {
             self.trackTimer?.invalidate()
             self.trackTimer = nil
             self.isTracking = .off
-            guard let path = trackedPath?.tracks?.last else { return }
+            var current = trackedPath?.tracks?.last
+            current?.endDate = dateFormatter.string(from: Date())
+            guard let path = current else { return }
             Task {
                 await accountService.updateTrackedPath(path)
             }

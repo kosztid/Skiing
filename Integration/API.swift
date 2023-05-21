@@ -598,8 +598,8 @@ public struct CreateUserTrackedPathsInput: GraphQLMapConvertible {
 public struct TrackedPathInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID? = nil, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
-    graphQLMap = ["id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords]
+  public init(id: GraphQLID? = nil, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+    graphQLMap = ["id": id, "name": name, "startDate": startDate, "endDate": endDate, "notes": notes, "xCoords": xCoords, "yCoords": yCoords]
   }
 
   public var id: GraphQLID? {
@@ -617,6 +617,33 @@ public struct TrackedPathInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "name")
+    }
+  }
+
+  public var startDate: String {
+    get {
+      return graphQLMap["startDate"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "startDate")
+    }
+  }
+
+  public var endDate: String {
+    get {
+      return graphQLMap["endDate"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "endDate")
+    }
+  }
+
+  public var notes: [String]? {
+    get {
+      return graphQLMap["notes"] as! [String]?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "notes")
     }
   }
 
@@ -2537,7 +2564,7 @@ public final class DeleteUserfriendListMutation: GraphQLMutation {
 
 public final class CreateUserTrackedPathsMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateUserTrackedPaths($input: CreateUserTrackedPathsInput!, $condition: ModelUserTrackedPathsConditionInput) {\n  createUserTrackedPaths(input: $input, condition: $condition) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation CreateUserTrackedPaths($input: CreateUserTrackedPathsInput!, $condition: ModelUserTrackedPathsConditionInput) {\n  createUserTrackedPaths(input: $input, condition: $condition) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      startDate\n      endDate\n      notes\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: CreateUserTrackedPathsInput
   public var condition: ModelUserTrackedPathsConditionInput?
@@ -2650,6 +2677,9 @@ public final class CreateUserTrackedPathsMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("startDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("endDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("notes", type: .list(.nonNull(.scalar(String.self)))),
           GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
           GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
         ]
@@ -2660,8 +2690,8 @@ public final class CreateUserTrackedPathsMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
-          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        public init(id: GraphQLID, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "startDate": startDate, "endDate": endDate, "notes": notes, "xCoords": xCoords, "yCoords": yCoords])
         }
 
         public var __typename: String {
@@ -2691,6 +2721,33 @@ public final class CreateUserTrackedPathsMutation: GraphQLMutation {
           }
         }
 
+        public var startDate: String {
+          get {
+            return snapshot["startDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "startDate")
+          }
+        }
+
+        public var endDate: String {
+          get {
+            return snapshot["endDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "endDate")
+          }
+        }
+
+        public var notes: [String]? {
+          get {
+            return snapshot["notes"] as? [String]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "notes")
+          }
+        }
+
         public var xCoords: [Double]? {
           get {
             return snapshot["xCoords"] as? [Double]
@@ -2715,7 +2772,7 @@ public final class CreateUserTrackedPathsMutation: GraphQLMutation {
 
 public final class UpdateUserTrackedPathsMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateUserTrackedPaths($input: UpdateUserTrackedPathsInput!, $condition: ModelUserTrackedPathsConditionInput) {\n  updateUserTrackedPaths(input: $input, condition: $condition) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation UpdateUserTrackedPaths($input: UpdateUserTrackedPathsInput!, $condition: ModelUserTrackedPathsConditionInput) {\n  updateUserTrackedPaths(input: $input, condition: $condition) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      startDate\n      endDate\n      notes\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: UpdateUserTrackedPathsInput
   public var condition: ModelUserTrackedPathsConditionInput?
@@ -2828,6 +2885,9 @@ public final class UpdateUserTrackedPathsMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("startDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("endDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("notes", type: .list(.nonNull(.scalar(String.self)))),
           GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
           GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
         ]
@@ -2838,8 +2898,8 @@ public final class UpdateUserTrackedPathsMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
-          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        public init(id: GraphQLID, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "startDate": startDate, "endDate": endDate, "notes": notes, "xCoords": xCoords, "yCoords": yCoords])
         }
 
         public var __typename: String {
@@ -2869,6 +2929,33 @@ public final class UpdateUserTrackedPathsMutation: GraphQLMutation {
           }
         }
 
+        public var startDate: String {
+          get {
+            return snapshot["startDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "startDate")
+          }
+        }
+
+        public var endDate: String {
+          get {
+            return snapshot["endDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "endDate")
+          }
+        }
+
+        public var notes: [String]? {
+          get {
+            return snapshot["notes"] as? [String]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "notes")
+          }
+        }
+
         public var xCoords: [Double]? {
           get {
             return snapshot["xCoords"] as? [Double]
@@ -2893,7 +2980,7 @@ public final class UpdateUserTrackedPathsMutation: GraphQLMutation {
 
 public final class DeleteUserTrackedPathsMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteUserTrackedPaths($input: DeleteUserTrackedPathsInput!, $condition: ModelUserTrackedPathsConditionInput) {\n  deleteUserTrackedPaths(input: $input, condition: $condition) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation DeleteUserTrackedPaths($input: DeleteUserTrackedPathsInput!, $condition: ModelUserTrackedPathsConditionInput) {\n  deleteUserTrackedPaths(input: $input, condition: $condition) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      startDate\n      endDate\n      notes\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: DeleteUserTrackedPathsInput
   public var condition: ModelUserTrackedPathsConditionInput?
@@ -3006,6 +3093,9 @@ public final class DeleteUserTrackedPathsMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("startDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("endDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("notes", type: .list(.nonNull(.scalar(String.self)))),
           GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
           GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
         ]
@@ -3016,8 +3106,8 @@ public final class DeleteUserTrackedPathsMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
-          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        public init(id: GraphQLID, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "startDate": startDate, "endDate": endDate, "notes": notes, "xCoords": xCoords, "yCoords": yCoords])
         }
 
         public var __typename: String {
@@ -3044,6 +3134,33 @@ public final class DeleteUserTrackedPathsMutation: GraphQLMutation {
           }
           set {
             snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var startDate: String {
+          get {
+            return snapshot["startDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "startDate")
+          }
+        }
+
+        public var endDate: String {
+          get {
+            return snapshot["endDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "endDate")
+          }
+        }
+
+        public var notes: [String]? {
+          get {
+            return snapshot["notes"] as? [String]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "notes")
           }
         }
 
@@ -4327,7 +4444,7 @@ public final class ListUserfriendListsQuery: GraphQLQuery {
 
 public final class GetUserTrackedPathsQuery: GraphQLQuery {
   public static let operationString =
-    "query GetUserTrackedPaths($id: ID!) {\n  getUserTrackedPaths(id: $id) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "query GetUserTrackedPaths($id: ID!) {\n  getUserTrackedPaths(id: $id) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      startDate\n      endDate\n      notes\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -4438,6 +4555,9 @@ public final class GetUserTrackedPathsQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("startDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("endDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("notes", type: .list(.nonNull(.scalar(String.self)))),
           GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
           GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
         ]
@@ -4448,8 +4568,8 @@ public final class GetUserTrackedPathsQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
-          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        public init(id: GraphQLID, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "startDate": startDate, "endDate": endDate, "notes": notes, "xCoords": xCoords, "yCoords": yCoords])
         }
 
         public var __typename: String {
@@ -4479,6 +4599,33 @@ public final class GetUserTrackedPathsQuery: GraphQLQuery {
           }
         }
 
+        public var startDate: String {
+          get {
+            return snapshot["startDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "startDate")
+          }
+        }
+
+        public var endDate: String {
+          get {
+            return snapshot["endDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "endDate")
+          }
+        }
+
+        public var notes: [String]? {
+          get {
+            return snapshot["notes"] as? [String]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "notes")
+          }
+        }
+
         public var xCoords: [Double]? {
           get {
             return snapshot["xCoords"] as? [Double]
@@ -4503,7 +4650,7 @@ public final class GetUserTrackedPathsQuery: GraphQLQuery {
 
 public final class ListUserTrackedPathsQuery: GraphQLQuery {
   public static let operationString =
-    "query ListUserTrackedPaths($filter: ModelUserTrackedPathsFilterInput, $limit: Int, $nextToken: String) {\n  listUserTrackedPaths(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      tracks {\n        __typename\n        id\n        name\n        xCoords\n        yCoords\n      }\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
+    "query ListUserTrackedPaths($filter: ModelUserTrackedPathsFilterInput, $limit: Int, $nextToken: String) {\n  listUserTrackedPaths(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      tracks {\n        __typename\n        id\n        name\n        startDate\n        endDate\n        notes\n        xCoords\n        yCoords\n      }\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
 
   public var filter: ModelUserTrackedPathsFilterInput?
   public var limit: Int?
@@ -4664,6 +4811,9 @@ public final class ListUserTrackedPathsQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("startDate", type: .nonNull(.scalar(String.self))),
+            GraphQLField("endDate", type: .nonNull(.scalar(String.self))),
+            GraphQLField("notes", type: .list(.nonNull(.scalar(String.self)))),
             GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
             GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
           ]
@@ -4674,8 +4824,8 @@ public final class ListUserTrackedPathsQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
-            self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+          public init(id: GraphQLID, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+            self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "startDate": startDate, "endDate": endDate, "notes": notes, "xCoords": xCoords, "yCoords": yCoords])
           }
 
           public var __typename: String {
@@ -4702,6 +4852,33 @@ public final class ListUserTrackedPathsQuery: GraphQLQuery {
             }
             set {
               snapshot.updateValue(newValue, forKey: "name")
+            }
+          }
+
+          public var startDate: String {
+            get {
+              return snapshot["startDate"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "startDate")
+            }
+          }
+
+          public var endDate: String {
+            get {
+              return snapshot["endDate"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "endDate")
+            }
+          }
+
+          public var notes: [String]? {
+            get {
+              return snapshot["notes"] as? [String]
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "notes")
             }
           }
 
@@ -6038,7 +6215,7 @@ public final class OnDeleteUserfriendListSubscription: GraphQLSubscription {
 
 public final class OnCreateUserTrackedPathsSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateUserTrackedPaths($filter: ModelSubscriptionUserTrackedPathsFilterInput) {\n  onCreateUserTrackedPaths(filter: $filter) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnCreateUserTrackedPaths($filter: ModelSubscriptionUserTrackedPathsFilterInput) {\n  onCreateUserTrackedPaths(filter: $filter) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      startDate\n      endDate\n      notes\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionUserTrackedPathsFilterInput?
 
@@ -6149,6 +6326,9 @@ public final class OnCreateUserTrackedPathsSubscription: GraphQLSubscription {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("startDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("endDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("notes", type: .list(.nonNull(.scalar(String.self)))),
           GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
           GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
         ]
@@ -6159,8 +6339,8 @@ public final class OnCreateUserTrackedPathsSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
-          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        public init(id: GraphQLID, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "startDate": startDate, "endDate": endDate, "notes": notes, "xCoords": xCoords, "yCoords": yCoords])
         }
 
         public var __typename: String {
@@ -6190,6 +6370,33 @@ public final class OnCreateUserTrackedPathsSubscription: GraphQLSubscription {
           }
         }
 
+        public var startDate: String {
+          get {
+            return snapshot["startDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "startDate")
+          }
+        }
+
+        public var endDate: String {
+          get {
+            return snapshot["endDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "endDate")
+          }
+        }
+
+        public var notes: [String]? {
+          get {
+            return snapshot["notes"] as? [String]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "notes")
+          }
+        }
+
         public var xCoords: [Double]? {
           get {
             return snapshot["xCoords"] as? [Double]
@@ -6214,7 +6421,7 @@ public final class OnCreateUserTrackedPathsSubscription: GraphQLSubscription {
 
 public final class OnUpdateUserTrackedPathsSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateUserTrackedPaths($filter: ModelSubscriptionUserTrackedPathsFilterInput) {\n  onUpdateUserTrackedPaths(filter: $filter) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnUpdateUserTrackedPaths($filter: ModelSubscriptionUserTrackedPathsFilterInput) {\n  onUpdateUserTrackedPaths(filter: $filter) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      startDate\n      endDate\n      notes\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionUserTrackedPathsFilterInput?
 
@@ -6325,6 +6532,9 @@ public final class OnUpdateUserTrackedPathsSubscription: GraphQLSubscription {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("startDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("endDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("notes", type: .list(.nonNull(.scalar(String.self)))),
           GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
           GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
         ]
@@ -6335,8 +6545,8 @@ public final class OnUpdateUserTrackedPathsSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
-          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        public init(id: GraphQLID, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "startDate": startDate, "endDate": endDate, "notes": notes, "xCoords": xCoords, "yCoords": yCoords])
         }
 
         public var __typename: String {
@@ -6366,6 +6576,33 @@ public final class OnUpdateUserTrackedPathsSubscription: GraphQLSubscription {
           }
         }
 
+        public var startDate: String {
+          get {
+            return snapshot["startDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "startDate")
+          }
+        }
+
+        public var endDate: String {
+          get {
+            return snapshot["endDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "endDate")
+          }
+        }
+
+        public var notes: [String]? {
+          get {
+            return snapshot["notes"] as? [String]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "notes")
+          }
+        }
+
         public var xCoords: [Double]? {
           get {
             return snapshot["xCoords"] as? [Double]
@@ -6390,7 +6627,7 @@ public final class OnUpdateUserTrackedPathsSubscription: GraphQLSubscription {
 
 public final class OnDeleteUserTrackedPathsSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteUserTrackedPaths($filter: ModelSubscriptionUserTrackedPathsFilterInput) {\n  onDeleteUserTrackedPaths(filter: $filter) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnDeleteUserTrackedPaths($filter: ModelSubscriptionUserTrackedPathsFilterInput) {\n  onDeleteUserTrackedPaths(filter: $filter) {\n    __typename\n    id\n    tracks {\n      __typename\n      id\n      name\n      startDate\n      endDate\n      notes\n      xCoords\n      yCoords\n    }\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionUserTrackedPathsFilterInput?
 
@@ -6501,6 +6738,9 @@ public final class OnDeleteUserTrackedPathsSubscription: GraphQLSubscription {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("startDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("endDate", type: .nonNull(.scalar(String.self))),
+          GraphQLField("notes", type: .list(.nonNull(.scalar(String.self)))),
           GraphQLField("xCoords", type: .list(.nonNull(.scalar(Double.self)))),
           GraphQLField("yCoords", type: .list(.nonNull(.scalar(Double.self)))),
         ]
@@ -6511,8 +6751,8 @@ public final class OnDeleteUserTrackedPathsSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
-          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "xCoords": xCoords, "yCoords": yCoords])
+        public init(id: GraphQLID, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+          self.init(snapshot: ["__typename": "TrackedPath", "id": id, "name": name, "startDate": startDate, "endDate": endDate, "notes": notes, "xCoords": xCoords, "yCoords": yCoords])
         }
 
         public var __typename: String {
@@ -6539,6 +6779,33 @@ public final class OnDeleteUserTrackedPathsSubscription: GraphQLSubscription {
           }
           set {
             snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var startDate: String {
+          get {
+            return snapshot["startDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "startDate")
+          }
+        }
+
+        public var endDate: String {
+          get {
+            return snapshot["endDate"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "endDate")
+          }
+        }
+
+        public var notes: [String]? {
+          get {
+            return snapshot["notes"] as? [String]
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "notes")
           }
         }
 

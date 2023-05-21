@@ -29,6 +29,9 @@ type TrackedPath
 {
     id: ID!
     name: String!
+    startDate: String!
+    endDate: String!
+    notes: [String!]
     xCoords: [Float!]
     yCoords: [Float!]
 }

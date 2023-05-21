@@ -10,7 +10,7 @@ public struct TabBarNavigator: View {
                 ViewFactory.mapView()
                     .tabItem { Image(systemName: "map") }
                     .tag(0)
-                Text("Pistes")
+                ViewFactory.trackListView()
                     .tabItem { Image(systemName: "figure.skiing.downhill") }
                     .tag(1)
                 ViewFactory.socialNavigator()

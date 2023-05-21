@@ -7,6 +7,9 @@ extension TrackedPath {
    public enum CodingKeys: String, ModelKey {
     case id
     case name
+    case startDate
+    case endDate
+    case notes
     case xCoords
     case yCoords
   }
@@ -22,6 +25,9 @@ extension TrackedPath {
     model.fields(
       .field(trackedPath.id, is: .required, ofType: .string),
       .field(trackedPath.name, is: .required, ofType: .string),
+      .field(trackedPath.startDate, is: .required, ofType: .string),
+      .field(trackedPath.endDate, is: .required, ofType: .string),
+      .field(trackedPath.notes, is: .optional, ofType: .embeddedCollection(of: String.self)),
       .field(trackedPath.xCoords, is: .optional, ofType: .embeddedCollection(of: Double.self)),
       .field(trackedPath.yCoords, is: .optional, ofType: .embeddedCollection(of: Double.self))
     )
