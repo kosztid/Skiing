@@ -10,8 +10,8 @@ struct TrackListView: View {
                     ForEach(viewModel.tracks) { track in
                         TrackListItem(
                             track: track,
-                            renameAction: {},
-                            addNoteAction: {},
+                            updateAction: viewModel.updateTrack,
+                            noteAction: viewModel.addNote,
                             deleteAction: viewModel.removeTrack,
                             totalDistance: viewModel.calculateDistance(track: track)
                         )

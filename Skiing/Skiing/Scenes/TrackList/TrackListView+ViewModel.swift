@@ -50,5 +50,19 @@ extension TrackListView {
                 await accountService.removeTrackedPath(trackedPath)
             }
         }
+
+        func updateTrack(_ trackedPath: TrackedPath) {
+            Task {
+                await accountService.updateTrack(trackedPath)
+            }
+        }
+
+        func addNote(_ note: String, _ trackedPath: TrackedPath) {
+            Task {
+                var newTrack = trackedPath
+                newTrack.notes?.append(note)
+                await accountService.updateTrack(newTrack)
+            }
+        }
     }
 }

@@ -32,6 +32,7 @@ public protocol AccountServiceProtocol: AnyObject {
 
     func createUserTrackedPaths() async
     func updateTrackedPath(_ trackedPath: TrackedPath) async
+    func updateTrack(_ trackedPath: TrackedPath) async
     func removeTrackedPath(_ trackedPath: TrackedPath) async
     func queryTrackedPaths() async
 
@@ -415,6 +416,32 @@ extension AccountService: AccountServiceProtocol {
             }?.tracks
 
             tracks?.append(trackedPath)
+
+            let trackModel = TrackedPathModel(id: user.userId, tracks: tracks)
+            guard let data = trackModel.data else { return }
+            let _ = try await Amplify.API.mutate(request: .update(data))
+
+            await queryTrackedPaths()
+        } catch let error as APIError {
+            print("Failed to create note: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
+    }
+
+    func updateTrack(_ trackedPath: TrackedPath) async {
+        do {
+            let user = try await Amplify.Auth.getCurrentUser()
+            let tracksQueryResults = try await Amplify.API.query(request: .list(UserTrackedPaths.self))
+            let tracksQueryResultsMapped = try tracksQueryResults.get().elements.map { item in
+                TrackedPathModel(from: item)
+            }
+
+            var tracks = tracksQueryResultsMapped.first { item in
+                item.id == user.userId
+            }?.tracks
+            let id = tracks?.firstIndex { $0.id == trackedPath.id } ?? 0
+            tracks?[id] = trackedPath
 
             let trackModel = TrackedPathModel(id: user.userId, tracks: tracks)
             guard let data = trackModel.data else { return }

@@ -19,6 +19,9 @@ extension MapView {
         var locationTimer: Timer?
         var trackTimer: Timer?
 
+        var addX = 0.0
+        var addY = 0.0
+
         @Published var isTracking = TrackingState.off
         @Published var path: NavigationRoute = .init()
         @Published var friendLocations: [Location] = []
@@ -92,8 +95,11 @@ extension MapView {
         func startTracking() {
             self.trackTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(trackRoute), userInfo: nil, repeats: true)
 //            self.trackedPath.append(TrackedPathModel(id: UUID().uuidString, name: "Path \(self.trackedPath.count)"))
-            self.trackedPath?.tracks?.append(.init(id: UUID().uuidString, name: "Path \(UUID().uuidString)", startDate: "\(dateFormatter.string(from: Date()))", endDate: ""))
+            let id = UUID().uuidString
+            self.trackedPath?.tracks?.append(.init(id: id, name: "Path \(id.prefix(4))", startDate: "\(dateFormatter.string(from: Date()))", endDate: "", notes: []))
             self.isTracking = .on
+            addX = Double.random(in: 0..<0.001)
+            addY = Double.random(in: 0..<0.001)
         }
 
         func resumeTracking() {
@@ -123,8 +129,8 @@ extension MapView {
             guard var modified = self.trackedPath?.tracks else { return }
             var xCoords = modified.last?.xCoords
             var yCoords = modified.last?.yCoords
-            xCoords?.append((47.1986 + (0.001 * Double(trackedPath?.tracks?.last?.xCoords?.count ?? 0))))
-            yCoords?.append(17.60286 + Double(trackedPath?.tracks?.last?.yCoords?.count ?? 0) * 0.01)
+            xCoords?.append((47.1986 + (addX * Double(trackedPath?.tracks?.last?.xCoords?.count ?? 0))))
+            yCoords?.append(17.60286 + Double(trackedPath?.tracks?.last?.yCoords?.count ?? 0) * addY)
 
             modified[modified.count - 1].xCoords = xCoords ?? []
             modified[modified.count - 1].yCoords = yCoords ?? []

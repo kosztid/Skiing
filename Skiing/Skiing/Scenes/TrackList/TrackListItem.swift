@@ -5,10 +5,10 @@ import Integration
 struct TrackListItem: View {
     let dateFormatter: DateFormatter
     let formatter: DateComponentsFormatter
-    let track: TrackedPath
+    var track: TrackedPath
     let notes =  ["Note1 description something", "Note2 description something"]
-    let renameAction: () -> Void
-    let addNoteAction: () -> Void
+    let updateAction: (_ trackedPath: TrackedPath) -> Void
+    let noteAction: (_ note: String, _ trackedPath: TrackedPath) -> Void
     let deleteAction: (_ trackedPath: TrackedPath) -> Void
     let totalDistance: Double
     var startDate: Date
@@ -64,7 +64,9 @@ struct TrackListItem: View {
             TextField("Enter the new name", text: $name)
                 .autocorrectionDisabled(true)
             Button("Rename") {
-                renameAction()
+                var newTrack = track
+                newTrack.name = name
+                updateAction(newTrack)
                 name = ""
                 showingRenameAlert.toggle()
             }
@@ -78,7 +80,7 @@ struct TrackListItem: View {
             TextField("Enter note description", text: $note)
                 .autocorrectionDisabled(true)
             Button("Add") {
-                addNoteAction()
+                noteAction(note, track)
                 note = ""
                 showingAlert.toggle()
             }
@@ -157,8 +159,8 @@ struct TrackListItem: View {
 
     public init(
         track: TrackedPath,
-        renameAction: @escaping () -> Void,
-        addNoteAction: @escaping () -> Void,
+        updateAction: @escaping (_ trackedPath: TrackedPath) -> Void,
+        noteAction: @escaping (_ note: String, _ trackedPath: TrackedPath) -> Void,
         deleteAction: @escaping (_ trackedPath: TrackedPath) -> Void,
         totalDistance: Double,
         isOpened: Bool = false,
@@ -168,8 +170,8 @@ struct TrackListItem: View {
         showingRenameAlert: Bool = false
     ) {
         self.track = track
-        self.renameAction = renameAction
-        self.addNoteAction = addNoteAction
+        self.updateAction = updateAction
+        self.noteAction = noteAction
         self.deleteAction = deleteAction
         self.totalDistance = totalDistance
         self.startDate = Date()
@@ -202,9 +204,8 @@ struct TrackListItem_Previews: PreviewProvider {
                 endDate: "2023-05-21 12:19:52",
                 notes: ["Note1 description something", "Note2 description something"]
             ),
-            renameAction: {
-            },
-            addNoteAction: {
+            updateAction: { _ in
+            }, noteAction: { _,_  in
             }, deleteAction: { _ in
             },
             totalDistance: 1000
