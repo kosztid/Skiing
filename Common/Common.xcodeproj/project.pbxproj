@@ -24,8 +24,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		55D6B66F29C4C99600174065 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Common.framework; path = "/Users/kosztolanczi.dominik/Documents/Develop/Skiing/Common/build/Debug-iphoneos/Common.framework"; sourceTree = "<absolute>"; };
-		55D6B67929C4C99700174065 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CommonTests.xctest; path = "/Users/kosztolanczi.dominik/Documents/Develop/Skiing/Common/build/Debug-iphoneos/CommonTests.xctest"; sourceTree = "<absolute>"; };
+		552229202A18F9E9003FE5BB /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		552229212A18F9E9003FE5BB /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B67E29C4C99700174065 /* CommonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTests.swift; sourceTree = "<group>"; };
 		55D6B68A29C4C9B900174065 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6B68B29C4C9B900174065 /* Integration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Integration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +59,8 @@
 				55D6B67129C4C99600174065 /* Common */,
 				55D6B67D29C4C99700174065 /* CommonTests */,
 				55D6B68929C4C9B900174065 /* Frameworks */,
+				552229202A18F9E9003FE5BB /* Common.framework */,
+				552229212A18F9E9003FE5BB /* CommonTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +107,7 @@
 			buildConfigurationList = 55D6B68329C4C99700174065 /* Build configuration list for PBXNativeTarget "Common" */;
 			buildPhases = (
 				55D6B66A29C4C99600174065 /* Headers */,
+				5522292E2A1ABDBD003FE5BB /* swiftlint */,
 				55D6B66B29C4C99600174065 /* Sources */,
 				55D6B66C29C4C99600174065 /* Frameworks */,
 				55D6B66D29C4C99600174065 /* Resources */,
@@ -115,7 +118,7 @@
 			);
 			name = Common;
 			productName = Common;
-			productReference = 55D6B66F29C4C99600174065 /* Common.framework */;
+			productReference = 552229202A18F9E9003FE5BB /* Common.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		55D6B67829C4C99700174065 /* CommonTests */ = {
@@ -133,7 +136,7 @@
 			);
 			name = CommonTests;
 			productName = CommonTests;
-			productReference = 55D6B67929C4C99700174065 /* CommonTests.xctest */;
+			productReference = 552229212A18F9E9003FE5BB /* CommonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -189,6 +192,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5522292E2A1ABDBD003FE5BB /* swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55D6B66B29C4C99600174065 /* Sources */ = {

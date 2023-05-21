@@ -4,7 +4,7 @@ import SwiftUI
 struct SocialView: View {
     @StateObject var viewModel: ViewModel
     @State var presentAdd = false
-    
+
     var body: some View {
         ZStack {
             List {
@@ -17,7 +17,6 @@ struct SocialView: View {
                 .onDelete(perform: viewModel.delete)
             }
             .listStyle(.plain)
-
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -28,7 +27,6 @@ struct SocialView: View {
                     viewModel.notification ? Image(systemName: "bell.badge.fill") : Image(systemName: "bell.fill")
                 }
             }
-            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     viewModel.navigateToAddFriend()
@@ -62,7 +60,7 @@ public struct FriendListItem: View {
         }
         .padding(.horizontal, 20)
     }
-    
+
     public init(friend: Friend, isTracking: Bool = false, action: @escaping () -> Void) {
         self.friend = friend
         self.isTracking = .init(friend.isTracking)

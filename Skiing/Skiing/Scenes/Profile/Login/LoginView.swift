@@ -1,9 +1,9 @@
-import UI
 import SwiftUI
+import UI
 
 struct LoginView: View {
     @StateObject var viewModel: ViewModel
-    
+
     var body: some View {
         VStack {
             Text("Login")
@@ -16,7 +16,6 @@ struct LoginView: View {
                     .regularTextFieldStyle(label: "Password")
                 HStack {
                     Button {
-
                     } label: {
                         Text("Forgotten Password")
                             .font(.caption)

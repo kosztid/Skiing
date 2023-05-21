@@ -1,8 +1,8 @@
 import Combine
-import SwiftUI
-import UI
 import GoogleMaps
 import Integration
+import SwiftUI
+import UI
 
 extension MapView {
     enum TrackingState {
@@ -13,7 +13,7 @@ extension MapView {
     final class ViewModel: ObservableObject, NavigationViewModel {
         private var cancellables: Set<AnyCancellable> = []
 
-        let dateFormatter: DateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         let accountService: AccountServiceProtocol
         var locationManager = CLLocationManager()
         var locationTimer: Timer?
@@ -61,7 +61,6 @@ extension MapView {
             Task {
                 await accountService.queryTrackedPaths()
             }
-
         }
 
         func makeMarkers() {

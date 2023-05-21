@@ -1,6 +1,6 @@
+import Factory
 import GoogleMaps
 import Integration
-import Factory
 import SwiftUI
 
 enum ViewFactory {
@@ -8,7 +8,7 @@ enum ViewFactory {
         Container.Skiing.view()
     }
 
-    //MARK: -  PROFILE
+    // MARK: - PROFILE
     static func loginView(navigator: LoginViewNavigatorProtocol) -> LoginView {
         Container.Login.view(navigator)
     }
@@ -29,7 +29,7 @@ enum ViewFactory {
         Container.Profile.navigator()
     }
 
-    //MARK: - SOCIAL
+    // MARK: - SOCIAL
 
     static func socialView(navigator: SocialListViewNavigatorProtocol) -> SocialView {
         Container.Social.view(navigator)
@@ -47,8 +47,12 @@ enum ViewFactory {
         Container.FriendAdd.view(navigator)
     }
 
-    //MARK: -  MAP
-    static func googleMap(cameraPos: Binding<GMSCameraPosition>, markers: Binding<[GMSMarker]>, trackedPath: Binding<[TrackedPath]>) -> GoogleMapsView {
+    // MARK: - MAP
+    static func googleMap(
+        cameraPos: Binding<GMSCameraPosition>,
+        markers: Binding<[GMSMarker]>,
+        trackedPath: Binding<[TrackedPath]>
+    ) -> GoogleMapsView {
         Container.GoogleMap.view((cameraPos, markers, trackedPath))
     }
 
@@ -56,7 +60,7 @@ enum ViewFactory {
         Container.Map.view()
     }
 
-    //MARK: - Tracklist
+    // MARK: - Tracklist
 
     static func trackListView() -> TrackListView {
         Container.TrackList.view()

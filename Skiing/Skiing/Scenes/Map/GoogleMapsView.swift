@@ -1,6 +1,6 @@
 import GoogleMaps
-import SwiftUI
 import Integration
+import SwiftUI
 
 struct GoogleMapsView: UIViewRepresentable {
     class Coordinator: NSObject, GMSMapViewDelegate {
@@ -12,8 +12,12 @@ struct GoogleMapsView: UIViewRepresentable {
     @Binding var markers: [GMSMarker]
     @Binding var trackedPath: [TrackedPath]
 
-    var coordinates: [CLLocationCoordinate2D] = [CLLocationCoordinate2D(latitude: 47.1986, longitude: 17.60286), CLLocationCoordinate2D(latitude: 47.1786, longitude: 17.62286), CLLocationCoordinate2D(latitude: 47.1786, longitude: 17.65286), CLLocationCoordinate2D(latitude: 47.2186, longitude: 17.62286)]
-
+    var coordinates: [CLLocationCoordinate2D] = [
+        CLLocationCoordinate2D(latitude: 47.1986, longitude: 17.60286),
+        CLLocationCoordinate2D(latitude: 47.1786, longitude: 17.62286),
+        CLLocationCoordinate2D(latitude: 47.1786, longitude: 17.65286),
+        CLLocationCoordinate2D(latitude: 47.2186, longitude: 17.62286)
+    ]
 
     func makeUIView(context: Context) -> GMSMapView {
         GMSServices.setMetalRendererEnabled(true)
@@ -50,16 +54,13 @@ struct GoogleMapsView: UIViewRepresentable {
             line.strokeWidth = 3.0
             line.map = view
         }
-
-
-
     }
 
     func makeCoordinator() -> Coordinator {
         Coordinator()
     }
 
-    public init(
+    init(
         cameraPos: Binding<GMSCameraPosition>,
         markers: Binding<[GMSMarker]>,
         trackedPath: Binding<[TrackedPath]>,

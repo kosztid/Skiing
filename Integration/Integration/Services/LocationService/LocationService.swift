@@ -1,14 +1,14 @@
-//import Combine
-//import SwiftUI
-//import UIKit
-//import Amplify
-//import AWSAPIPlugin
+// import Combine
+// import SwiftUI
+// import UIKit
+// import Amplify
+// import AWSAPIPlugin
 //
-//public protocol LocationServiceProtocol: AnyObject {
-//    //    var locationPublisher: AnyPublisher<Location?, Never> { get }
-//}
+// public protocol LocationServiceProtocol: AnyObject {
+//     //    var locationPublisher: AnyPublisher<Location?, Never> { get }
+// }
 //
-//final class LocationService {
+// final class LocationService {
 //    private var cancellables: Set<AnyCancellable> = []
 //    //    private let location: CurrentValueSubject<Location?, Never> = .init(nil)
 //    var list: [Location] = []
@@ -66,12 +66,12 @@
 //            print("Got failed result with error \(error)")
 //        }
 //    }
-//}
+// }
 //
-//extension LocationService: LocationServiceProtocol {
+// extension LocationService: LocationServiceProtocol {
 //    //    var locationPublisher: AnyPublisher<Location?, Never> {
 //    //        location
 //    //            .receive(subscriber: DispatchQueue.main)
 //    //            .eraseToAnyPublisher()
 //    //    }
-//}
+// }

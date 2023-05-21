@@ -7,7 +7,7 @@ extension FriendAddView {
         private let service: AccountServiceProtocol
         @Published var email: String = ""
 
-        public init(
+        init(
             navigator: SocialAddViewNavigatorProtocol,
             service: AccountServiceProtocol
         ) {

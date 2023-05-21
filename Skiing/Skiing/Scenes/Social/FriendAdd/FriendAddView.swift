@@ -1,5 +1,5 @@
-import UI
 import SwiftUI
+import UI
 
 struct FriendAddView: View {
     @StateObject var viewModel: ViewModel

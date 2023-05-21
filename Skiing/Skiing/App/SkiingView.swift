@@ -1,6 +1,6 @@
-import SwiftUI
-import Integration
 import Factory
+import Integration
+import SwiftUI
 import UI
 
 struct SkiingView: View {
@@ -33,7 +33,7 @@ struct SignInButton: View {
         )
     }
 }
-struct SignOutButton : View {
+struct SignOutButton: View {
     var body: some View {
         Button(
             action: {

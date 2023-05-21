@@ -13,7 +13,7 @@ extension Container {
         }
     }
 
-    enum TabBar  {
+    enum TabBar {
         static let view = Factory {
             TabBarNavigator()
         }
@@ -22,7 +22,7 @@ extension Container {
     enum Login {
         static let view = ParameterFactory { navigator in
             LoginView(
-            viewModel: viewModel(navigator)
+                viewModel: viewModel(navigator)
             )
         }
 
@@ -37,7 +37,7 @@ extension Container {
     enum Register {
         static let view = ParameterFactory { navigator in
             RegisterView(
-            viewModel: viewModel(navigator)
+                viewModel: viewModel(navigator)
             )
         }
 
@@ -52,7 +52,7 @@ extension Container {
     enum RegisterVerify {
         static let view = ParameterFactory { navigator in
             VerifyView(
-            viewModel: viewModel(navigator)
+                viewModel: viewModel(navigator)
             )
         }
 
@@ -77,7 +77,7 @@ extension Container {
                 accountService: accountService()
             )
         }
-        
+
         static let navigator = Factory {
             ProfileNavigator()
         }

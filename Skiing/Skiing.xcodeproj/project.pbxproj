@@ -332,6 +332,7 @@
 			buildConfigurationList = 554C8B7B29C4BD920028C76C /* Build configuration list for PBXNativeTarget "Skiing" */;
 			buildPhases = (
 				1C2299D54E7A867EA779145B /* [CP] Check Pods Manifest.lock */,
+				5522292D2A1ABD68003FE5BB /* Swiftlint */,
 				554C8B6929C4BD910028C76C /* Sources */,
 				554C8B6A29C4BD910028C76C /* Frameworks */,
 				554C8B6B29C4BD910028C76C /* Resources */,
@@ -434,6 +435,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skiing/Pods-Skiing-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		5522292D2A1ABD68003FE5BB /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		A8F66EFADA31E1CA01D489D1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

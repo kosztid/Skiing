@@ -1,6 +1,5 @@
 import SwiftUI
 
-// swiftlint:disable:next line_length
 public struct RegularTextFieldStyleViewModifier: ViewModifier {
     public struct PlaceholderConfig {
         public let placeholder: String
@@ -26,9 +25,7 @@ public struct RegularTextFieldStyleViewModifier: ViewModifier {
 }
 
 public extension TextField {
-    // swiftlint:disable:next function_parameter_count
     func regularTextFieldStyle(
-        // swiftlint:disable:next line_length
         label: String?
     ) -> some View{
         modifier(RegularTextFieldStyleViewModifier(
@@ -38,13 +35,13 @@ public extension TextField {
 }
 
 public extension ToggleableSecureField {
-    // swiftlint:disable:next function_parameter_count
     func regularTextFieldStyle(
-        // swiftlint:disable:next line_length
         label: String?
     ) -> some View{
-        modifier(RegularTextFieldStyleViewModifier(
-            label: label
-        ))
+        modifier(
+            RegularTextFieldStyleViewModifier(
+                label: label
+            )
+        )
     }
 }

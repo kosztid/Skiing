@@ -1,7 +1,7 @@
 import Combine
-import SwiftUI
 import GoogleMaps
 import Integration
+import SwiftUI
 
 extension TrackListView {
     final class ViewModel: ObservableObject {
@@ -43,7 +43,6 @@ extension TrackListView {
                 await accountService.queryTrackedPaths()
             }
         }
-
 
         func removeTrack(_ trackedPath: TrackedPath) {
             Task {

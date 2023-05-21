@@ -68,7 +68,7 @@ struct MapView: View {
         .onChange(of: viewModel.cameraPos) { newValue in
             print(newValue)
         }
-        .onChange(of: viewModel.trackedPath) { newValue in
+        .onChange(of: viewModel.trackedPath) { _ in
             print(viewModel.trackedPath)
         }
     }

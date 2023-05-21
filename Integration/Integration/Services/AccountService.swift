@@ -1,9 +1,8 @@
+import Amplify
+import AWSAPIPlugin
+import AWSCognitoAuthPlugin
 import Combine
 import UIKit
-import Amplify
-import AWSCognitoAuthPlugin
-import AWSAPIPlugin
-
 
 public protocol AccountServiceProtocol: AnyObject {
     var isSignedInPublisher: AnyPublisher<Bool, Never> { get }
@@ -12,9 +11,10 @@ public protocol AccountServiceProtocol: AnyObject {
     var friendPositionPublisher: AnyPublisher<Location?, Never> { get }
     var friendPositionsPublisher: AnyPublisher<[Location], Never> { get }
     var trackedPathPublisher: AnyPublisher<TrackedPathModel?, Never> { get }
+
     func login() async
-    func signUp(_ username: String,_ email: String,_ password: String) async
-    func signIn(_ username: String,_ password: String) async
+    func signUp(_ username: String, _ email: String, _ password: String) async
+    func signIn(_ username: String, _ password: String) async
     func confirmSignUp(with confirmationCode: String) async
 
     func queryFriends() async
@@ -132,7 +132,7 @@ extension AccountService: AccountServiceProtocol {
             let user = try await Amplify.Auth.getCurrentUser()
             let friendlist = Friendlist(id: user.userId, friends: [])
             guard let data = friendlist.data else { return }
-            let _ = try await Amplify.API.mutate(request: .create(data))
+            _ = try await Amplify.API.mutate(request: .create(data))
         } catch let error as APIError {
             print("Failed to create note: \(error)")
         } catch {
@@ -156,8 +156,8 @@ extension AccountService: AccountServiceProtocol {
 
             let friendlist = Friendlist(id: user.userId, friends: friends)
             guard let data = friendlist.data else { return }
-            let _ = try await Amplify.API.mutate(request: .update(data))
-            let _ = try await Amplify.API.mutate(request: .delete(request))
+            _ = try await Amplify.API.mutate(request: .update(data))
+            _ = try await Amplify.API.mutate(request: .delete(request))
 
             var senderFriends = friendQueryResultsMapped.first { item in
                 item.id == request.sender.id
@@ -167,7 +167,7 @@ extension AccountService: AccountServiceProtocol {
 
             let senderFriendlist = Friendlist(id: request.sender.id, friends: senderFriends)
             guard let senderData = senderFriendlist.data else { return }
-            let _ = try await Amplify.API.mutate(request: .update(senderData))
+            _ = try await Amplify.API.mutate(request: .update(senderData))
 
             await queryFriends()
             await queryFriendRequests()
@@ -186,7 +186,7 @@ extension AccountService: AccountServiceProtocol {
                 createdAt: friendlist.data?.createdAt,
                 updatedAt: friendlist.data?.updatedAt
             )
-            let _ = try await Amplify.API.mutate(request: .update(data))
+            _ = try await Amplify.API.mutate(request: .update(data))
             await queryFriends()
         } catch let error as APIError {
             print("Failed to create note: \(error)")
@@ -201,20 +201,25 @@ extension AccountService: AccountServiceProtocol {
             var email = ""
             do {
                 let attributes = try await Amplify.Auth.fetchUserAttributes()
-                for attribute in attributes {
-                    if (attribute.key.rawValue == "email") {
-                        email = attribute.value
-                        print(email)
-                    }
+                for attribute in attributes where attribute.key.rawValue == "email" {
+                    email = attribute.value
+                    print(email)
                 }
             } catch let error as APIError {
-                    print(error)
+                print(error)
             }
 
-            let request = FriendRequest(senderEmail: email, sender: Friend(id: user.userId, name: user.username, isTracking: true), recipient: recipient)
+            let request = FriendRequest(
+                senderEmail: email,
+                sender: Friend(
+                    id: user.userId,
+                    name: user.username,
+                    isTracking: true
+                ),
+                recipient: recipient
+            )
 
-            let result = try await Amplify.API.mutate(request: .create(request))
-
+            _ = try await Amplify.API.mutate(request: .create(request))
         } catch let error as APIError {
             print("Failed to create note: \(error)")
         } catch {
@@ -231,14 +236,12 @@ extension AccountService: AccountServiceProtocol {
             var email = ""
             do {
                 let attributes = try await Amplify.Auth.fetchUserAttributes()
-                for attribute in attributes {
-                    if (attribute.key.rawValue == "email") {
-                        email = attribute.value
-                        print(email)
-                    }
+                for attribute in attributes where attribute.key.rawValue == "email" {
+                    email = attribute.value
+                    print(email)
                 }
             } catch let error as APIError {
-                    print(error)
+                print(error)
             }
 
             print("Result", result)
@@ -294,7 +297,7 @@ extension AccountService: AccountServiceProtocol {
             let user = try await Amplify.Auth.getCurrentUser()
             let location = Location(id: "location_" + user.userId, name: user.username, xCoord: xCoord, yCoord: yCoord)
             guard let data = location.data else { return }
-            let _ = try await Amplify.API.mutate(request: .update(data))
+            _ = try await Amplify.API.mutate(request: .update(data))
         } catch let error as APIError {
             print("Failed to create note: \(error)")
         } catch {
@@ -352,7 +355,7 @@ extension AccountService: AccountServiceProtocol {
                 Location(from: cPos)
             }
 
-            let newResult = result.first { loc in
+            _ = result.first { loc in
                 loc.id == ("location_" + userId)
             }
         } catch {
@@ -382,7 +385,7 @@ extension AccountService: AccountServiceProtocol {
 
             let friendlist = Friendlist(id: user.userId, friends: friends)
             guard let data = friendlist.data else { return }
-            let _ = try await Amplify.API.mutate(request: .update(data))
+            _ = try await Amplify.API.mutate(request: .update(data))
         } catch let error as APIError {
             print("Failed to create note: \(error)")
         } catch {
@@ -395,7 +398,7 @@ extension AccountService: AccountServiceProtocol {
             let user = try await Amplify.Auth.getCurrentUser()
             let trackedPaths = TrackedPathModel(id: user.userId, tracks: [])
             guard let data = trackedPaths.data else { return }
-            let _ = try await Amplify.API.mutate(request: .create(data))
+            _ = try await Amplify.API.mutate(request: .create(data))
         } catch let error as APIError {
             print("Failed to create note: \(error)")
         } catch {
@@ -419,7 +422,7 @@ extension AccountService: AccountServiceProtocol {
 
             let trackModel = TrackedPathModel(id: user.userId, tracks: tracks)
             guard let data = trackModel.data else { return }
-            let _ = try await Amplify.API.mutate(request: .update(data))
+            _ = try await Amplify.API.mutate(request: .update(data))
 
             await queryTrackedPaths()
         } catch let error as APIError {
@@ -445,7 +448,7 @@ extension AccountService: AccountServiceProtocol {
 
             let trackModel = TrackedPathModel(id: user.userId, tracks: tracks)
             guard let data = trackModel.data else { return }
-            let _ = try await Amplify.API.mutate(request: .update(data))
+            _ = try await Amplify.API.mutate(request: .update(data))
 
             await queryTrackedPaths()
         } catch let error as APIError {
@@ -469,10 +472,9 @@ extension AccountService: AccountServiceProtocol {
 
             tracks?.removeAll { $0.id == trackedPath.id }
 
-
             let trackModel = TrackedPathModel(id: user.userId, tracks: tracks)
             guard let data = trackModel.data else { return }
-            let _ = try await Amplify.API.mutate(request: .update(data))
+            _ = try await Amplify.API.mutate(request: .update(data))
 
             await queryTrackedPaths()
         } catch let error as APIError {
@@ -502,7 +504,7 @@ extension AccountService: AccountServiceProtocol {
 
     public func login() async {
         do {
-            let signInResult = try await Amplify.Auth.signInWithWebUI(presentationAnchor: UIApplication.shared.windows.first!)
+            let signInResult = try await Amplify.Auth.signInWithWebUI(presentationAnchor: UIApplication.shared.windows.first)
             if signInResult.isSignedIn {
                 print("Sign in succeeded")
             }
@@ -527,7 +529,7 @@ extension AccountService: AccountServiceProtocol {
         }
     }
 
-    func signUp(_ username: String,_ email: String,_ password: String) async {
+    func signUp(_ username: String, _ email: String, _ password: String) async {
         let userAttributes = [AuthUserAttribute(.email, value: email)]
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
         do {

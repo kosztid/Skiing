@@ -1,12 +1,15 @@
+import Integration
 import SwiftUI
 import UI
-import Integration
 
 struct TrackListItem: View {
     let dateFormatter: DateFormatter
     let formatter: DateComponentsFormatter
     var track: TrackedPath
-    let notes =  ["Note1 description something", "Note2 description something"]
+    let notes = [
+        "Note1 description something",
+        "Note2 description something"
+    ]
     let updateAction: (_ trackedPath: TrackedPath) -> Void
     let noteAction: (_ note: String, _ trackedPath: TrackedPath) -> Void
     let deleteAction: (_ trackedPath: TrackedPath) -> Void
@@ -19,7 +22,6 @@ struct TrackListItem: View {
     @State var name = ""
     @State private var showingAlert = false
     @State private var showingRenameAlert = false
-    
 
     var body: some View {
         VStack(spacing: .zero) {
@@ -70,8 +72,10 @@ struct TrackListItem: View {
                 name = ""
                 showingRenameAlert.toggle()
             }
-            Button("Cancel", role: .cancel)
-            {
+            Button(
+                "Cancel",
+                role: .cancel
+            ) {
                 name = ""
                 showingRenameAlert.toggle()
             }
@@ -84,8 +88,10 @@ struct TrackListItem: View {
                 note = ""
                 showingAlert.toggle()
             }
-            Button("Cancel", role: .cancel)
-            {
+            Button(
+                "Cancel",
+                role: .cancel
+            ) {
                 note = ""
                 showingAlert.toggle()
             }
@@ -152,12 +158,11 @@ struct TrackListItem: View {
                     .buttonStyle(SkiingButtonStyle(style: .borderedRed))
                     .padding(.top, 8)
                 }
-
             }
         }
     }
 
-    public init(
+    init(
         track: TrackedPath,
         updateAction: @escaping (_ trackedPath: TrackedPath) -> Void,
         noteAction: @escaping (_ note: String, _ trackedPath: TrackedPath) -> Void,
@@ -190,7 +195,6 @@ struct TrackListItem: View {
         self.startDate = dateFormatter.date(from: track.startDate) ?? Date()
         self.endDate = dateFormatter.date(from: track.endDate) ?? Date()
         self.date = formatter.string(from: startDate.distance(to: endDate)) ?? ""
-
     }
 }
 
@@ -205,7 +209,7 @@ struct TrackListItem_Previews: PreviewProvider {
                 notes: ["Note1 description something", "Note2 description something"]
             ),
             updateAction: { _ in
-            }, noteAction: { _,_  in
+            }, noteAction: { _, _  in
             }, deleteAction: { _ in
             },
             totalDistance: 1000

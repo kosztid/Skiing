@@ -11,7 +11,7 @@ extension FriendRequestView {
         var requests: [FriendModel] = []
         private var cancellables: Set<AnyCancellable> = []
 
-        public init(service: AccountServiceProtocol) {
+        init(service: AccountServiceProtocol) {
             self.service = service
 
             initFriendRequests()
