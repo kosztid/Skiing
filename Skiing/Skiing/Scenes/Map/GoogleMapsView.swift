@@ -49,6 +49,12 @@ struct GoogleMapsView: UIViewRepresentable {
             print(model.name)
         }
 
+        func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+            guard let model = markers.first(where: { $0 == marker })?.userData as? String else { return false }
+            print(model)
+            return true
+        }
+
         func drawMapItems() {
             innerMapView?.clear()
 
@@ -79,14 +85,15 @@ struct GoogleMapsView: UIViewRepresentable {
         func makeMarkers() {
             var tempMarkers: [GMSMarker] = []
             friendLocations.forEach { loc in
-                tempMarkers.append(
-                    GMSMarker(
-                        position: CLLocationCoordinate2D(
-                            latitude: Double(loc.xCoord ?? "") ?? 0,
-                            longitude: Double(loc.yCoord ?? "") ?? 0
-                        )
+                let marker = GMSMarker(
+                    position: CLLocationCoordinate2D(
+                        latitude: Double(loc.xCoord ?? "") ?? 0,
+                        longitude: Double(loc.yCoord ?? "") ?? 0
                     )
                 )
+                marker.snippet = loc.name
+                marker.userData = loc.id
+                tempMarkers.append( marker )
             }
             self.markers = tempMarkers
             drawMapItems()
