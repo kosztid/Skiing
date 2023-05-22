@@ -10,8 +10,9 @@ public struct TrackedPath: Embeddable, Identifiable, Equatable {
     public var notes: [String]?
     public var xCoords: [Double]?
     public var yCoords: [Double]?
+    public var tracking: Bool
 
-    public init(id: String, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil) {
+    public init(id: String, name: String, startDate: String, endDate: String, notes: [String]? = nil, xCoords: [Double]? = nil, yCoords: [Double]? = nil, tracking: Bool = true) {
         self.id = id
         self.name = name
         self.startDate = startDate
@@ -19,5 +20,6 @@ public struct TrackedPath: Embeddable, Identifiable, Equatable {
         self.notes = notes
         self.xCoords = xCoords
         self.yCoords = yCoords
+        self.tracking = tracking
     }
 }

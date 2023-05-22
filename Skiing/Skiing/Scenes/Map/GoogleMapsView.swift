@@ -19,6 +19,18 @@ struct GoogleMapsView: UIViewRepresentable {
         CLLocationCoordinate2D(latitude: 47.2186, longitude: 17.62286)
     ]
 
+    init(
+        cameraPos: Binding<GMSCameraPosition>,
+        markers: Binding<[GMSMarker]>,
+        trackedPath: Binding<[TrackedPath]>,
+        service: AccountServiceProtocol
+    ) {
+        self._cameraPos = cameraPos
+        self._markers = markers
+        self._trackedPath = trackedPath
+        self.accountService = service
+    }
+
     func makeUIView(context: Context) -> GMSMapView {
         GMSServices.setMetalRendererEnabled(true)
         let view = GMSMapView.map(
@@ -44,7 +56,7 @@ struct GoogleMapsView: UIViewRepresentable {
             marker.map = view
         }
 
-        for track in trackedPath {
+        for track in trackedPath where track.tracking {
             let path = GMSMutablePath()
             for index in 0..<(track.xCoords?.count ?? 0) {
                 path.add(CLLocationCoordinate2D(latitude: track.xCoords?[index] ?? 0, longitude: track.yCoords?[index] ?? 0))
@@ -58,17 +70,5 @@ struct GoogleMapsView: UIViewRepresentable {
 
     func makeCoordinator() -> Coordinator {
         Coordinator()
-    }
-
-    init(
-        cameraPos: Binding<GMSCameraPosition>,
-        markers: Binding<[GMSMarker]>,
-        trackedPath: Binding<[TrackedPath]>,
-        service: AccountServiceProtocol
-    ) {
-        self._cameraPos = cameraPos
-        self._markers = markers
-        self._trackedPath = trackedPath
-        self.accountService = service
     }
 }

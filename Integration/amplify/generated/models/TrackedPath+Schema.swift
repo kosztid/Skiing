@@ -12,6 +12,7 @@ extension TrackedPath {
     case notes
     case xCoords
     case yCoords
+    case tracking
   }
   
   public static let keys = CodingKeys.self
@@ -29,7 +30,8 @@ extension TrackedPath {
       .field(trackedPath.endDate, is: .required, ofType: .string),
       .field(trackedPath.notes, is: .optional, ofType: .embeddedCollection(of: String.self)),
       .field(trackedPath.xCoords, is: .optional, ofType: .embeddedCollection(of: Double.self)),
-      .field(trackedPath.yCoords, is: .optional, ofType: .embeddedCollection(of: Double.self))
+      .field(trackedPath.yCoords, is: .optional, ofType: .embeddedCollection(of: Double.self)),
+      .field(trackedPath.tracking, is: .required, ofType: .bool)
     )
     }
 }

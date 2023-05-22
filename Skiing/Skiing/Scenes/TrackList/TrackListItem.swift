@@ -20,7 +20,9 @@ struct TrackListItem: View {
     @State var isOpened = false
     @State var note = ""
     @State var name = ""
+    @State var isShowingOnMap = false
     @State private var showingAlert = false
+    @State private var showingDeleteAlert = false
     @State private var showingRenameAlert = false
 
     var body: some View {
@@ -96,6 +98,21 @@ struct TrackListItem: View {
                 showingAlert.toggle()
             }
         }
+        .alert("Are you sure to delete?", isPresented: $showingDeleteAlert) {
+            Button(
+                "Yes",
+                role: .destructive
+            ) {
+                deleteAction(self.track)
+                showingDeleteAlert.toggle()
+            }
+            Button(
+                "Cancel",
+                role: .cancel
+            ) {
+                showingDeleteAlert.toggle()
+            }
+        }
     }
 
     var openedSection: some View {
@@ -114,6 +131,12 @@ struct TrackListItem: View {
                 Text("\(date)")
             }
             .padding(.bottom, 8)
+            HStack {
+                Text("Show on Map")
+                Spacer()
+                Toggle(isOn: $isShowingOnMap) {
+                }
+            }
             VStack(spacing: .zero) {
                 Divider()
                     .padding(.vertical, 8)
@@ -150,7 +173,7 @@ struct TrackListItem: View {
                     .buttonStyle(SkiingButtonStyle(style: .secondary))
                     .padding(.top, 8)
                     Button {
-                        deleteAction(self.track)
+                        showingDeleteAlert.toggle()
                     } label: {
                         Text("Delete run")
                             .frame(width: 120)
@@ -159,6 +182,15 @@ struct TrackListItem: View {
                     .padding(.top, 8)
                 }
             }
+        }
+        .onChange(of: isShowingOnMap) { newValue in
+            var newTrack = track
+            newTrack.tracking = newValue
+            updateAction(newTrack)
+        }
+        .onAppear {
+            print(track)
+            self.isShowingOnMap = track.tracking
         }
     }
 

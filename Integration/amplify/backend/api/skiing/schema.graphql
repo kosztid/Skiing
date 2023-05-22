@@ -34,6 +34,7 @@ type TrackedPath
     notes: [String!]
     xCoords: [Float!]
     yCoords: [Float!]
+    tracking: Boolean!
 }
 
 type UserTrackedPaths
