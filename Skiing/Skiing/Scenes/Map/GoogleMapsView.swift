@@ -13,6 +13,7 @@ struct GoogleMapsView: UIViewRepresentable {
         var trackedPath: [TrackedPath] = []
         var friendLocations: [Location] = []
         var markers: [GMSMarker] = []
+        var lines: [GMSPolyline] = []
 
         init(
             innerMapView: GMSMapView? = nil
@@ -44,7 +45,8 @@ struct GoogleMapsView: UIViewRepresentable {
         }
 
         func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {
-            print("tapped")
+            guard let model = lines.first(where: { $0 == overlay })?.userData as? TrackedPath else { return }
+            print(model.name)
         }
 
         func drawMapItems() {
@@ -58,6 +60,7 @@ struct GoogleMapsView: UIViewRepresentable {
         }
 
         func makePolylines() {
+            lines.removeAll()
             for track in trackedPath where track.tracking {
                 let path = GMSMutablePath()
                 for index in 0..<(track.xCoords?.count ?? 0) {
@@ -68,6 +71,8 @@ struct GoogleMapsView: UIViewRepresentable {
                 line.strokeWidth = 3.0
                 line.map = innerMapView
                 line.isTappable = true
+                line.userData = track
+                lines.append(line)
             }
         }
 
