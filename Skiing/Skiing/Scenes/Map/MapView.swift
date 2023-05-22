@@ -8,9 +8,7 @@ struct MapView: View {
     var body: some View {
         ZStack {
             ViewFactory.googleMap(
-                cameraPos: $viewModel.cameraPos,
-                markers: $viewModel.markers,
-                trackedPath: $viewModel.track
+                cameraPos: $viewModel.cameraPos
             )
             .ignoresSafeArea()
             VStack {
