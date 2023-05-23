@@ -10,10 +10,12 @@ struct TrackListItem: View {
         "Note1 description something",
         "Note2 description something"
     ]
+    let closeAction: () -> Void
     let updateAction: (_ trackedPath: TrackedPath) -> Void
     let noteAction: (_ note: String, _ trackedPath: TrackedPath) -> Void
     let deleteAction: (_ trackedPath: TrackedPath) -> Void
     let totalDistance: Double
+    let openedInitially: Bool
     var startDate: Date
     var endDate: Date
     var date: String
@@ -29,11 +31,13 @@ struct TrackListItem: View {
         VStack(spacing: .zero) {
             header
                 .padding(.bottom, 8)
-            if isOpened {
+            if isOpened || openedInitially {
                 openedSection
             }
         }
         .padding(8)
+        .background(.white)
+        .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .stroke(.black, lineWidth: 1)
@@ -50,17 +54,32 @@ struct TrackListItem: View {
                     .font(.caption)
                 Text(track.startDate)
             }
-            Button {
-                withAnimation {
-                    isOpened.toggle()
+            if openedInitially {
+                Button {
+                    withAnimation {
+                        closeAction()
+                    }
+                } label: {
+                    Image(systemName: isOpened ? "xmark" : "arrowtriangle.down")
+                        .foregroundColor(isOpened ? .white : .black)
+                        .frame(width: 40, height: 40)
+                        .rotationEffect(isOpened ? .degrees(180) : .zero)
+                        .background(.teal)
+                        .cornerRadius(20)
                 }
-            } label: {
-                Image(systemName: isOpened ? "xmark" : "arrowtriangle.down")
-                    .foregroundColor(isOpened ? .white : .black)
-                    .frame(width: 40, height: 40)
-                    .rotationEffect(isOpened ? .degrees(180) : .zero)
-                    .background(.teal)
-                    .cornerRadius(20)
+            } else {
+                Button {
+                    withAnimation {
+                        isOpened.toggle()
+                    }
+                } label: {
+                    Image(systemName: isOpened ? "xmark" : "arrowtriangle.down")
+                        .foregroundColor(isOpened ? .white : .black)
+                        .frame(width: 40, height: 40)
+                        .rotationEffect(isOpened ? .degrees(180) : .zero)
+                        .background(.teal)
+                        .cornerRadius(20)
+                }
             }
         }
         .background()
@@ -140,28 +159,30 @@ struct TrackListItem: View {
             VStack(spacing: .zero) {
                 Divider()
                     .padding(.vertical, 8)
-                HStack {
-                    Text("Notes")
-                        .padding(.bottom, 8)
-                    Spacer()
-                    Button {
-                        showingAlert.toggle()
-                    } label: {
-                        Text("Add note")
-                            .foregroundColor(.black)
+                if !openedInitially {
+                    HStack {
+                        Text("Notes")
+                            .padding(.bottom, 8)
+                        Spacer()
+                        Button {
+                            showingAlert.toggle()
+                        } label: {
+                            Text("Add note")
+                                .foregroundColor(.black)
+                        }
+                        .buttonStyle(SkiingButtonStyle(style: .bordered))
                     }
-                    .buttonStyle(SkiingButtonStyle(style: .bordered))
-                }
-                LazyVStack {
-                    ForEach(track.notes ?? [], id: \.self) { note in
-                        HStack {
-                            Text(note)
-                            Spacer()
+                    LazyVStack {
+                        ForEach(track.notes ?? [], id: \.self) { note in
+                            HStack {
+                                Text(note)
+                                Spacer()
+                            }
                         }
                     }
+                    Divider()
+                        .padding(.vertical, 8)
                 }
-                Divider()
-                    .padding(.vertical, 8)
                 HStack {
                     Button {
                         name = track.name
@@ -196,6 +217,7 @@ struct TrackListItem: View {
 
     init(
         track: TrackedPath,
+        closeAction: @escaping () -> Void = {},
         updateAction: @escaping (_ trackedPath: TrackedPath) -> Void,
         noteAction: @escaping (_ note: String, _ trackedPath: TrackedPath) -> Void,
         deleteAction: @escaping (_ trackedPath: TrackedPath) -> Void,
@@ -207,18 +229,20 @@ struct TrackListItem: View {
         showingRenameAlert: Bool = false
     ) {
         self.track = track
+        self.closeAction = closeAction
         self.updateAction = updateAction
         self.noteAction = noteAction
         self.deleteAction = deleteAction
         self.totalDistance = totalDistance
+        self.openedInitially = isOpened
         self.startDate = Date()
         self.endDate = Date()
         self.date = ""
         self.dateFormatter = DateFormatter()
         self.formatter = DateComponentsFormatter()
+        self.isOpened.toggle()
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.unitsStyle = .abbreviated
-        self.isOpened = isOpened
         self.note = note
         self.name = name
         self.showingAlert = showingAlert

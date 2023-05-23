@@ -8,10 +8,11 @@ struct MapView: View {
     var body: some View {
         ZStack {
             ViewFactory.googleMap(
-                cameraPos: $viewModel.cameraPos
+                cameraPos: $viewModel.cameraPos,
+                selectedPath: $viewModel.selectedPath
             )
             .ignoresSafeArea()
-            VStack {
+            VStack(spacing: .zero) {
                 Spacer()
 //                Button {
 //                    viewModel.confirm()
@@ -19,55 +20,66 @@ struct MapView: View {
 //                    Text("Init tracks")
 //                }
 //                .buttonStyle(SkiingButtonStyle())
-                HStack {
-                    if viewModel.isTracking == .off {
-                        Spacer()
-                        Button {
-                            viewModel.startTracking()
-                        } label: {
-                            Text("Start Tracking")
-                        }
-                        .buttonStyle(SkiingButtonStyle())
-                    } else {
-                        if viewModel.isTracking == .on {
+                if viewModel.selectedPath != nil {
+                    TrackListItem(
+                        track: viewModel.selectedPath!, // swiftlint:disable:this force_unwrapping
+                        closeAction: viewModel.closeAction,
+                        updateAction: viewModel.updateTrack,
+                        noteAction: viewModel.addNote,
+                        deleteAction: viewModel.removeTrack,
+                        totalDistance: viewModel.calculateDistance(),
+                        isOpened: true
+                    )
+                    .transition(.push(from: .top))
+                } else {
+                    HStack {
+                        if viewModel.isTracking == .off {
+                            Spacer()
                             Button {
-                                viewModel.pauseTracking()
+                                viewModel.startTracking()
                             } label: {
-                                Text("Pause")
-                            }
-                            .buttonStyle(SkiingButtonStyle())
-
-                            Button {
-                                viewModel.stopTracking()
-                            } label: {
-                                Text("Stop")
+                                Text("Start Tracking")
                             }
                             .buttonStyle(SkiingButtonStyle())
                         } else {
-                            Button {
-                                viewModel.resumeTracking()
-                            } label: {
-                                Text("Resume")
-                            }
-                            .buttonStyle(SkiingButtonStyle())
+                            if viewModel.isTracking == .on {
+                                Button {
+                                    viewModel.pauseTracking()
+                                } label: {
+                                    Text("Pause")
+                                }
+                                .buttonStyle(SkiingButtonStyle())
 
-                            Button {
-                                viewModel.stopTracking()
-                            } label: {
-                                Text("Stop")
+                                Button {
+                                    viewModel.stopTracking()
+                                } label: {
+                                    Text("Stop")
+                                }
+                                .buttonStyle(SkiingButtonStyle())
+                            } else {
+                                Button {
+                                    viewModel.resumeTracking()
+                                } label: {
+                                    Text("Resume")
+                                }
+                                .buttonStyle(SkiingButtonStyle())
+
+                                Button {
+                                    viewModel.stopTracking()
+                                } label: {
+                                    Text("Stop")
+                                }
+                                .buttonStyle(SkiingButtonStyle())
                             }
-                            .buttonStyle(SkiingButtonStyle())
                         }
                     }
+                    .transition(.push(from: .top))
+                    .padding()
                 }
-                .padding()
             }
         }
         .onChange(of: viewModel.cameraPos) { newValue in
             print(newValue)
-        }
-        .onChange(of: viewModel.trackedPath) { _ in
-            print(viewModel.trackedPath)
         }
     }
 }

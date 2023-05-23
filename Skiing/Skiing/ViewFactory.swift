@@ -49,9 +49,10 @@ enum ViewFactory {
 
     // MARK: - MAP
     static func googleMap(
-        cameraPos: Binding<GMSCameraPosition>
+        cameraPos: Binding<GMSCameraPosition>,
+        selectedPath: Binding<TrackedPath?>
     ) -> GoogleMapsView {
-        Container.GoogleMap.view((cameraPos))
+        Container.GoogleMap.view((cameraPos, selectedPath))
     }
 
     static func mapView() -> MapView {

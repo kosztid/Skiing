@@ -84,9 +84,10 @@ extension Container {
     }
 
     enum GoogleMap {
-        static let view = ParameterFactory { cameraPos in
+        static let view = ParameterFactory { cameraPos, selectedPath in
             GoogleMapsView(
-                cameraPos: cameraPos
+                cameraPos: cameraPos,
+                selectedPath: selectedPath
             )
         }
     }
