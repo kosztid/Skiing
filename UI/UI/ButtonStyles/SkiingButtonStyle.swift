@@ -74,6 +74,7 @@ public struct SkiingButtonStyle: ButtonStyle {
         if isEnabled {
             configuration.label
                 .font(.subheadline)
+                .bold()
                 .padding([.leading, .trailing], Layout.paddingWidth)
                 .frame(minHeight: Layout.frameHeight)
                 .foregroundColor(style.foregroundColor)
@@ -82,6 +83,7 @@ public struct SkiingButtonStyle: ButtonStyle {
         } else {
             configuration.label
                 .font(.subheadline)
+                .bold()
                 .padding([.leading, .trailing], Layout.paddingWidth)
                 .frame(minHeight: Layout.frameHeight)
                 .foregroundColor(style.disabledForeground)

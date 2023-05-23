@@ -17,7 +17,7 @@ public protocol AccountServiceProtocol: AnyObject {
     func login() async
     func signUp(_ username: String, _ email: String, _ password: String) async
     func signIn(_ username: String, _ password: String) async
-    func confirmSignUp(with confirmationCode: String) async
+    func confirmSignUp(with confirmationCode: String, _ username: String, _ password: String) async
 
     func queryFriends() async
     func createFriendList() async
@@ -568,6 +568,23 @@ extension AccountService: AccountServiceProtocol {
         }
     }
 
+    private func signInFirstTime(_ username: String, _ password: String) async {
+        do {
+            let signInResult = try await Amplify.Auth.signIn(username: username, password: password)
+            if signInResult.isSignedIn {
+                print("Sign in succeeded")
+                isSignedIn.send(true)
+                await self.createLocation(xCoord: "0", yCoord: "0")
+                await self.createFriendList()
+                await self.createUserTrackedPaths()
+            }
+        } catch let error as AuthError {
+            print("Sign in failed \(error)")
+        } catch {
+            print("Unexpected error: \(error)")
+        }
+    }
+
     func signUp(_ username: String, _ email: String, _ password: String) async {
         let userAttributes = [AuthUserAttribute(.email, value: email)]
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
@@ -592,7 +609,7 @@ extension AccountService: AccountServiceProtocol {
         }
     }
 
-    func confirmSignUp(with confirmationCode: String) async {
+    func confirmSignUp(with confirmationCode: String, _ username: String, _ password: String) async {
         do {
             let confirmSignUpResult = try await Amplify.Auth.confirmSignUp(
                 for: self.username,
@@ -600,9 +617,7 @@ extension AccountService: AccountServiceProtocol {
             )
             print("Confirm sign up result completed: \(confirmSignUpResult.isSignUpComplete)")
 
-            await self.createLocation(xCoord: "0", yCoord: "0")
-            await self.createFriendList()
-            await self.createUserTrackedPaths()
+            await self.signInFirstTime(username, password)
         } catch let error as AuthError {
             print("An error occurred while confirming sign up \(error)")
         } catch {

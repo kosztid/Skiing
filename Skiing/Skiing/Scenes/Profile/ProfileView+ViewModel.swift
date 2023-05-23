@@ -36,6 +36,13 @@ extension ProfileView {
             navigator.register()
         }
 
+        func loadData() {
+            Task {
+                await accountService.getUser()
+                await accountService.queryTrackedPaths()
+            }
+        }
+
         func bindPublishers() {
             accountService.isSignedInPublisher
                 .sink { _ in
