@@ -6,6 +6,8 @@ import UIKit
 
 public protocol AccountServiceProtocol: AnyObject {
     var isSignedInPublisher: AnyPublisher<Bool, Never> { get }
+    var userPublisher: AnyPublisher<AuthUser?, Never> { get }
+    var emailPublisher: AnyPublisher<String?, Never> { get }
     var friendListPublisher: AnyPublisher<Friendlist?, Never> { get }
     var friendRequestsPublisher: AnyPublisher<[FriendRequest], Never> { get }
     var friendPositionPublisher: AnyPublisher<Location?, Never> { get }
@@ -39,10 +41,14 @@ public protocol AccountServiceProtocol: AnyObject {
     func signOut() async
     func confirm() async
     func updateTracking(id: String) async
+
+    func getUser() async
 }
 
 final class AccountService {
     private let isSignedIn: CurrentValueSubject<Bool, Never> = .init(false)
+    private let user: CurrentValueSubject<AuthUser?, Never> = .init(nil)
+    private let email: CurrentValueSubject<String?, Never> = .init(nil)
     private let friendList: CurrentValueSubject<Friendlist?, Never> = .init(nil)
     private let friendRequests: CurrentValueSubject<[FriendRequest], Never> = .init([])
     private let friendPosition: CurrentValueSubject<Location?, Never> = .init(nil)
@@ -97,6 +103,18 @@ extension AccountService: AccountServiceProtocol {
             .eraseToAnyPublisher()
     }
 
+    var userPublisher: AnyPublisher<AuthUser?, Never> {
+        user
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
+    var emailPublisher: AnyPublisher<String?, Never> {
+        email
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
     var friendPositionsPublisher: AnyPublisher<[Location], Never> {
         friendPositions
             .receive(on: DispatchQueue.main)
@@ -125,6 +143,28 @@ extension AccountService: AccountServiceProtocol {
         trackedPathModel
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
+    }
+
+    public func getUser() async {
+        do {
+            let currentUser = try await Amplify.Auth.getCurrentUser()
+            user.send(currentUser)
+
+            var currentEmail = ""
+            do {
+                let attributes = try await Amplify.Auth.fetchUserAttributes()
+                for attribute in attributes where attribute.key.rawValue == "email" {
+                    currentEmail = attribute.value
+                }
+                email.send(currentEmail)
+            } catch let error as APIError {
+                print(error)
+            }
+        } catch let error as APIError {
+            print("Failed to return user: \(error)")
+        } catch {
+            print("Unexpected error while calling create API : \(error)")
+        }
     }
 
     public func createFriendList() async {
@@ -203,7 +243,6 @@ extension AccountService: AccountServiceProtocol {
                 let attributes = try await Amplify.Auth.fetchUserAttributes()
                 for attribute in attributes where attribute.key.rawValue == "email" {
                     email = attribute.value
-                    print(email)
                 }
             } catch let error as APIError {
                 print(error)

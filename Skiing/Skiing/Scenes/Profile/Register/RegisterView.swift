@@ -5,7 +5,10 @@ struct RegisterView: View {
     @StateObject var viewModel: ViewModel
 
     var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
+            Text("Welcome to Skiing")
+                .font(.largeTitle)
+                .padding(.bottom, 16)
             Text("Registration")
                 .font(.largeTitle)
                 .padding(.bottom, 24)

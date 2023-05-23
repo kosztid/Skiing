@@ -5,9 +5,12 @@ struct LoginView: View {
     @StateObject var viewModel: ViewModel
 
     var body: some View {
-        VStack {
-            Text("Login")
+        VStack(spacing: .zero) {
+            Text("Welcome to Skiing")
                 .font(.largeTitle)
+                .padding(.bottom, 16)
+            Text("Login")
+                .font(.title)
                 .padding(.bottom, 24)
             VStack {
                 TextField(text: $viewModel.userName)

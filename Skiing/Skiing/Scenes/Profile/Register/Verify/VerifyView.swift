@@ -5,10 +5,11 @@ struct VerifyView: View {
     @StateObject var viewModel: ViewModel
 
     var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
             Text("Verification")
                 .font(.largeTitle)
                 .padding(.bottom, 24)
+            Text("Please verify your email address by entering the verification code from the confirmation email.")
             TextField(text: $viewModel.verificationCode)
                 .regularTextFieldStyle(label: "Verification Code")
             Button(

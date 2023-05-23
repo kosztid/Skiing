@@ -2,7 +2,7 @@ import SwiftUI
 import UI
 
 public struct TabBarNavigator: View {
-    @State var selectedItem: Int = 0
+    @State var selectedItem: Int = 3
 
     public var body: some View {
         ZStack(alignment: .bottom) {
