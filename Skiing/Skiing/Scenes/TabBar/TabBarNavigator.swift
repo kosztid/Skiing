@@ -2,7 +2,7 @@ import SwiftUI
 import UI
 
 public struct TabBarNavigator: View {
-    @State var selectedItem: Int = 3
+    @State var selectedItem: Int = 0
 
     public var body: some View {
         ZStack(alignment: .bottom) {
@@ -19,9 +19,6 @@ public struct TabBarNavigator: View {
                 ViewFactory.profileNavigator()
                     .tabItem { Image(systemName: "person") }
                     .tag(3)
-                Text("Leaderboard")
-                    .tabItem { Image(systemName: "chart.bar") }
-                    .tag(4)
             }
         }
     }
