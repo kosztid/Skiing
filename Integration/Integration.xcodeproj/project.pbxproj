@@ -129,13 +129,13 @@
 				55653AEB2A03BB6E00EE312B /* UserTrackedPaths+Schema.swift */,
 				55E1AC9A29D98AC400BA4F3A /* UserfriendList.swift */,
 				55E1AC9B29D98AC400BA4F3A /* UserfriendList+Schema.swift */,
-				55048D6E29CDBC0500254ADC /* AmplifyModels.swift */,
-				55048D6F29CDBC0600254ADC /* CurrentPosition.swift */,
-				55048D7029CDBC0600254ADC /* CurrentPosition+Schema.swift */,
 				5513D3CC29FF1F900079D5F6 /* Friend.swift */,
 				5513D3CB29FF1F900079D5F6 /* Friend+Schema.swift */,
 				55C0EAF529E4304700FF40F3 /* FriendRequest.swift */,
 				55C0EAF629E4304700FF40F3 /* FriendRequest+Schema.swift */,
+				55048D6F29CDBC0600254ADC /* CurrentPosition.swift */,
+				55048D7029CDBC0600254ADC /* CurrentPosition+Schema.swift */,
+				55048D6E29CDBC0500254ADC /* AmplifyModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

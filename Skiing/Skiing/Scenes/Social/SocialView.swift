@@ -3,11 +3,10 @@ import SwiftUI
 
 struct SocialView: View {
     @StateObject var viewModel: ViewModel
-    @State var presentAdd = false
 
     var body: some View {
         ZStack {
-            List {
+            List { /* 1 */
                 ForEach(viewModel.friendList?.friends ?? []) { friend in
                     FriendListItem(friend: friend) {
                         viewModel.updateTracking(id: friend.id)
@@ -35,35 +34,5 @@ struct SocialView: View {
                 }
             }
         }
-    }
-}
-
-public struct FriendModel: Identifiable {
-    public var id: String
-    public var name: String
-}
-
-public struct FriendListItem: View {
-    var friend: Friend
-    @State var isTracking: Bool
-    let action: () -> Void
-
-    public var body: some View {
-        HStack {
-            Text(friend.name)
-            Spacer()
-            Toggle(isOn: $isTracking) {
-            }
-        }
-        .onChange(of: isTracking) { _ in
-            action()
-        }
-        .padding(.horizontal, 20)
-    }
-
-    public init(friend: Friend, isTracking: Bool = false, action: @escaping () -> Void) {
-        self.friend = friend
-        self.isTracking = .init(friend.isTracking)
-        self.action = action
     }
 }

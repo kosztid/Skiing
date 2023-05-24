@@ -16,6 +16,7 @@
 		5522292C2A18FDC0003FE5BB /* TrackListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5522292B2A18FDC0003FE5BB /* TrackListItem.swift */; };
 		5528A8F629CA599F0099703C /* VerifyView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528A8F529CA599F0099703C /* VerifyView+ViewModel.swift */; };
 		5528A8F829CA59A80099703C /* VerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528A8F729CA59A80099703C /* VerifyView.swift */; };
+		553C4F402A1E9F8A00539160 /* FriendListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C4F3F2A1E9F8A00539160 /* FriendListItem.swift */; };
 		554C8B7129C4BD910028C76C /* SkiingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8B7029C4BD910028C76C /* SkiingApp.swift */; };
 		554C8B7329C4BD910028C76C /* SkiingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C8B7229C4BD910028C76C /* SkiingView.swift */; };
 		554C8B7529C4BD920028C76C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554C8B7429C4BD920028C76C /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		5522292B2A18FDC0003FE5BB /* TrackListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListItem.swift; sourceTree = "<group>"; };
 		5528A8F529CA599F0099703C /* VerifyView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyView+ViewModel.swift"; sourceTree = "<group>"; };
 		5528A8F729CA59A80099703C /* VerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyView.swift; sourceTree = "<group>"; };
+		553C4F3F2A1E9F8A00539160 /* FriendListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListItem.swift; sourceTree = "<group>"; };
 		554C8B6D29C4BD910028C76C /* Skiing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skiing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554C8B7029C4BD910028C76C /* SkiingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingApp.swift; sourceTree = "<group>"; };
 		554C8B7229C4BD910028C76C /* SkiingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiingView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,14 @@
 				5528A8F729CA59A80099703C /* VerifyView.swift */,
 			);
 			path = Verify;
+			sourceTree = "<group>";
+		};
+		553C4F3E2A1E9F7E00539160 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				553C4F3F2A1E9F8A00539160 /* FriendListItem.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		554C8B6429C4BD910028C76C = {
@@ -273,6 +283,7 @@
 		55E1ACA029D9B97200BA4F3A /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				553C4F3E2A1E9F7E00539160 /* Components */,
 				55C0EAF029E41B0B00FF40F3 /* FriendAdd */,
 				55E1ACA529D9CA6000BA4F3A /* FriendRequest */,
 				55E1ACA129D9B99A00BA4F3A /* SocialView.swift */,
@@ -506,6 +517,7 @@
 				555D8B5E29C73E4F000B65AD /* ProfileNavigator.swift in Sources */,
 				5588308729D9CE5400866B4F /* SocialNavigator.swift in Sources */,
 				5522292C2A18FDC0003FE5BB /* TrackListItem.swift in Sources */,
+				553C4F402A1E9F8A00539160 /* FriendListItem.swift in Sources */,
 				55E1ACA429D9B9A400BA4F3A /* SocialView+ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

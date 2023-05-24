@@ -4,7 +4,6 @@ import SwiftUI
 
 extension SocialView {
     final class ViewModel: ObservableObject {
-        @Published var friends: [FriendModel]
         @Published var friendList: Friendlist?
         @Published var notification: Bool
 
@@ -19,10 +18,6 @@ extension SocialView {
         ) {
             self.navigator = navigator
             self.accountService = accountService
-            self.friends = [
-                FriendModel(id: UUID().uuidString, name: "Béla"),
-                FriendModel(id: UUID().uuidString, name: "Pista")
-            ]
             self.notification = false
             initFriendList()
             Task {

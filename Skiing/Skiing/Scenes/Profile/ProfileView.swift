@@ -54,7 +54,7 @@ struct ProfileView: View {
                     }
                     .buttonStyle(SkiingButtonStyle())
                     .padding(.bottom, 16)
-                    Text("Please login or create and account to continue")
+                    Text("Please login or create an account to continue")
                         .padding(.bottom, 16)
                         .font(.caption)
                         .foregroundColor(.gray)

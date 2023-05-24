@@ -7,8 +7,6 @@ extension FriendRequestView {
         @Published var friendRequests: [FriendRequest] = []
 
         private let service: AccountServiceProtocol
-
-        var requests: [FriendModel] = []
         private var cancellables: Set<AnyCancellable> = []
 
         init(service: AccountServiceProtocol) {
